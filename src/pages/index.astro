@@ -1,0 +1,259 @@
+---
+import theme1 from '../assets/homepage/1.png';
+import theme2 from '../assets/homepage/2.png';
+import theme3 from '../assets/homepage/3.png';
+import theme4 from '../assets/homepage/4.png';
+import theme5 from '../assets/homepage/5.png';
+import theme6 from '../assets/homepage/6.png';
+import heroFullApp from '../assets/homepage/full-app-display.png';
+import heroLyrics from '../assets/homepage/lyrics-plus.png';
+import heroMarketplace from '../assets/homepage/marketplace.png';
+import FeaturesGrid from '../components/homepage/FeaturesGrid.astro';
+import HeroSection from '../components/homepage/HeroSection.astro';
+import InstallSection from '../components/homepage/InstallSection.astro';
+import ThemesBento from '../components/homepage/ThemesBento.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Community stats — update these periodically
+// Downloads: ~18.8M from GitHub release asset downloads as of March 2026
+//   (gh api repos/spicetify/cli/releases --paginate --jq '[.[].assets[].download_count] | add')
+const stats = {
+  githubStars: '22k+',
+  downloads: '18M+',
+  discordMembers: '20k+',
+  marketplaceItems: '200+',
+};
+
+const themes = [
+  {
+    src: theme1,
+    alt: 'Spotify with Sleek Elementary theme — a minimal dark interface with warm orange accents',
+    label: 'Sleek',
+  },
+  {
+    src: theme2,
+    alt: 'Spotify with Sleek Wealthy theme — a dark interface with green accent colors',
+    label: 'Sleek Wealthy',
+  },
+  {
+    src: theme3,
+    alt: 'Spotify with Nord theme — a cool blue-toned interface inspired by the Nord color palette',
+    label: 'Nord',
+  },
+  {
+    src: theme4,
+    alt: 'Spotify with Comfy theme — a rounded, cozy interface with soft colors',
+    label: 'Comfy',
+  },
+  {
+    src: theme5,
+    alt: 'Spotify with Dribbblish theme — a colorful sidebar with gradient playbar',
+    label: 'Dribbblish',
+  },
+  {
+    src: theme6,
+    alt: 'Spotify with Bloom theme — a vibrant purple and pink interface',
+    label: 'Bloom',
+  },
+];
+
+const heroShowcase = [
+  {
+    src: heroMarketplace,
+    alt: 'Spicetify Marketplace — browse and install themes, extensions, and custom apps',
+    label: 'Marketplace',
+  },
+  {
+    src: heroLyrics,
+    alt: 'Lyrics Plus — a custom app that displays synced lyrics inside Spotify',
+    label: 'Custom Apps',
+  },
+  {
+    src: heroFullApp,
+    alt: 'Full App Display — an extension showing immersive album art with live lyrics',
+    label: 'Extensions',
+  },
+];
+
+const features = [
+  {
+    icon: 'palette',
+    title: 'Themes',
+    description:
+      'Transform your Spotify with community color schemes, layouts, and visual overhauls.',
+    href: '/docs/customization/themes',
+  },
+  {
+    icon: 'puzzle',
+    title: 'Extensions',
+    description:
+      'Add keyboard shortcuts, playback controls, and integrations with other services.',
+    href: '/docs/customization/extensions',
+  },
+  {
+    icon: 'grid',
+    title: 'Custom Apps',
+    description:
+      'Build entirely new pages inside Spotify for lyrics, stats, and more.',
+    href: '/docs/customization/custom-apps',
+  },
+  {
+    icon: 'terminal',
+    title: 'Powerful CLI',
+    description:
+      'Full control from the command line. Apply, backup, restore, and update with ease.',
+    href: '/docs/getting-started',
+  },
+];
+---
+
+<BaseLayout title="Spicetify" description="Powerful CLI tool to take control of the Spotify client.">
+  <div class="home-page">
+    <HeroSection stats={stats} heroShowcase={heroShowcase} />
+    <ThemesBento themes={themes} marketplaceItems={stats.marketplaceItems} />
+    <FeaturesGrid features={features} />
+    <InstallSection />
+  </div>
+</BaseLayout>
+
+<style>
+  .home-page {
+    --font-display: 'Syne', system-ui, sans-serif;
+    --accent: var(--color-primary);
+    --accent-soft: rgba(235, 90, 55, 0.15);
+    --accent-glow: rgba(235, 90, 55, 0.4);
+    --accent-border: rgba(235, 90, 55, 0.2);
+    --accent-border-hover: rgba(235, 90, 55, 0.3);
+    --accent-subtle: rgba(235, 90, 55, 0.04);
+    --noise-bg: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    overflow: hidden;
+  }
+
+  /* ── Shared section styles ── */
+  .home-page :global(.section) {
+    position: relative;
+    padding: 6rem 1.5rem;
+  }
+
+  .home-page :global(.section-container) {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .home-page :global(.section-header) {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .home-page :global(.section-tag) {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-border);
+    padding: 0.3rem 0.75rem;
+    border-radius: 100px;
+    margin-bottom: 1.25rem;
+  }
+
+  .home-page :global(.section-tag-bright) {
+    background: rgba(235, 90, 55, 0.2);
+    border-color: rgba(235, 90, 55, 0.35);
+  }
+
+  .home-page :global(.section-header h2) {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+  }
+
+  .home-page :global(.section-header p) {
+    color: var(--color-text-secondary);
+    font-size: 1.05rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* ── Shared button styles ── */
+  .home-page :global(.btn) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.6rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    cursor: pointer;
+    border: none;
+  }
+
+  .home-page :global(.btn:hover) { text-decoration: none; }
+
+  .home-page :global(.btn:focus-visible) {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .home-page :global(.btn-primary) {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .home-page :global(.btn-primary:hover) {
+    background: var(--color-primary-dark);
+    transform: translateY(-1px);
+  }
+
+  .home-page :global(.btn-glow) {
+    box-shadow: 0 0 20px rgba(235, 90, 55, 0.25), 0 0 60px rgba(235, 90, 55, 0.08);
+  }
+
+  .home-page :global(.btn-glow:hover) {
+    box-shadow: 0 0 30px var(--accent-glow), 0 0 80px rgba(235, 90, 55, 0.12);
+  }
+
+  .home-page :global(.btn-ghost) {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+  }
+
+  .home-page :global(.btn-ghost:hover) {
+    border-color: var(--color-text-secondary);
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+  }
+
+  [data-theme='light'] .home-page :global(.btn-ghost) {
+    background: rgba(0, 0, 0, 0.03);
+  }
+
+  [data-theme='light'] .home-page :global(.btn-ghost:hover) {
+    background: rgba(0, 0, 0, 0.06);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-page :global(.btn) {
+      transition: none !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .home-page :global(.section) {
+      padding: 4rem 1rem;
+    }
+
+    .home-page :global(.section-header h2) {
+      font-size: 1.6rem;
+    }
+  }
+</style>
