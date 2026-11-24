@@ -4,6 +4,7 @@ import (
 	"errors"
 	"io"
 	"log"
+	"net/http"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -39,10 +40,13 @@ var (
 func init() {
 	if runtime.GOOS != "windows" &&
 		runtime.GOOS != "darwin" &&
-		runtime.GOOS != "linux" {
+		runtime.GOOS != "linux" &&
+		runtime.GOOS != "android" &&
+		runtime.GOOS != "ios" {
 		utils.PrintError("Unsupported OS.")
 		os.Exit(1)
 	}
+	mobileClientMode := runtime.GOOS == "android" || runtime.GOOS == "ios"
 	if version == "" {
 		version = "Dev"
 	}
@@ -121,7 +125,7 @@ func init() {
 		pterm.DisableOutput()
 	}
 
-	if isAdmin.Check(bypassAdminCheck) {
+	if !mobileClientMode && isAdmin.Check(bypassAdminCheck) {
 		utils.PrintError("Spicetify should NOT be run with administrator or root privileges")
 		utils.PrintError("Doing so can cause Spotify to show a black/blank window after applying!")
 		utils.PrintError("This happens because Spotify (running as a normal user) can't access files modified with admin privileges")
@@ -136,9 +140,11 @@ func init() {
 		}
 	}
 
-	utils.MigrateConfigFolder()
-	utils.MigrateFolders()
-	cmd.InitConfig(quiet)
+	if !mobileClientMode {
+		utils.MigrateConfigFolder()
+		utils.MigrateFolders()
+		cmd.InitConfig(quiet)
+	}
 
 	if len(commands) < 1 {
 		help()
@@ -155,6 +161,35 @@ func main() {
 
 	// Unchainable commands
 	switch commands[0] {
+	case "mobile-client":
+		address := ""
+		token := ""
+		action := ""
+		if len(commands) > 1 {
+			address = commands[1]
+		}
+		if len(commands) > 2 {
+			token = commands[2]
+		}
+		if len(commands) > 3 {
+			action = commands[3]
+		}
+		if err := cmd.RunMobileClient(address, token, action); err != nil {
+			utils.Fatal(err)
+		}
+		return
+
+	case "mobile":
+		address := ""
+		if len(commands) > 1 {
+			address = commands[1]
+		}
+		if err := cmd.StartMobileServer(version, address); err != nil &&
+			!errors.Is(err, http.ErrServerClosed) {
+			utils.Fatal(err)
+		}
+		return
+
 	case "config":
 		commands = commands[1:]
 		if len(commands) == 0 {
@@ -381,6 +416,13 @@ func help() {
 backup              Start backup and preprocessing of app files.
 
 apply               Apply customization.
+
+mobile              Start a token-protected browser interface for controlling Spicetify
+                    from Android or iPhone on the same trusted network.
+                    Optional: spicetify mobile <host>:<port>
+
+mobile-client       Send a command from Android Termux to a desktop Spicetify server.
+                    spicetify mobile-client http://<desktop-ip>:27228 <token> <action>
 
 refresh             Refresh the theme's CSS, JS, colors, and assets.
                     Use with flag "-e" to update extensions or with flag "-a" to update custom apps.

@@ -25,6 +25,7 @@ Supports Windows, MacOS and Linux.
 
 - [Installation](https://spicetify.app/docs/getting-started)
 - [Basic Usage](https://spicetify.app/docs/getting-started#basic-usage)
+- [Mobile control](MOBILE.md)
 
 ---
 
