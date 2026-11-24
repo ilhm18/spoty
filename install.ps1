@@ -86,14 +86,21 @@ function Get-Spicetify {
     }
     else {
       Write-Host -Object 'Fetching the latest hamspot version...' -NoNewline
-      $releases = Invoke-RestMethod -Uri 'https://api.github.com/repos/ilhm18/spoty/releases'
-      $latestDesktopRelease = $releases | Where-Object {
-        $_.tag_name -notlike 'mobile-*' -and $_.draft -eq $false -and $_.prerelease -eq $false
-      } | Select-Object -First 1
-      if (-not $latestDesktopRelease) {
-        throw 'No desktop Hamspot release is available yet.'
+      $targetVersion = $null
+      try {
+        $latestResponse = Invoke-WebRequest -Uri 'https://github.com/ilhm18/spoty/releases/latest' -UseBasicParsing -MaximumRedirection 10
+        $finalUrl = $latestResponse.BaseResponse.ResponseUri.AbsoluteUri
+        $tagMatch = [regex]::Match($finalUrl, '/tag/(v[^/?]+)$')
+        if ($tagMatch.Success) {
+          $targetVersion = $tagMatch.Groups[1].Value -replace '^v', ''
+        }
       }
-      $targetVersion = $latestDesktopRelease.tag_name -replace 'v', ''
+      catch {
+        $targetVersion = $null
+      }
+      if (-not $targetVersion) {
+        $targetVersion = '2.0.4'
+      }
       Write-Success
     }
     $archivePath = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), "hamspot.zip")
