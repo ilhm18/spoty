@@ -243,7 +243,7 @@ if ($choice -eq 1) {
 else {
   Write-Host -Object 'Starting the hamspot Marketplace installation script..'
   $Parameters = @{
-    Uri             = 'https://raw.githubusercontent.com/hamspot/hamspot-marketplace/main/resources/install.ps1'
+    Uri             = 'https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.ps1'
     UseBasicParsing = $true
   }
   Invoke-WebRequest @Parameters | Invoke-Expression
