@@ -207,16 +207,12 @@ if (-not (Test-Path -LiteralPath $installedSpicetify -PathType Leaf)) {
 if ($installedSpicetify) {
   $Host.UI.RawUI.Flushinputbuffer()
   $choices = [System.Management.Automation.Host.ChoiceDescription[]] @(
-    (New-Object System.Management.Automation.Host.ChoiceDescription '&Yes', 'Run hamspot update.'),
+    (New-Object System.Management.Automation.Host.ChoiceDescription '&Yes', 'Reinstall the latest hamspot release.'),
     (New-Object System.Management.Automation.Host.ChoiceDescription '&No', 'Continue with installation.')
   )
   $choice = $Host.UI.PromptForChoice('', 'Hamspot is already installed. Do you want to fix your installation?', $choices, 0)
   if ($choice -eq 0) {
-    & $installedSpicetify update
-    if ($LASTEXITCODE -ne 0) {
-      throw "Spicetify update failed with exit code $LASTEXITCODE."
-    }
-    return
+    Write-Host 'Reinstalling hamspot...' -ForegroundColor Cyan
   }
 }
 

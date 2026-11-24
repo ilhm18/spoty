@@ -58,14 +58,14 @@ func Update(currentVersion string) bool {
 	resp2, err := http.Get(assetURL)
 	if err != nil {
 		out.Close()
-		spinner.Fail("Failed to download Spicetify")
+		spinner.Fail("Failed to download Hamspot")
 		utils.Fatal(err)
 	}
 
 	if resp2.StatusCode != http.StatusOK {
 		resp2.Body.Close()
 		out.Close()
-		spinner.Fail("Failed to download Spicetify")
+		spinner.Fail("Failed to download Hamspot")
 		utils.Fatal(fmt.Errorf("unexpected HTTP status: %s for %s", resp2.Status, assetURL))
 	}
 
@@ -75,10 +75,10 @@ func Update(currentVersion string) bool {
 	if err != nil {
 		resp2.Body.Close()
 		out.Close()
-		spinner.Fail("Failed to download Spicetify")
+		spinner.Fail("Failed to download Hamspot")
 		utils.Fatal(err)
 	}
-	spinner.Success("Downloaded Spicetify")
+	spinner.Success("Downloaded Hamspot")
 
 	exe, err := os.Executable()
 	if err != nil {
