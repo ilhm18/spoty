@@ -6,7 +6,7 @@ description: Asynchronous Cosmos API wrapper used by the Spotify client.
 Asynchronous Cosmos API wrapper used by the Spotify client. It is used to make requests to the Spotify client's internal API as well as external URLs.
 
 ```ts
-Spicetify.CosmosAsync
+Hamspot.CosmosAsync
 ```
 
 It works similarly to `fetch` or `axios` but for each request it will automatically add the required headers and cookies (such as user session token). All responses are parsed as JSON.
@@ -47,13 +47,13 @@ It is worth noting that you can either make a request using the [`request`](#req
 For example, you can fetch the current client version using either of the following:
 
 ```ts
-await Spicetify.CosmosAsync.get("sp://desktop/v1/version");
+await Hamspot.CosmosAsync.get("sp://desktop/v1/version");
 ```
 
 or
 
 ```ts
-await Spicetify.CosmosAsync.request("GET", "sp://desktop/v1/version");
+await Hamspot.CosmosAsync.request("GET", "sp://desktop/v1/version");
 ```
 
 For a complete list of available HTTP methods, see [`Method`](/docs/development/api-wrapper/types/cosmos-async/method).
@@ -62,10 +62,10 @@ You can also use `CosmosAsync` for Spotify Web API endpoints without having to m
 
 ```ts
 // All endpoints that uses the `sp`, `wg`, and `hm` protocol are internal Spotify endpoints
-await Spicetify.CosmosAsync.get("sp://desktop/v1/version");
+await Hamspot.CosmosAsync.get("sp://desktop/v1/version");
 
 // Spotify Web API endpoints also works
-await Spicetify.CosmosAsync.get("https://api.spotify.com/v1/me");
+await Hamspot.CosmosAsync.get("https://api.spotify.com/v1/me");
 
 // Requests to external URLs are NOT safe and may compromise the user's account
 // Only use this if you're certain that the URL is safe
@@ -103,7 +103,7 @@ Example:
 
 ```ts
 // Get all playlists in user's library
-const res = await Spicetify.CosmosAsync.get("sp://core-playlist/v1/rootlist");
+const res = await Hamspot.CosmosAsync.get("sp://core-playlist/v1/rootlist");
 const playlists = res.rows.filter((row) => row.type === "playlist");
 ```
 
@@ -125,7 +125,7 @@ Example:
 
 ```ts
 // Skip to the next track in queue
-const res = await Spicetify.CosmosAsync.post("sp://player/v2/main/skip_next");
+const res = await Hamspot.CosmosAsync.post("sp://player/v2/main/skip_next");
 ```
 
 ### `put`
@@ -146,7 +146,7 @@ Example:
 
 ```ts
 // Enable/disable incognito mode
-const res = await Spicetify.CosmosAsync.put("sp://scrobble/v1/incognito", { enabled: boolean });
+const res = await Hamspot.CosmosAsync.put("sp://scrobble/v1/incognito", { enabled: boolean });
 ```
 
 ### `del`

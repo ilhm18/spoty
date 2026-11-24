@@ -1,12 +1,12 @@
-# Spicetify community themes
+# Hamspot community themes
 
-This is a collection of themes for [spicetify](https://github.com/spicetify/spicetify-cli), a command-line tool to customize Spotify.
+This is a collection of themes for [hamspot](https://github.com/spicetify/spicetify-cli), a command-line tool to customize Spotify.
 
 ### **You can find a preview of all the themes in [THEMES.md](./THEMES.md).**
 
 ## Notes:
 
-*   **These themes require that you have the latest version of Spotify and Spicetify.**
+*   **These themes require that you have the latest version of Spotify and Hamspot.**
 *   **To install Dribbblish and Turntable themes, follow the instructions in their READMEs**.
 *   **Spotify ad-blocked version is not supported.**
 
@@ -19,36 +19,36 @@ This is a collection of themes for [spicetify](https://github.com/spicetify/spic
     git clone --depth=1 https://github.com/spicetify/spicetify-themes.git 
     ```
 
-2.  Copy the files into the [Spicetify Themes folder](https://spicetify.app/docs/development/themes). Run:
+2.  Copy the files into the [Hamspot Themes folder](https://spicetify.app/docs/development/themes). Run:
 
     **Linux**
 
     ```bash
-    cd spicetify-themes
-    cp -r * ~/.config/spicetify/Themes
+    cd hamspot-themes
+    cp -r * ~/.config/hamspot/Themes
     ```
 
     **MacOS**
 
     ```bash
-    cd spicetify-themes
-    cp -r * ~/.config/spicetify/Themes
+    cd hamspot-themes
+    cp -r * ~/.config/hamspot/Themes
     ```
 
     **Windows**
 
     ```powershell
-    cd spicetify-themes
-    cp * "$(spicetify -c | Split-Path)\Themes\" -Recurse
+    cd hamspot-themes
+    cp * "$(hamspot -c | Split-Path)\Themes\" -Recurse
     ```
 
 3.  Choose which theme to apply just by running:
     ```bash
-    spicetify config current_theme THEME_NAME
+    hamspot config current_theme THEME_NAME
     ```
     Some themes have 2 or more different color schemes. After selecting the theme you can switch between them with:
     ```bash
-    spicetify config color_scheme SCHEME_NAME
+    hamspot config color_scheme SCHEME_NAME
     ```
 
 ### Extra
@@ -62,7 +62,7 @@ We've set up a separate document for our [contribution guidelines](./CONTRIBUTIN
 
 ## Troubleshooting
 
-Do not open issues for general support questions as we want to keep GitHub issues for bug reports and feature requests. If you find problems when using or installing these themes, or you need help in modifying a theme then ask for suggestions on the [subreddit](https://www.reddit.com/r/spicetify/) or on the [Discord Server](https://discord.com/invite/VnevqPp2Rr).
+Do not open issues for general support questions as we want to keep GitHub issues for bug reports and feature requests. If you find problems when using or installing these themes, or you need help in modifying a theme then ask for suggestions on the [subreddit](https://discord.com/invite/VnevqPp2Rr) or on the [Discord Server](https://discord.com/invite/VnevqPp2Rr).
 
 Use GitHub issues ONLY for bugs and requesting new features.
 
@@ -70,5 +70,5 @@ If you are unsure about which channel to use, go for Reddit or Discord.
 
 ## Useful resources
 
-*   [Spicetify theme without free version UI elements (e.g. "Upgrade" button)](https://github.com/Daksh777/SpotifyNoPremium)
+*   [Hamspot theme without free version UI elements (e.g. "Upgrade" button)](https://github.com/Daksh777/SpotifyNoPremium)
 *   [DribbblishDynamic theme for v2](https://github.com/JulienMaille/dribbblish-dynamic-theme)

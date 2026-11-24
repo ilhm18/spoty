@@ -74,7 +74,7 @@
       "invalidCSS": "Vigane CSS"
     },
     "grid": {
-      "spicetifyMarketplace": "Spicetify Turg",
+      "spicetifyMarketplace": "Hamspot Turg",
       "newUpdate": "Uus värskendus",
       "addCSS": "Lisa CSS",
       "search": "Otsi",
@@ -85,7 +85,7 @@
       "light": "hele"
     },
     "readmePage": {
-      "title": "$t(grid.spicetifyMarketplace) - Readme",
+      "title": "$t(grid.hamspotMarketplace) - Readme",
       "loading": "Laadimine...",
       "errorLoading": "Viga README laadimisel"
     },

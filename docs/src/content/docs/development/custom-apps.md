@@ -6,8 +6,8 @@ description: 🔧 Creating Custom Apps.
 ## App Structure
 
 ```text
-~/.config/spicetify/CustomApps/   # Linux/macOS
-%appdata%\spicetify\CustomApps\   # Windows
+~/.config/hamspot/CustomApps/   # Linux/macOS
+%appdata%\hamspot\CustomApps\   # Windows
 └── my-app/
     ├── index.js                  # Required: main entry with render()
     ├── manifest.json             # Required: app metadata and icons
@@ -47,19 +47,19 @@ _Note: The `subfiles` can be in nested folders, while any `subfiles_extension` c
 
 ## Creating your index.js
 
-Custom apps are written in [React](https://reactjs.org). You'll need to grab some React references from the `Spicetify` object, set up a component for your page, and return that component from a `render()` function in the main body of the file. Sadly, this does not support [`jsx`](https://reactjs.org/docs/introducing-jsx.html), so you must use [`react.createElement`](https://reactjs.org/docs/react-api.html#createelement).
+Custom apps are written in [React](https://reactjs.org/docs/react-api.html#createelement). You'll need to grab some React references from the `Hamspot` object, set up a component for your page, and return that component from a `render()` function in the main body of the file. Sadly, this does not support [`jsx`](https://reactjs.org/docs/react-api.html#createelement/docs/introducing-jsx.html), so you must use [`react.createElement`](https://reactjs.org/docs/react-api.html#createelement/docs/react-api.html#createelement).
 
 Example:
 
 ```js
 // Grab any variables you need
-const react = Spicetify.React;
-const reactDOM = Spicetify.ReactDOM;
+const react = Hamspot.React;
+const reactDOM = Hamspot.ReactDOM;
 const {
     URI,
     React: { useState, useEffect, useCallback },
     Platform: { History },
-} = Spicetify;
+} = Hamspot;
 
 // The main custom app render function. The component returned is what is rendered in Spotify.
 function render() {
@@ -120,10 +120,10 @@ Any subfile extensions are loaded separately from the main custom app, and do no
 
 ### How can I add a new sub page or path to my custom app?
 
-You can use `Spicetify.Platform.History.push(...)` to navigate to a new page. This can be a standard Spotify page, or a custom page for your app. You can include any data you need in the `state` key.
+You can use `Hamspot.Platform.History.push(...)` to navigate to a new page. This can be a standard Spotify page, or a custom page for your app. You can include any data you need in the `state` key.
 
 ```js
-Spicetify.Platform.History.push({
+Hamspot.Platform.History.push({
   pathname: '/marketplace/readme',
   state: {
     data: {
@@ -139,18 +139,18 @@ In this example, if our `pathname` is "/marketplace/readme", we load the `Readme
 
 ```js
 function render() {
-  const { location } = Spicetify.Platform.History;
+  const { location } = Hamspot.Platform.History;
 
   // If page state set to display readme, render it
-  // (This location state data comes from your Spicetify.Platform.History.push() call
+  // (This location state data comes from your Hamspot.Platform.History.push() call
   if (location.pathname === '/marketplace/readme') {
     return react.createElement(ReadmePage, {
-      title: 'Spicetify Marketplace - Readme',
+      title: 'Hamspot Marketplace - Readme',
       data: location.state.data,
     });
   } // Otherwise, render the main Grid
   else {
-    return react.createElement(Grid, { title: 'Spicetify Marketplace' });
+    return react.createElement(Grid, { title: 'Hamspot Marketplace' });
   }
 }
 ```

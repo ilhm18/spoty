@@ -7,9 +7,9 @@ Adds a track or array of tracks to the bottom of the prioritized queue.
 
 :::tip
 
-This works similarly to [`Spicetify.Platform.PlayerAPI.addToQueue`](/docs/development/api-wrapper/methods/platform#addtoqueue) but works silently, meaning no notification will be shown.
+This works similarly to [`Hamspot.Platform.PlayerAPI.addToQueue`](/docs/development/api-wrapper/methods/platform#addtoqueue) but works silently, meaning no notification will be shown.
 
-If you want default Spotify behavior, use [`Spicetify.Platform.PlayerAPI.addToQueue`](/docs/development/api-wrapper/methods/platform#addtoqueue) instead.
+If you want default Spotify behavior, use [`Hamspot.Platform.PlayerAPI.addToQueue`](/docs/development/api-wrapper/methods/platform#addtoqueue) instead.
 
 :::
 
@@ -27,11 +27,11 @@ function addToQueue(uri: ContextTrack[]): Promise<void>;
 
 ```ts
 // Add current track to queue
-const currentTrack = Spicetify.Player.data.item;
+const currentTrack = Hamspot.Player.data.item;
 
-await Spicetify.addToQueue([currentTrack]);
+await Hamspot.addToQueue([currentTrack]);
 
 // Add a track to queue
 const trackUri = "spotify:track:4iV5W9uYEdYUVa79Axb7Rh";
 
-await Spicetify.addToQueue([ { uri: trackUri } ]);
+await Hamspot.addToQueue([ { uri: trackUri } ]);

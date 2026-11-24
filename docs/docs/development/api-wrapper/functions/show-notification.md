@@ -19,14 +19,14 @@ function showNotification(text: string, isError?: boolean, msTimeout?: number): 
 
 ```ts
 // Display a notification
-Spicetify.showNotification("My Menu Item clicked!");
+Hamspot.showNotification("My Menu Item clicked!");
 
 // Display a notification with a custom timeout
-Spicetify.showNotification("My Menu Item clicked!", false, 1000);
+Hamspot.showNotification("My Menu Item clicked!", false, 1000);
 
 // Display an error notification
-Spicetify.showNotification("Something wrong happened", true);
+Hamspot.showNotification("Something wrong happened", true);
 
 // Display a bolded error notification
-Spicetify.showNotification("<b>Something wrong happened</b>", true);
+Hamspot.showNotification("<b>Something wrong happened</b>", true);
 ```

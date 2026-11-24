@@ -3,7 +3,7 @@ title: Marketplace
 description: Browse and install themes, extensions, and snippets from Spotify.
 ---
 
-The Spicetify Marketplace is a built-in store that lets you browse, install, and manage customizations directly from Spotify.
+The Hamspot Marketplace is a built-in store that lets you browse, install, and manage customizations directly from Spotify.
 
 ## Installation
 
@@ -67,28 +67,28 @@ Click the **Installed** tab to see everything you've added. From here you can:
 | Custom/local files | No | Yes |
 | Fine-grained control | Limited | Full |
 
-For built-in extensions that ship with Spicetify (like Full App Display, Keyboard Shortcuts, etc.), see the **[Extensions](./extensions.md)** page for manual installation instructions.
+For built-in extensions that ship with Hamspot (like Full App Display, Keyboard Shortcuts, etc.), see the **[Extensions](./extensions.md)** page for manual installation instructions.
 
 ## Troubleshooting
 
 ### Marketplace not showing in sidebar
 
 1. Make sure you ran the Marketplace install script
-2. Run `spicetify apply` to ensure changes are applied
+2. Run `hamspot apply` to ensure changes are applied
 3. Restart Spotify
 
 ### Items not installing
 
 1. Check your internet connection
-2. Try running `spicetify restore backup apply` to refresh the installation
+2. Try running `hamspot restore backup apply` to refresh the installation
 3. Check the [GitHub Issues](https://github.com/spicetify/marketplace/issues) for known problems
 
 ### Marketplace disappeared after Spotify update
 
-After Spotify updates, you may need to re-apply Spicetify:
+After Spotify updates, you may need to re-apply Hamspot:
 
 ```bash
-spicetify backup apply
+hamspot backup apply
 ```
 
 ### Resetting Marketplace
@@ -98,7 +98,7 @@ If Marketplace becomes unresponsive or you cannot access its settings:
 1. Enable DevTools:
 
    ```bash
-   spicetify enable-devtools
+   hamspot enable-devtools
    ```
 
 2. Open DevTools in Spotify (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd> or <kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>I</kbd>)

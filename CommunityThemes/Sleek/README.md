@@ -74,6 +74,6 @@ Created by [@harbassan](https://github.com/harbassan)
 Change the scheme with these commands:
 
 ```
-spicetify config color_scheme <scheme name>
-spicetify apply
+hamspot config color_scheme <scheme name>
+hamspot apply
 ```

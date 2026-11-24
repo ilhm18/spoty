@@ -3,7 +3,7 @@ title: LocalStorage
 description: Get and set data in local storage.
 ---
 
-Spicetify provides a wrapper for `localStorage` to make it easier to use.
+Hamspot provides a wrapper for `localStorage` to make it easier to use.
 
 :::tip
 
@@ -30,7 +30,7 @@ Empties the list associated with the object of all key/value pairs, if there are
 
 :::warning
 
-This method will remove all data in local storage, not just the data that Spicetify uses. This essentially resets the client to its default state.
+This method will remove all data in local storage, not just the data that Hamspot uses. This essentially resets the client to its default state.
 
 It will also wipe all data stored by extensions and custom apps (e.g. Marketplace, Lyrics Plus, etc.)
 
@@ -55,7 +55,7 @@ get(key: string): string | null
 #### Example
 
 ```ts
-const value = Spicetify.LocalStorage.get("foo");
+const value = Hamspot.LocalStorage.get("foo");
 ```
 
 ### `remove`
@@ -73,7 +73,7 @@ remove(key: string): void
 #### Example
 
 ```ts
-Spicetify.LocalStorage.remove("foo");
+Hamspot.LocalStorage.remove("foo");
 ```
 
 ### `set`
@@ -92,5 +92,5 @@ set(key: string, value: string): void
 #### Example
 
 ```ts
-Spicetify.LocalStorage.set("foo", "bar");
+Hamspot.LocalStorage.set("foo", "bar");
 ```

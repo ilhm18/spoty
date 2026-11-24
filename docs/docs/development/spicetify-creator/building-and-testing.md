@@ -28,17 +28,17 @@ Open a terminal in the project's directory and run this:
   </TabItem>
 </Tabs>
 
-Then make sure you've added your app to Spicetify's config by running this:
+Then make sure you've added your app to Hamspot's config by running this:
 
 <Tabs groupId="app-types">
   <TabItem value="extension" label="Extension" default>
     ```shell
-    spicetify config extensions my-app.js
+    hamspot config extensions my-app.js
     ```
   </TabItem>
   <TabItem value="custom-app" label="Custom App">
     ```shell
-    spicetify config custom_apps my-app
+    hamspot config custom_apps my-app
     ```
   </TabItem>
 </Tabs>
@@ -46,7 +46,7 @@ Then make sure you've added your app to Spicetify's config by running this:
 Finally, do
 
 ```shell
-spicetify apply
+hamspot apply
 ```
 
 and you'll see your app in Spotify.
@@ -80,12 +80,12 @@ Then, run Spotify in watch mode:
 <Tabs groupId="app-types">
   <TabItem value="extension" label="Extension" default>
     ```shell
-    spicetify watch -le
+    hamspot watch -le
     ```
   </TabItem>
   <TabItem value="custom-app" label="Custom App">
     ```shell
-    spicetify watch -la
+    hamspot watch -la
     ```
   </TabItem>
 </Tabs>

@@ -1,5 +1,5 @@
 module.exports = {
-  ignorePatterns: ["node_modules", "dist", ".eslintrc.js", "spicetify.d.ts"],
+  ignorePatterns: ["node_modules", "dist", ".eslintrc.js", "hamspot.d.ts"],
   env: {
     browser: true,
     es2022: true

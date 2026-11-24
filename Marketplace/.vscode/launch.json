@@ -15,16 +15,16 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "spicetify watch -a",
-      "runtimeExecutable": "spicetify",
+      "name": "hamspot watch -a",
+      "runtimeExecutable": "hamspot",
       "runtimeArgs": ["watch", "-a"],
       "internalConsoleOptions": "openOnSessionStart"
     }
   ],
   "compounds": [
     {
-      "name": "Watch app build and Spicetify",
-      "configurations": ["pnpm run watch", "spicetify watch -a"]
+      "name": "Watch app build and Hamspot",
+      "configurations": ["pnpm run watch", "hamspot watch -a"]
     }
   ]
 }

@@ -16,7 +16,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 // Community stats — update these periodically
 // Downloads: ~18.8M from GitHub release asset downloads as of March 2026
-//   (gh api repos/spicetify/cli/releases --paginate --jq '[.[].assets[].download_count] | add')
+//   (gh api repos/hamspot/cli/releases --paginate --jq '[.[].assets[].download_count] | add')
 const stats = {
   githubStars: '22k+',
   downloads: '18M+',
@@ -60,7 +60,7 @@ const themes = [
 const heroShowcase = [
   {
     src: heroMarketplace,
-    alt: 'Spicetify Marketplace — browse and install themes, extensions, and custom apps',
+    alt: 'Hamspot Marketplace — browse and install themes, extensions, and custom apps',
     label: 'Marketplace',
   },
   {
@@ -107,7 +107,7 @@ const features = [
 ];
 ---
 
-<BaseLayout title="Spicetify" description="Powerful CLI tool to take control of the Spotify client.">
+<BaseLayout title="Hamspot" description="Powerful CLI tool to take control of the Spotify client.">
   <div class="home-page">
     <HeroSection stats={stats} heroShowcase={heroShowcase} />
     <ThemesBento themes={themes} marketplaceItems={stats.marketplaceItems} />

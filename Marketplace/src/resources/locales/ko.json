@@ -77,7 +77,7 @@
     },
     "updateModal": {
       "title": "마켓플레이스 업데이트",
-      "description": "spicetify 마켓 플레이스를 업데이트 하여 새로운 기능들과 버그 픽스들을 제공받습니다.",
+      "description": "hamspot 마켓 플레이스를 업데이트 하여 새로운 기능들과 버그 픽스들을 제공받습니다.",
       "currentVersion": "현재 버전: {{version}}",
       "latestVersion": "지난 버전: {{version}}",
       "whatsChanged": "새로운 기능",
@@ -86,7 +86,7 @@
       "viewGuide": "가이드 보기"
     },
     "grid": {
-      "spicetifyMarketplace": "Spicetify 마켓플레이스",
+      "spicetifyMarketplace": "Hamspot 마켓플레이스",
       "newUpdate": "새로운 업데이트",
       "addCSS": "CSS 등록",
       "search": "검색",
@@ -108,7 +108,7 @@
       }
     },
     "readmePage": {
-      "title": "$t(grid.spicetifyMarketplace) - Readme",
+      "title": "$t(grid.hamspotMarketplace) - Readme",
       "loading": "로딩중...",
       "errorLoading": "README를 불러오는 중 오류 발생"
     },

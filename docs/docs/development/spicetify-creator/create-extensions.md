@@ -1,13 +1,13 @@
 ---
 title: Create Extensions
-description: 🔨 Creating small addons for Spicetify.
+description: 🔨 Creating small addons for Hamspot.
 ---
 
 Notes:
 
-- This tutorial assumes you have chosen to generate an example using Create Spicetify App.
+- This tutorial assumes you have chosen to generate an example using Create Hamspot App.
 
-After creating a new Spicetify Creator project and choosing "Extension" as your app's type, your project's structure should look like this (With the generated example):
+After creating a new Hamspot Creator project and choosing "Extension" as your app's type, your project's structure should look like this (With the generated example):
 
 ```
 my-app/

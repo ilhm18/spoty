@@ -39,12 +39,12 @@ A simple gruvified spotify theme.
 
     ```shell
     # for dark theme
-    spicetify config current_theme Onepunch color_scheme dark
-    spicetify apply
+    hamspot config current_theme Onepunch color_scheme dark
+    hamspot apply
 
     #for light theme
-    spicetify config current_theme Onepunch color_scheme light
-    spicetify apply
+    hamspot config current_theme Onepunch color_scheme light
+    hamspot apply
 
     ```
 

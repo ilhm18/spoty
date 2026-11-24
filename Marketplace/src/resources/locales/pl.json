@@ -77,7 +77,7 @@
     },
     "updateModal": {
       "title": "Zaktualizuj Marketplace",
-      "description": "Zaktualizuj Spicetify Marketplace, aby otrzymywać nowe funkcje i poprawki błędów.",
+      "description": "Zaktualizuj Hamspot Marketplace, aby otrzymywać nowe funkcje i poprawki błędów.",
       "currentVersion": "Obecna wersja: {{version}}",
       "latestVersion": "Najnowsza wersja: {{version}}",
       "whatsChanged": "Co się zmieniło",
@@ -86,7 +86,7 @@
       "viewGuide": "Zobacz przewodnik"
     },
     "grid": {
-      "spicetifyMarketplace": "Spicetify Marketplace",
+      "spicetifyMarketplace": "Hamspot Marketplace",
       "newUpdate": "Nowa aktualizacja",
       "addCSS": "Dodaj CSS",
       "search": "Wyszukaj",
@@ -108,7 +108,7 @@
       }
     },
     "readmePage": {
-      "title": "$t(grid.spicetifyMarketplace) - Readme",
+      "title": "$t(grid.hamspotMarketplace) - Readme",
       "loading": "Ładowanie...",
       "errorLoading": "Błąd podczas ładowania README"
     },

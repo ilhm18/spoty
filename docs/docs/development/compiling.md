@@ -1,6 +1,6 @@
 ---
 title: Compiling
-description: 🧰 Compiling Spicetify.
+description: 🧰 Compiling Hamspot.
 ---
 
 ### Requirements
@@ -11,8 +11,8 @@ Clone repo and download dependencies:
 
 ```bash
 cd $HOME
-mkdir spicetify
-cd spicetify
+mkdir hamspot
+cd hamspot
 git clone https://github.com/spicetify/cli
 ```
 
@@ -21,13 +21,13 @@ git clone https://github.com/spicetify/cli
 #### Windows
 
 ```powershell
-cd $HOME\spicetify\cli
-go build -o spicetify.exe
+cd $HOME\hamspot\cli
+go build -o hamspot.exe
 ```
 
 #### Linux and MacOS
 
 ```bash
-cd ~/spicetify/cli
-go build -o spicetify
+cd ~/hamspot/cli
+go build -o hamspot
 ```

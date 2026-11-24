@@ -2,8 +2,8 @@
 
 <h3 align="center"><img src=".github/assets/logo.png" width="600px"></h3>
 <p align="center">
-  <a href="https://github.com/ilhm18/spoty/releases/latest"><img src="https://img.shields.io/github/release/ilhm18/spoty/all.svg?colorB=97CA00&label=latest%20version"></a>
-  <a href="https://github.com/ilhm18/spoty/releases"><img src="https://img.shields.io/github/downloads/ilhm18/spoty/total.svg?colorB=97CA00&label=total%20downloads"></a>
+  <a href="https://img.shields.io/github/release/ilhm18/spoty/all.svg?colorB=97CA00&label=latest%20version"><img src="https://img.shields.io/github/release/ilhm18/spoty/all.svg?colorB=97CA00&label=latest%20version"></a>
+  <a href="https://img.shields.io/github/downloads/ilhm18/spoty/total.svg?colorB=97CA00&label=total%20downloads"><img src="https://img.shields.io/github/downloads/ilhm18/spoty/total.svg?colorB=97CA00&label=total%20downloads"></a>
 </p>
 
 ---
@@ -31,4 +31,4 @@ Supports Windows, MacOS and Linux.
 
 ### Code Signing Policy
 
-Free code signing provided by [SignPath.io](https://signpath.io), certificate by [SignPath Foundation](https://signpath.org/).
+Free code signing provided by [SignPath.io](https://signpath.org/), certificate by [SignPath Foundation](https://signpath.org/).

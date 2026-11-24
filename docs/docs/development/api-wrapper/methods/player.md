@@ -3,9 +3,9 @@ title: Player
 description: A collection of methods to interact with the Spotify player.
 ---
 
-Spicetify provides a collection of methods to interact with the Spotify player. You can get the current player state, play/pause, skip to next/previous track, set repeat/shuffle mode, and more.
+Hamspot provides a collection of methods to interact with the Spotify player. You can get the current player state, play/pause, skip to next/previous track, set repeat/shuffle mode, and more.
 
-This is mostly a wrapper of the `Spicetify.Platform.PlayerAPI` object.
+This is mostly a wrapper of the `Hamspot.Platform.PlayerAPI` object.
 
 ```ts
 namespace Player {
@@ -65,7 +65,7 @@ If the current player doesn't have any track, `data` will be `null`. Always chec
 :::
 
 ```ts
-Spicetify.Player.data;
+Hamspot.Player.data;
 ```
 
 #### Return
@@ -77,7 +77,7 @@ Spicetify.Player.data;
 
 ```ts
 // Get current track URI
-const currentURI = Spicetify.Player.data?.item.uri;
+const currentURI = Hamspot.Player.data?.item.uri;
 if (currentURI) {
     console.log(currentURI);
 }
@@ -88,7 +88,7 @@ if (currentURI) {
 An object containing all registered event listeners.
 
 ```ts
-Spicetify.Player.eventListeners;
+Hamspot.Player.eventListeners;
 ```
 
 #### Return
@@ -108,7 +108,7 @@ Spicetify.Player.eventListeners;
 
 ### addEventListener
 
-Register a listener of `type` on Spicetify.Player. You can use this method to listen to events that are fired throughout the app, including:
+Register a listener of `type` on Hamspot.Player. You can use this method to listen to events that are fired throughout the app, including:
 
   * `songchange` type when player changes track.
   * `onplaypause` type when player plays or pauses.
@@ -116,7 +116,7 @@ Register a listener of `type` on Spicetify.Player. You can use this method to li
 
 ```ts
 // Register a listener that will be called when player changes track
-Spicetify.Player.addEventListener("songchange", (event) => {
+Hamspot.Player.addEventListener("songchange", (event) => {
     // Do something
     console.log(event.data);
 });
@@ -131,16 +131,16 @@ Spicetify.Player.addEventListener("songchange", (event) => {
 
 ### dispatchEvent
 
-Dispatches an event at `Spicetify.Player`.
+Dispatches an event at `Hamspot.Player`.
 
-By default, `Spicetify.Player` always dispatch
+By default, `Hamspot.Player` always dispatch
 
   * `songchange` type when player changes track.
   * `onplaypause` type when player plays or pauses.
   * `onprogress` type when track progress changes.
 
 ```ts
-Spicetify.Player.dispatchEvent(event);
+Hamspot.Player.dispatchEvent(event);
 ```
 
 #### Parameters
@@ -154,7 +154,7 @@ Spicetify.Player.dispatchEvent(event);
 Skip to previous track.
 
 ```ts
-Spicetify.Player.back();
+Hamspot.Player.back();
 ```
 
 ### decreaseVolume
@@ -162,7 +162,7 @@ Spicetify.Player.back();
 Decrease a small amount of volume. The value is automatically determined by the client.
 
 ```ts
-Spicetify.Player.decreaseVolume();
+Hamspot.Player.decreaseVolume();
 ```
 
 ### formatTime
@@ -170,7 +170,7 @@ Spicetify.Player.decreaseVolume();
 Format a time in milliseconds to a string in `mm:ss` format.
 
 ```ts
-Spicetify.Player.formatTime(time);
+Hamspot.Player.formatTime(time);
 ```
 
 #### Parameters
@@ -186,11 +186,11 @@ Spicetify.Player.formatTime(time);
 #### Example
 
 ```ts
-Spicetify.Player.formatTime(1000); // "00:01"
+Hamspot.Player.formatTime(1000); // "00:01"
 
 // Get current track duration
-const duration = Spicetify.Player.getDuration();
-const formattedDuration = Spicetify.Player.formatTime(duration);
+const duration = Hamspot.Player.getDuration();
+const formattedDuration = Hamspot.Player.formatTime(duration);
 console.log(formattedDuration); // "03:45"
 ```
 
@@ -199,7 +199,7 @@ console.log(formattedDuration); // "03:45"
 Return the duration of current track in milliseconds.
 
 ```ts
-Spicetify.Player.getDuration();
+Hamspot.Player.getDuration();
 ```
 
 #### Return
@@ -210,7 +210,7 @@ Spicetify.Player.getDuration();
 
 ```ts
 // Get current track duration
-const duration = Spicetify.Player.getDuration();
+const duration = Hamspot.Player.getDuration();
 console.log(duration); // 225000
 ```
 
@@ -219,7 +219,7 @@ console.log(duration); // 225000
 Return the mute state of player.
 
 ```ts
-Spicetify.Player.getMute();
+Hamspot.Player.getMute();
 ```
 
 #### Return
@@ -231,7 +231,7 @@ Spicetify.Player.getMute();
 Return the progress of current track in milliseconds.
 
 ```ts
-Spicetify.Player.getProgress();
+Hamspot.Player.getProgress();
 ```
 
 #### Return
@@ -242,7 +242,7 @@ Spicetify.Player.getProgress();
 
 ```ts
 // Get current track progress
-const progress = Spicetify.Player.getProgress();
+const progress = Hamspot.Player.getProgress();
 console.log(progress); // 10000
 ```
 
@@ -251,7 +251,7 @@ console.log(progress); // 10000
 Return the progress of current track in percentage, from 0 to 1.
 
 ```ts
-Spicetify.Player.getProgressPercent();
+Hamspot.Player.getProgressPercent();
 ```
 
 #### Return
@@ -262,7 +262,7 @@ Spicetify.Player.getProgressPercent();
 
 ```ts
 // Get current track progress
-const progress = Spicetify.Player.getProgressPercent();
+const progress = Hamspot.Player.getProgressPercent();
 console.log(progress); // 0.04
 ```
 
@@ -275,7 +275,7 @@ Return the repeat mode of player. The value can be:
   * `2` for repeat one.
 
 ```ts
-Spicetify.Player.getRepeat();
+Hamspot.Player.getRepeat();
 ```
 
 #### Return
@@ -287,7 +287,7 @@ Spicetify.Player.getRepeat();
 Return the shuffle state of player.
 
 ```ts
-Spicetify.Player.getShuffle();
+Hamspot.Player.getShuffle();
 ```
 
 #### Return
@@ -299,7 +299,7 @@ Spicetify.Player.getShuffle();
 Return the heart state of player.
 
 ```ts
-Spicetify.Player.getHeart();
+Hamspot.Player.getHeart();
 ```
 
 #### Return
@@ -311,7 +311,7 @@ Spicetify.Player.getHeart();
 Return the volume of player. The value is from 0 to 1.
 
 ```ts
-Spicetify.Player.getVolume();
+Hamspot.Player.getVolume();
 ```
 
 #### Return
@@ -323,7 +323,7 @@ Spicetify.Player.getVolume();
 Increase a small amount of volume. The value is automatically determined by the client.
 
 ```ts
-Spicetify.Player.increaseVolume();
+Hamspot.Player.increaseVolume();
 ```
 
 ### next
@@ -331,7 +331,7 @@ Spicetify.Player.increaseVolume();
 Skip to next track.
 
 ```ts
-Spicetify.Player.next();
+Hamspot.Player.next();
 ```
 
 ### pause
@@ -339,7 +339,7 @@ Spicetify.Player.next();
 Pause the player.
 
 ```ts
-Spicetify.Player.pause();
+Hamspot.Player.pause();
 ```
 
 ### play
@@ -347,7 +347,7 @@ Spicetify.Player.pause();
 Resume the player.
 
 ```ts
-Spicetify.Player.play();
+Hamspot.Player.play();
 ```
 
 ### playUri
@@ -355,7 +355,7 @@ Spicetify.Player.play();
 Start playback of the specified track.
 
 ```ts
-Spicetify.Player.playUri(uri, context?: any, options?: any);
+Hamspot.Player.playUri(uri, context?: any, options?: any);
 ```
 
 #### Parameters
@@ -372,7 +372,7 @@ Spicetify.Player.playUri(uri, context?: any, options?: any);
 // 505 - Arctic Monkeys
 const trackURI = "spotify:track:0BxE4FqsDD1Ot4YuBXwAPp";
 
-await Spicetify.Player.playUri(trackURI);
+await Hamspot.Player.playUri(trackURI);
 ```
 
 ### removeEventListener
@@ -380,7 +380,7 @@ await Spicetify.Player.playUri(trackURI);
 Unregister added event listener `type`.
 
 ```ts
-Spicetify.Player.removeEventListener(type, callback);
+Hamspot.Player.removeEventListener(type, callback);
 ```
 
 #### Parameters
@@ -395,7 +395,7 @@ Spicetify.Player.removeEventListener(type, callback);
 Seek track to position. Position can be in percentage (0 to 1) or in milliseconds.
 
 ```ts
-Spicetify.Player.seek(position);
+Hamspot.Player.seek(position);
 ```
 
 #### Parameters
@@ -408,10 +408,10 @@ Spicetify.Player.seek(position);
 
 ```ts
 // Seek to 50% of track
-Spicetify.Player.seek(0.5);
+Hamspot.Player.seek(0.5);
 
 // Seek to 1 minute of track
-Spicetify.Player.seek(60000);
+Hamspot.Player.seek(60000);
 ```
 
 ### setHeart
@@ -419,7 +419,7 @@ Spicetify.Player.seek(60000);
 Set the heart status of the currently playing track.
 
 ```ts
-Spicetify.Player.setHeart(status);
+Hamspot.Player.setHeart(status);
 ```
 
 #### Parameters
@@ -433,7 +433,7 @@ Spicetify.Player.setHeart(status);
 Set the mute state of player.
 
 ```ts
-Spicetify.Player.setMute(state);
+Hamspot.Player.setMute(state);
 ```
 
 #### Parameters
@@ -451,7 +451,7 @@ Set the repeat mode of player. The value can be:
   * `2` for repeat one.
 
 ```ts
-Spicetify.Player.setRepeat(mode);
+Hamspot.Player.setRepeat(mode);
 ```
 
 #### Parameters
@@ -465,7 +465,7 @@ Spicetify.Player.setRepeat(mode);
 Set the shuffle state of player.
 
 ```ts
-Spicetify.Player.setShuffle(state);
+Hamspot.Player.setShuffle(state);
 ```
 
 #### Parameters
@@ -479,7 +479,7 @@ Spicetify.Player.setShuffle(state);
 Set the volume of player. The value is from 0 to 1.
 
 ```ts
-Spicetify.Player.setVolume(level);
+Hamspot.Player.setVolume(level);
 ```
 
 #### Parameters
@@ -493,7 +493,7 @@ Spicetify.Player.setVolume(level);
 Toggle the heart state of player / save / unsave the current track from user's library.
 
 ```ts
-Spicetify.Player.toggleHeart();
+Hamspot.Player.toggleHeart();
 ```
 
 ### toggleMute
@@ -501,7 +501,7 @@ Spicetify.Player.toggleHeart();
 Toggle the mute state of player.
 
 ```ts
-Spicetify.Player.toggleMute();
+Hamspot.Player.toggleMute();
 ```
 
 ### togglePlay
@@ -509,7 +509,7 @@ Spicetify.Player.toggleMute();
 Toggle the play state of player.
 
 ```ts
-Spicetify.Player.togglePlay();
+Hamspot.Player.togglePlay();
 ```
 
 ### toggleRepeat
@@ -517,7 +517,7 @@ Spicetify.Player.togglePlay();
 Toggle the repeat mode of player. The value switches between: No repeat, Repeat all, Repeat one.
 
 ```ts
-Spicetify.Player.toggleRepeat();
+Hamspot.Player.toggleRepeat();
 ```
 
 ### toggleShuffle
@@ -525,5 +525,5 @@ Spicetify.Player.toggleRepeat();
 Toggle the shuffle state of player.
 
 ```ts
-Spicetify.Player.toggleShuffle();
+Hamspot.Player.toggleShuffle();
 ```

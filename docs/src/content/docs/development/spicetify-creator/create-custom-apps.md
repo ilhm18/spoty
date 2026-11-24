@@ -1,14 +1,14 @@
 ---
 title: Create Custom Apps
-description: 🔧 Creating single-page apps for Spicetify.
+description: 🔧 Creating single-page apps for Hamspot.
 ---
 
 Notes:
 
 - It is recommended to learn React before starting to create Custom Apps.
-- This tutorial assumes you have chosen to generate an example using Create Spicetify App.
+- This tutorial assumes you have chosen to generate an example using Create Hamspot App.
 
-After creating a new Spicetify Creator project and choosing "Custom App" as your app's type, your project's structure should look like this (With the generated example):
+After creating a new Hamspot Creator project and choosing "Custom App" as your app's type, your project's structure should look like this (With the generated example):
 
 ```
 my-app/
@@ -60,12 +60,12 @@ The `extensions/extension.tsx` file is an example that says "Welcome!" whenever 
 
 ```ts
 (async () => {
-  while (!Spicetify?.showNotification) {
+  while (!Hamspot?.showNotification) {
     await new Promise((resolve) => setTimeout(resolve, 100));
   }
 
   // Show message on start.
-  Spicetify.showNotification('Welcome!');
+  Hamspot.showNotification('Welcome!');
 })();
 ```
 

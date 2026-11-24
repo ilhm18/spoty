@@ -1,6 +1,6 @@
 ---
 title: Extensions
-description: Creating extensions for Spicetify.
+description: Creating extensions for Hamspot.
 ---
 
 Extensions are JavaScript files that run alongside Spotify's main code. They can add UI elements, modify behavior, integrate with external services, and more.
@@ -8,14 +8,14 @@ Extensions are JavaScript files that run alongside Spotify's main code. They can
 ## Extension Structure
 
 ```text
-~/.config/spicetify/Extensions/   # Linux/macOS
-%appdata%\spicetify\Extensions\   # Windows
+~/.config/hamspot/Extensions/   # Linux/macOS
+%appdata%\hamspot\Extensions\   # Windows
 ├── myExtension.js
 ├── anotherExtension.js
 └── ...
 ```
 
-Extensions are single JavaScript files. For complex extensions with multiple files, use [Spicetify Creator](/docs/development/spicetify-creator/the-basics).
+Extensions are single JavaScript files. For complex extensions with multiple files, use [Hamspot Creator](/docs/development/hamspot-creator/the-basics).
 
 ## Getting Started
 
@@ -25,16 +25,16 @@ Place your extension file in the Extensions folder:
 
 | Platform | Path |
 |----------|------|
-| **Windows** | `%appdata%\spicetify\Extensions\` |
-| **Linux / macOS** | `~/.config/spicetify/Extensions/` |
+| **Windows** | `%appdata%\hamspot\Extensions\` |
+| **Linux / macOS** | `~/.config/hamspot/Extensions/` |
 
 ### Minimal Extension
 
 ```js
 // myExtension.js
 (function myExtension() {
-    // Wait for Spicetify to be ready
-    if (!Spicetify.Player || !Spicetify.Platform) {
+    // Wait for Hamspot to be ready
+    if (!Hamspot.Player || !Hamspot.Platform) {
         setTimeout(myExtension, 100);
         return;
     }
@@ -51,8 +51,8 @@ Place your extension file in the Extensions folder:
 2. Enable it:
 
    ```bash
-   spicetify config extensions myExtension.js
-   spicetify apply
+   hamspot config extensions myExtension.js
+   hamspot apply
    ```
 
 3. Open DevTools in Spotify to see console output:
@@ -62,21 +62,21 @@ Place your extension file in the Extensions folder:
 
 ---
 
-## The Spicetify API
+## The Hamspot API
 
-Extensions access Spotify through the global `Spicetify` object. Key namespaces:
+Extensions access Spotify through the global `Hamspot` object. Key namespaces:
 
 | Namespace | Purpose |
 |-----------|---------|
-| `Spicetify.Player` | Playback control (play, pause, skip, volume) |
-| `Spicetify.Platform` | Core platform APIs (history, library, playlists) |
-| `Spicetify.CosmosAsync` | HTTP requests to Spotify's internal API |
-| `Spicetify.URI` | Parse and create Spotify URIs |
-| `Spicetify.React` | React instance for UI components |
-| `Spicetify.ReactDOM` | ReactDOM for rendering |
-| `Spicetify.Topbar` | Add buttons to the top bar |
-| `Spicetify.Playbar` | Add buttons to the player bar |
-| `Spicetify.ContextMenu` | Add items to right-click menus |
+| `Hamspot.Player` | Playback control (play, pause, skip, volume) |
+| `Hamspot.Platform` | Core platform APIs (history, library, playlists) |
+| `Hamspot.CosmosAsync` | HTTP requests to Spotify's internal API |
+| `Hamspot.URI` | Parse and create Spotify URIs |
+| `Hamspot.React` | React instance for UI components |
+| `Hamspot.ReactDOM` | ReactDOM for rendering |
+| `Hamspot.Topbar` | Add buttons to the top bar |
+| `Hamspot.Playbar` | Add buttons to the player bar |
+| `Hamspot.ContextMenu` | Add items to right-click menus |
 
 See the **[API Wrapper Reference](/docs/development/api-wrapper)** for complete documentation.
 
@@ -84,13 +84,13 @@ See the **[API Wrapper Reference](/docs/development/api-wrapper)** for complete 
 
 ## Common Patterns
 
-### Waiting for Spicetify
+### Waiting for Hamspot
 
-Always wait for Spicetify to be ready before accessing its APIs:
+Always wait for Hamspot to be ready before accessing its APIs:
 
 ```js
 (function init() {
-    if (!Spicetify.Player || !Spicetify.Platform) {
+    if (!Hamspot.Player || !Hamspot.Platform) {
         setTimeout(init, 100);
         return;
     }
@@ -99,14 +99,14 @@ Always wait for Spicetify to be ready before accessing its APIs:
 })();
 
 function main() {
-    // Safe to use Spicetify here
+    // Safe to use Hamspot here
 }
 ```
 
 ### Adding a Top Bar Button
 
 ```js
-const button = new Spicetify.Topbar.Button(
+const button = new Hamspot.Topbar.Button(
     "My Button",
     `<svg>...</svg>`,  // SVG icon
     () => {
@@ -118,7 +118,7 @@ const button = new Spicetify.Topbar.Button(
 ### Adding a Context Menu Item
 
 ```js
-new Spicetify.ContextMenu.Item(
+new Hamspot.ContextMenu.Item(
     "My Menu Item",
     (uris) => {
         console.log("Selected URIs:", uris);
@@ -134,8 +134,8 @@ new Spicetify.ContextMenu.Item(
 ### Listening to Player Events
 
 ```js
-Spicetify.Player.addEventListener("songchange", (event) => {
-    const track = Spicetify.Player.data?.item;
+Hamspot.Player.addEventListener("songchange", (event) => {
+    const track = Hamspot.Player.data?.item;
     console.log("Now playing:", track?.name);
 });
 ```
@@ -144,12 +144,12 @@ Spicetify.Player.addEventListener("songchange", (event) => {
 
 ```js
 // GET request
-const response = await Spicetify.CosmosAsync.get(
+const response = await Hamspot.CosmosAsync.get(
     "https://api.spotify.com/v1/me/player"
 );
 
 // POST request
-await Spicetify.CosmosAsync.post(
+await Hamspot.CosmosAsync.post(
     "https://api.spotify.com/v1/me/player/play",
     { uris: ["spotify:track:..."] }
 );
@@ -159,16 +159,16 @@ await Spicetify.CosmosAsync.post(
 
 ```js
 // Save
-Spicetify.LocalStorage.set("myExtension:setting", "value");
+Hamspot.LocalStorage.set("myExtension:setting", "value");
 
 // Load
-const value = Spicetify.LocalStorage.get("myExtension:setting");
+const value = Hamspot.LocalStorage.get("myExtension:setting");
 ```
 
 ### Showing Notifications
 
 ```js
-Spicetify.showNotification("Hello from my extension!");
+Hamspot.showNotification("Hello from my extension!");
 ```
 
 ---
@@ -177,10 +177,10 @@ Spicetify.showNotification("Hello from my extension!");
 
 ### Using React
 
-Spicetify exposes React for building UI:
+Hamspot exposes React for building UI:
 
 ```js
-const { React, ReactDOM } = Spicetify;
+const { React, ReactDOM } = Hamspot;
 const { useState, useEffect } = React;
 
 function MyComponent() {
@@ -197,7 +197,7 @@ function MyComponent() {
 Access Spotify's internal React components:
 
 ```js
-const { Button, Toggle } = Spicetify.ReactComponent;
+const { Button, Toggle } = Hamspot.ReactComponent;
 
 // Use in your components
 React.createElement(Button, {
@@ -208,7 +208,7 @@ React.createElement(Button, {
 ### Creating Modals
 
 ```js
-Spicetify.PopupModal.display({
+Hamspot.PopupModal.display({
     title: "My Modal",
     content: React.createElement("div", null, "Hello!"),
 });
@@ -216,12 +216,12 @@ Spicetify.PopupModal.display({
 
 ---
 
-## Spicetify Creator
+## Hamspot Creator
 
-For a better development experience with TypeScript, JSX, and hot reloading, use **[Spicetify Creator](/docs/development/spicetify-creator/the-basics)**.
+For a better development experience with TypeScript, JSX, and hot reloading, use **[Hamspot Creator](/docs/development/hamspot-creator/the-basics)**.
 
 ```bash
-npx spicetify-creator
+npx hamspot-creator
 ```
 
 Benefits:
@@ -244,10 +244,10 @@ Benefits:
 
 ```js
 try {
-    const data = await Spicetify.CosmosAsync.get("...");
+    const data = await Hamspot.CosmosAsync.get("...");
 } catch (error) {
     console.error("Request failed:", error);
-    Spicetify.showNotification("Something went wrong", true);
+    Hamspot.showNotification("Something went wrong", true);
 }
 ```
 
@@ -258,7 +258,7 @@ try {
 - Use feature detection:
 
 ```js
-if (Spicetify.Topbar?.Button) {
+if (Hamspot.Topbar?.Button) {
     // Safe to use
 }
 ```
@@ -276,13 +276,13 @@ To share your extension:
 
 1. **GitHub**: Create a repository with your extension file(s) and installation instructions
 
-2. **Marketplace**: Submit to the [Spicetify Marketplace](https://github.com/spicetify/marketplace) for easy discovery and installation
+2. **Marketplace**: Submit to the [Hamspot Marketplace](https://github.com/spicetify/marketplace) for easy discovery and installation
 
 ---
 
 ## Resources
 
 - **[API Wrapper Reference](/docs/development/api-wrapper)**: Complete API documentation
-- **[Spicetify Creator](/docs/development/spicetify-creator/the-basics)**: TypeScript development tool
+- **[Hamspot Creator](/docs/development/hamspot-creator/the-basics)**: TypeScript development tool
 - **[Built-in Extensions](https://github.com/spicetify/cli/tree/main/Extensions)**: Reference implementations
 - **[Marketplace Extensions](https://github.com/spicetify/marketplace)**: Community examples

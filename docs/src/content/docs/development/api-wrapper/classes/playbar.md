@@ -102,7 +102,7 @@ This is due to the limitations of Tippy itself and how HTML elements work.
 // By default, the button will be registered to the player on creation.
 // You can disable this by setting registerOnCreate to false.
 // Each button comes with a preconfigured Tippy instance that aims to mimic the original Spotify tooltip.
-const button = new Spicetify.Playbar.Button(
+const button = new Hamspot.Playbar.Button(
     "My Button",
     "play",
     (self) => {
@@ -128,11 +128,11 @@ button.icon = "play";
 // You can also set properties of the HTML element.
 button.element.style.color = "red";
 button.element.oncontextmenu = () => {
-    Spicetify.showNotification("You right-clicked me!");
+    Hamspot.showNotification("You right-clicked me!");
 };
 button.element.addEventListener("click", () => {
     // Do something else.
-    Spicetify.showNotification("You clicked me!");
+    Hamspot.showNotification("You clicked me!");
 });
 
 // You can also change properties of the Tippy instance. For more information, see https://atomiks.github.io/tippyjs/v6/tippy-instance/.
@@ -212,7 +212,7 @@ This is due to the limitations of Tippy itself and how HTML elements work.
 // By default, the widget will be registered to the player on creation.
 // You can disable this by setting registerOnCreate to false.
 // Each widget comes with a preconfigured Tippy instance that aims to mimic the original Spotify tooltip.
-const widget = new Spicetify.Playbar.Widget(
+const widget = new Hamspot.Playbar.Widget(
     "My Widget",
     "play",
     (self) => {
@@ -236,11 +236,11 @@ widget.icon = "play";
 // You can also set properties of the HTML element.
 widget.element.style.color = "red";
 widget.element.oncontextmenu = () => {
-    Spicetify.showNotification("You right-clicked me!");
+    Hamspot.showNotification("You right-clicked me!");
 };
 widget.element.addEventListener("click", () => {
     // Do something else.
-    Spicetify.showNotification("You clicked me!");
+    Hamspot.showNotification("You clicked me!");
 });
 
 // You can also change properties of the Tippy instance. For more information, see https://atomiks.github.io/tippyjs/v6/tippy-instance/.

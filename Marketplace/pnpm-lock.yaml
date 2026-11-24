@@ -63,7 +63,7 @@ importers:
       husky:
         specifier: 9.1.7
         version: 9.1.7
-      spicetify-creator:
+      hamspot-creator:
         specifier: 1.0.17
         version: 1.0.17(less@4.5.1)(postcss@8.5.6)(sass@1.97.1)(stylus@0.64.0)
       typescript:
@@ -1025,7 +1025,7 @@ packages:
     resolution: {integrity: sha512-i5uvt8C3ikiWeNZSVZNWcfZPItFQOsYTUAOkcUPGd8DqDy1uOUikjt5dG+uRlwyvR108Fb9DOd4GvXfT0N2/uQ==}
     engines: {node: '>= 12'}
 
-  spicetify-creator@1.0.17:
+  hamspot-creator@1.0.17:
     resolution: {integrity: sha512-PajJIP0mi8UPErSeuqDf2wF4j8aHF4O+1S9JDIuY4wYKcHHWSvQ21FGnfyxzO6rS4/MkwMDzO6uERnrNAu+sHw==}
     hasBin: true
 
@@ -1976,7 +1976,7 @@ snapshots:
 
   source-map@0.7.6: {}
 
-  spicetify-creator@1.0.17(less@4.5.1)(postcss@8.5.6)(sass@1.97.1)(stylus@0.64.0):
+  hamspot-creator@1.0.17(less@4.5.1)(postcss@8.5.6)(sass@1.97.1)(stylus@0.64.0):
     dependencies:
       chalk: 4.1.2
       clean-css: 5.3.2

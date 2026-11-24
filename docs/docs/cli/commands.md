@@ -1,44 +1,44 @@
 ---
 title: Commands
-description: Complete Spicetify command reference.
+description: Complete Hamspot command reference.
 ---
 
-This page documents all Spicetify CLI commands.
+This page documents all Hamspot CLI commands.
 
 ## Core Commands
 
-### `spicetify` (no arguments)
+### `hamspot` (no arguments)
 
 Run with no arguments to generate the config file on first run, or verify your setup.
 
 ```bash
-spicetify
+hamspot
 ```
 
 ### `backup`
 
-Create a backup of vanilla Spotify files. Required before applying Spicetify for the first time.
+Create a backup of vanilla Spotify files. Required before applying Hamspot for the first time.
 
 ```bash
-spicetify backup
+hamspot backup
 ```
 
 ### `apply`
 
-Apply Spicetify modifications to Spotify.
+Apply Hamspot modifications to Spotify.
 
 ```bash
-spicetify apply
+hamspot apply
 ```
 
 This injects your theme, extensions, custom apps, and other modifications into Spotify.
 
 ### `restore`
 
-Remove all Spicetify modifications and restore Spotify to vanilla state.
+Remove all Hamspot modifications and restore Spotify to vanilla state.
 
 ```bash
-spicetify restore
+hamspot restore
 ```
 
 Your config file and customization files are preserved.
@@ -48,17 +48,17 @@ Your config file and customization files are preserved.
 Hot-reload theme changes without full restart. Use this during theme development.
 
 ```bash
-spicetify update
+hamspot update
 ```
 
 After running, press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> (or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> on macOS) in Spotify to see changes.
 
 ### `upgrade`
 
-Upgrade Spicetify to the latest version (only works with script-based installations).
+Upgrade Hamspot to the latest version (only works with script-based installations).
 
 ```bash
-spicetify upgrade
+hamspot upgrade
 ```
 
 ---
@@ -72,31 +72,31 @@ View or modify configuration values.
 **View all settings:**
 
 ```bash
-spicetify config
+hamspot config
 ```
 
 **View a specific setting:**
 
 ```bash
-spicetify config current_theme
+hamspot config current_theme
 ```
 
 **Set a value:**
 
 ```bash
-spicetify config current_theme Sleek
+hamspot config current_theme Sleek
 ```
 
 **Set multiple values:**
 
 ```bash
-spicetify config current_theme Sleek color_scheme Dark
+hamspot config current_theme Sleek color_scheme Dark
 ```
 
 **Add to a list (extensions, custom_apps):**
 
 ```bash
-spicetify config extensions fullAppDisplay.js
+hamspot config extensions fullAppDisplay.js
 ```
 
 This appends to existing extensions, not replaces.
@@ -104,17 +104,17 @@ This appends to existing extensions, not replaces.
 **Remove from a list:**
 
 ```bash
-spicetify config extensions fullAppDisplay.js-
+hamspot config extensions fullAppDisplay.js-
 ```
 
 Note the trailing `-`.
 
 ### `config-dir`
 
-Open the Spicetify config directory in your file manager.
+Open the Hamspot config directory in your file manager.
 
 ```bash
-spicetify config-dir
+hamspot config-dir
 ```
 
 ### `-c` / `--config`
@@ -122,7 +122,7 @@ spicetify config-dir
 Print the config file path.
 
 ```bash
-spicetify -c
+hamspot -c
 ```
 
 ---
@@ -134,7 +134,7 @@ spicetify -c
 Enable Chromium DevTools in Spotify. Useful for debugging themes and extensions.
 
 ```bash
-spicetify enable-devtools
+hamspot enable-devtools
 ```
 
 Access DevTools with <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd>.
@@ -144,19 +144,19 @@ Access DevTools with <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd>.
 Watch for theme changes and auto-apply. Useful during development.
 
 ```bash
-spicetify watch
+hamspot watch
 ```
 
 Monitors `color.ini` and `user.css` in your current theme folder.
 
 ### `path`
 
-Print various Spicetify-related paths.
+Print various Hamspot-related paths.
 
 ```bash
-spicetify path
-spicetify path userdata   # Config directory
-spicetify path spotify    # Spotify installation
+hamspot path
+hamspot path userdata   # Config directory
+hamspot path spotify    # Spotify installation
 ```
 
 ### `auto`
@@ -164,7 +164,7 @@ spicetify path spotify    # Spotify installation
 Automatically backup (if needed) and apply, then launch Spotify.
 
 ```bash
-spicetify auto
+hamspot auto
 ```
 
 Useful as a shortcut target instead of the Spotify executable.
@@ -177,13 +177,13 @@ Commands can be combined in a single call:
 
 ```bash
 # First-time setup
-spicetify backup apply enable-devtools
+hamspot backup apply enable-devtools
 
 # After Spotify updates
-spicetify backup apply
+hamspot backup apply
 
 # Full restore and reapply
-spicetify restore backup apply
+hamspot restore backup apply
 ```
 
 ---
@@ -195,16 +195,16 @@ spicetify restore backup apply
 Show help for a command.
 
 ```bash
-spicetify --help
-spicetify --help config
+hamspot --help
+hamspot --help config
 ```
 
 ### `--version` / `-v`
 
-Show Spicetify version.
+Show Hamspot version.
 
 ```bash
-spicetify --version
+hamspot --version
 ```
 
 ### `--no-restart`
@@ -212,7 +212,7 @@ spicetify --version
 Apply changes without restarting Spotify.
 
 ```bash
-spicetify apply --no-restart
+hamspot apply --no-restart
 ```
 
 ### `--quiet` / `-q`
@@ -220,7 +220,7 @@ spicetify apply --no-restart
 Suppress non-error output.
 
 ```bash
-spicetify apply -q
+hamspot apply -q
 ```
 
 ### `--extension` / `-e`
@@ -228,7 +228,7 @@ spicetify apply -q
 Specify a single extension to apply (useful for testing).
 
 ```bash
-spicetify apply -e myExtension.js
+hamspot apply -e myExtension.js
 ```
 
 ---
@@ -238,41 +238,41 @@ spicetify apply -e myExtension.js
 ### Fresh Install Workflow
 
 ```bash
-# Install Spicetify (see Installation page)
+# Install Hamspot (see Installation page)
 # Generate config
-spicetify
+hamspot
 
 # First-time setup
-spicetify backup apply enable-devtools
+hamspot backup apply enable-devtools
 ```
 
 ### Enable an Extension
 
 ```bash
-spicetify config extensions fullAppDisplay.js
-spicetify apply
+hamspot config extensions fullAppDisplay.js
+hamspot apply
 ```
 
 ### Change Theme
 
 ```bash
-spicetify config current_theme Sleek color_scheme Dark
-spicetify apply
+hamspot config current_theme Sleek color_scheme Dark
+hamspot apply
 ```
 
 ### After Spotify Updates
 
 ```bash
-spicetify backup apply
+hamspot backup apply
 ```
 
 ### Theme Development
 
 ```bash
 # One-time: apply your theme
-spicetify config current_theme MyTheme
-spicetify apply
+hamspot config current_theme MyTheme
+hamspot apply
 
 # During development: watch for changes
-spicetify watch
+hamspot watch
 ```

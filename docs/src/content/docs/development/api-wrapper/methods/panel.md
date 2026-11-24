@@ -3,7 +3,7 @@ title: Panel
 description: API wrapper to interact with Spotify's panel/right sidebar.
 ---
 
-Spicetify provides a wrapper for the Spotify `PanelAPI` method to make it easier to use, as well as providing a method to help you register your own panel.
+Hamspot provides a wrapper for the Spotify `PanelAPI` method to make it easier to use, as well as providing a method to help you register your own panel.
 
 ```ts
 namespace Panel {
@@ -78,7 +78,7 @@ const currentPanel: number;
 Example:
 
 ```ts
-console.log(Spicetify.Panel.currentPanel); // 0
+console.log(Hamspot.Panel.currentPanel); // 0
 ```
 
 ## Methods
@@ -94,9 +94,9 @@ function hasPanel(id: number): boolean;
 Example:
 
 ```ts
-Spicetify.Panel.hasPanel(0); // true, reserved to "Disabled" by Spotify
-Spicetify.Panel.hasPanel('Disabled'); // false, ID is not a number
-Spicetify.Panel.hasPanel(5); // false, ID is not registered
+Hamspot.Panel.hasPanel(0); // true, reserved to "Disabled" by Spotify
+Hamspot.Panel.hasPanel('Disabled'); // false, ID is not a number
+Hamspot.Panel.hasPanel(5); // false, ID is not registered
 ```
 
 ### `getPanel`
@@ -110,9 +110,9 @@ function getPanel(id: number): React.ReactNode | string | undefined;
 Example:
 
 ```ts
-Spicetify.Panel.getPanel(0); // "Disabled"
-Spicetify.Panel.getPanel('Disabled'); // undefined, ID is not a number
-Spicetify.Panel.getPanel(5); // undefined, ID is not registered
+Hamspot.Panel.getPanel(0); // "Disabled"
+Hamspot.Panel.getPanel('Disabled'); // undefined, ID is not a number
+Hamspot.Panel.getPanel(5); // undefined, ID is not registered
 ```
 
 ### `setPanel`
@@ -127,17 +127,17 @@ function setPanel(id: number): Promise<void>;
 
 On older Spotify versions (around `1.2.6`), the `PanelAPI` method is incomplete, most notably the `getPanel` method.
 
-Spicetify offers a workaround for this by storing its own state of the current Panel ID, however this state is only updated after Spotify internal components are rendered due to how the `PanelAPI` method works on older versions.
+Hamspot offers a workaround for this by storing its own state of the current Panel ID, however this state is only updated after Spotify internal components are rendered due to how the `PanelAPI` method works on older versions.
 
 If you decide to interact directly with the `PanelAPI` method instead of using the wrapper, the `render` method will not work as expected.
 
 ```ts
 // Normal way of using the Panel method, will work as expected
-Spicetify.Panel.setPanel(0);
+Hamspot.Panel.setPanel(0);
 
 // Interacting directly with the PanelAPI method will cause some abnormalities
 // as state is updated after Spotify internal components are rendered
-Spicetify.Platform.PanelAPI.setPanel(0);
+Hamspot.Platform.PanelAPI.setPanel(0);
 ```
 
 :::
@@ -145,13 +145,13 @@ Spicetify.Platform.PanelAPI.setPanel(0);
 Example:
 
 ```ts
-await Spicetify.Panel.setPanel(0); // Close the Panel
+await Hamspot.Panel.setPanel(0); // Close the Panel
 
-await Spicetify.Panel.setPanel(1); // Open BuddyFeed
+await Hamspot.Panel.setPanel(1); // Open BuddyFeed
 
 // Open the Panel with ID 5
 // If the ID is not registered, it will be set to 0
-await Spicetify.Panel.setPanel(5);
+await Hamspot.Panel.setPanel(5);
 ```
 
 ### `subPanelState`
@@ -165,7 +165,7 @@ function subPanelState(callback: (id: number) => void): void;
 Example:
 
 ```ts
-Spicetify.Panel.subPanelState((id) => {
+Hamspot.Panel.subPanelState((id) => {
   console.log(id); // 2
   // Do something
 });
@@ -209,7 +209,7 @@ function registerPanel(props: PanelProps): {
 Example:
 
 ```ts
-const { id, toggle, onStateChange, isActive } = Spicetify.Panel.registerPanel({
+const { id, toggle, onStateChange, isActive } = Hamspot.Panel.registerPanel({
   label: 'My Panel',
   children: <div>My Panel</div>,
 });
@@ -245,15 +245,15 @@ See [`PanelHeaderProps`](/docs/development/api-wrapper/types/react-component/pan
 ```tsx
 const PanelAction = () => {
     return (
-        <Spicetify.ReactComponent.TooltipWrapper label="Show notification">
-            <button onClick={() => Spicetify.showNotification('Hello World')}>
-                <Spicetify.ReactComponent.IconComponent
+        <Hamspot.ReactComponent.TooltipWrapper label="Show notification">
+            <button onClick={() => Hamspot.showNotification('Hello World')}>
+                <Hamspot.ReactComponent.IconComponent
                     semanticColor="textBase"
-                    dangerouslySetInnerHTML={{ __html: Spicetify.SVGIcons["play"] }}
+                    dangerouslySetInnerHTML={{ __html: Hamspot.SVGIcons["play"] }}
                     iconSize={16}
                 />
             </button>
-        </Spicetify.ReactComponent.TooltipWrapper>
+        </Hamspot.ReactComponent.TooltipWrapper>
     )
 }
 
@@ -268,33 +268,33 @@ const Panel = ({ panel }) => {
     const [showActions, setShowActions] = React.useState(false);
 
     return (
-        <Spicetify.ReactComponent.PanelSkeleton
+        <Hamspot.ReactComponent.PanelSkeleton
             label="Hello World"
             style={{
                 "--panel-width": "300px"
             }}
         >
-            <Spicetify.ReactComponent.PanelContent className="my-panel-content">
-                <Spicetify.ReactComponent.PanelHeader
+            <Hamspot.ReactComponent.PanelContent className="my-panel-content">
+                <Hamspot.ReactComponent.PanelHeader
                     title={title}
                     link="/collection" // Can be an URI or an external URL
                     panel={panel}
                     actions={showActions && <PanelAction />}
-                    onClose={() => Spicetify.showNotification('Closed')}
-                    onBack={() => Spicetify.showNotification('Back')}
+                    onClose={() => Hamspot.showNotification('Closed')}
+                    onBack={() => Hamspot.showNotification('Back')}
                 />
                 <div className="my-panel-body">
                     Hello World
                 </div>
                 <button onClick={() => setTitle('Hello World 2')}>Change title</button>
                 <button onClick={() => setShowActions(!showActions)}>Toggle actions</button>
-            </Spicetify.ReactComponent.PanelContent>
-        </Spicetify.ReactComponent.PanelSkeleton>
+            </Hamspot.ReactComponent.PanelContent>
+        </Hamspot.ReactComponent.PanelSkeleton>
     )
 };
 
 // Finally, register the Panel
-const { id, toggle, onStateChange, isActive } = Spicetify.Panel.registerPanel({
+const { id, toggle, onStateChange, isActive } = Hamspot.Panel.registerPanel({
     children: <Panel />,
     isCustom: true
 });

@@ -145,7 +145,7 @@
 	},
 	{
 		"name": "text",
-		"description": "a spicetify theme that mimics the look of spotify-tui",
+		"description": "a hamspot theme that mimics the look of spotify-tui",
 		"preview": "text/screenshots/Gruvbox.png",
 		"readme": "text/README.md",
 		"usercss": "text/user.css",
@@ -199,7 +199,7 @@
 	},
 	{
 		"name": "Flow",
-		"description": "Spicetify theme that has linear gradient effect and vertical playbar",
+		"description": "Hamspot theme that has linear gradient effect and vertical playbar",
 		"preview": "https://raw.githubusercontent.com/spicetify/spicetify-themes/master/Flow/screenshots/pink.png",
 		"readme": "Flow/README.md",
 		"usercss": "Flow/user.css",

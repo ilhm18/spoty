@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 # Copyright 2022 khanhas.
-# Copyright 2023-present Spicetify contributors.
+# Copyright 2023-present Hamspot contributors.
 # Edited from project Denoland install script (https://github.com/denoland/deno_install)
 
 set -e
@@ -30,8 +30,8 @@ if ! is_root && [ "${override_root:-0}" -eq 0 ]; then
     exit
 fi
 
-spicetify_install="$HOME/.hamspot"
-exe="$spicetify_install/hamspot"
+hamspot_install="$HOME/.hamspot"
+exe="$hamspot_install/hamspot"
 installed_exe=
 if [ -x "$exe" ]; then
     installed_exe="$exe"
@@ -40,7 +40,7 @@ elif command -v hamspot >/dev/null 2>&1; then
 fi
 
 if [ -n "$installed_exe" ]; then
-    echo "Spicetify is already installed. Do you want to fix your installation? (Y/n)"
+    echo "Hamspot is already installed. Do you want to fix your installation? (Y/n)"
     read -r choice < /dev/tty
     if [ "$choice" != "N" ] && [ "$choice" != "n" ]; then
         "$installed_exe" update
@@ -85,16 +85,16 @@ log "FETCHING Version $tag"
 download_uri=$releases_uri/download/v$tag/hamspot-$tag-$target.tar.gz
 
 # locations
-tar="$spicetify_install/hamspot.tar.gz"
+tar="$hamspot_install/hamspot.tar.gz"
 
 # installing
-[ ! -d "$spicetify_install" ] && log "CREATING $spicetify_install" && mkdir -p "$spicetify_install"
+[ ! -d "$hamspot_install" ] && log "CREATING $hamspot_install" && mkdir -p "$hamspot_install"
 
 log "DOWNLOADING $download_uri"
 curl --fail --location --progress-bar --output "$tar" "$download_uri"
 
 log "EXTRACTING $tar"
-tar xzf "$tar" -C "$spicetify_install"
+tar xzf "$tar" -C "$hamspot_install"
 
 log "SETTING EXECUTABLE PERMISSIONS TO $exe"
 chmod +x "$exe"
@@ -105,8 +105,8 @@ rm "$tar"
 notfound() {
     cat << EOINFO
 Manually add the directory to your \$PATH through your shell profile
-export SPICETIFY_INSTALL="$spicetify_install"
-export PATH="\$PATH:$spicetify_install"
+export HAMSPOT_INSTALL="$hamspot_install"
+export PATH="\$PATH:$hamspot_install"
 EOINFO
 }
 
@@ -115,7 +115,7 @@ endswith_newline() {
 }
 
 check() {
-    path="export PATH=\$PATH:$spicetify_install"
+    path="export PATH=\$PATH:$hamspot_install"
     shellrc=$HOME/$1
 
     if [ "$1" = ".zshrc" ] && [ -n "${ZDOTDIR}" ]; then
@@ -130,15 +130,15 @@ check() {
 
     # Still checking again, in case touch command failed
     if [ -f "$shellrc" ]; then
-        if ! grep -q "$spicetify_install" "$shellrc"; then
-            log "APPENDING $spicetify_install to PATH in $shellrc"
+        if ! grep -q "$hamspot_install" "$shellrc"; then
+            log "APPENDING $hamspot_install to PATH in $shellrc"
             if ! endswith_newline "$shellrc"; then
                 echo >> "$shellrc"
             fi
             echo "${2:-$path}" >> "$shellrc"
-            export PATH="$spicetify_install:$PATH"
+            export PATH="$hamspot_install:$PATH"
         else
-            log "spicetify path already set in $shellrc, continuing..."
+            log "hamspot path already set in $shellrc, continuing..."
         fi
     else
         notfound
@@ -151,17 +151,17 @@ case $SHELL in
         [ -f "$HOME/.bashrc" ] && check ".bashrc"
         [ -f "$HOME/.bash_profile" ] && check ".bash_profile"
     ;;
-    *fish) check ".config/fish/config.fish" "fish_add_path $spicetify_install" ;;
+    *fish) check ".config/fish/config.fish" "fish_add_path $hamspot_install" ;;
     *) notfound ;;
 esac
 
 case ":$PATH:" in
-    *":$spicetify_install:"*) ;;
-    *) export PATH="$spicetify_install:$PATH" ;;
+    *":$hamspot_install:"*) ;;
+    *) export PATH="$hamspot_install:$PATH" ;;
 esac
 
 echo
-log "Hamspot v$tag was installed successfully to $spicetify_install"
+log "Hamspot v$tag was installed successfully to $hamspot_install"
 if [ -n "${shellrc:-}" ] && [ -f "$shellrc" ]; then
     log "Open a new terminal or reload your shell profile to use hamspot:"
     log "  source \"$shellrc\""
@@ -170,11 +170,11 @@ else
     log "After adding hamspot to your PATH, run 'hamspot --help' to get started"
 fi
 
-echo "Do you want to install spicetify Marketplace? (Y/n)"
+echo "Do you want to install hamspot Marketplace? (Y/n)"
 read -r choice < /dev/tty
 if [ "$choice" = "N" ] || [ "$choice" = "n" ]; then
-    echo "spicetify Marketplace installation aborted"
+    echo "hamspot Marketplace installation aborted"
     exit 0
 fi
-echo "Starting the spicetify Marketplace installation script.."
+echo "Starting the hamspot Marketplace installation script.."
 curl -fsSL "https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.sh" | sh

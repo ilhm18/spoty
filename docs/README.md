@@ -1,6 +1,6 @@
-# Spicetify Docs
+# Hamspot Docs
 
-This repository holds the documentation for Spicetify, which can be found [here](https://spicetify.app).
+This repository holds the documentation for Hamspot, which can be found [here](https://spicetify.app).
 
 ## Contributing
 

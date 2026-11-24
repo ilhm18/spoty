@@ -3,7 +3,7 @@ title: Getting Started
 sidebar_position: 1
 ---
 
-Spicetify is a multiplatform command-line tool to customize the official Spotify client.
+Hamspot is a multiplatform command-line tool to customize the official Spotify client.
 
 import Tabs from '@/components/Tabs.astro';
 import TabItem from '@/components/TabItem.astro';
@@ -23,21 +23,21 @@ iwr -useb https://raw.githubusercontent.com/spicetify/cli/main/install.ps1 | iex
 <TabItem value="winget" label="Winget">
 
 ```powershell
-winget install Spicetify.Spicetify
+winget install Hamspot.Hamspot
 ```
 
 </TabItem>
 <TabItem value="scoop" label="Scoop">
 
 ```powershell
-scoop install spicetify-cli
+scoop install hamspot-cli
 ```
 
 </TabItem>
 <TabItem value="chocolatey" label="Chocolatey">
 
 ```powershell
-choco install spicetify-cli
+choco install hamspot-cli
 ```
 
 See the [Chocolatey package page](https://chocolatey.org/packages/spicetify-cli) for more details.
@@ -56,7 +56,7 @@ C:\Users\<username>\scoop\apps\spotify\current
 ```
 
 ```powershell
-spicetify config spotify_path "C:\Users\<username>\scoop\apps\spotify\current"
+hamspot config spotify_path "C:\Users\<username>\scoop\apps\spotify\current"
 ```
 
 </details>
@@ -74,40 +74,40 @@ curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
 <TabItem value="homebrew" label="Homebrew">
 
 ```bash
-brew install spicetify-cli
+brew install hamspot-cli
 ```
 
 </TabItem>
 <TabItem value="aur" label="AUR (Arch)">
 
 ```bash
-yay -S spicetify-cli
+yay -S hamspot-cli
 ```
 
 </TabItem>
 <TabItem value="nix" label="Nix / NixOS">
 
-For NixOS and Home Manager users, use the [spicetify-nix](https://github.com/Gerg-L/spicetify-nix) flake. It provides declarative configuration and handles Spotify installation automatically.
+For NixOS and Home Manager users, use the [hamspot-nix](https://github.com/Gerg-L/spicetify-nix) flake. It provides declarative configuration and handles Spotify installation automatically.
 
 Add the flake input:
 
 ```nix
 {
-  inputs.spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+  inputs.hamspot-nix.url = "github:Gerg-L/hamspot-nix";
 }
 ```
 
 Then import the module and configure:
 
 ```nix
-# For NixOS: spicetify-nix.nixosModules.spicetify
-# For Home Manager: spicetify-nix.homeManagerModules.spicetify
+# For NixOS: hamspot-nix.nixosModules.hamspot
+# For Home Manager: hamspot-nix.homeManagerModules.hamspot
 
 { pkgs, inputs, ... }:
 let
-  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+  spicePkgs = inputs.hamspot-nix.legacyPackages.${pkgs.system};
 in {
-  programs.spicetify = {
+  programs.hamspot = {
     enable = true;
     enabledExtensions = with spicePkgs.extensions; [
       adblockify
@@ -120,7 +120,7 @@ in {
 }
 ```
 
-See the [spicetify-nix documentation](https://gerg-l.github.io/spicetify-nix) for full configuration options.
+See the [hamspot-nix documentation](https://gerg-l.github.io/spicetify-nix) for full configuration options.
 
 :::note
 The module installs Spotify for you. Do not install `pkgs.spotify` separately.
@@ -134,9 +134,9 @@ The module installs Spotify for you. Do not install `pkgs.spotify` separately.
 Depending on how you installed Spotify, you may need additional configuration.
 
 <details>
-<summary>Adding Spicetify to PATH</summary>
+<summary>Adding Hamspot to PATH</summary>
 
-If you installed Spicetify via a package manager (Homebrew, AUR, etc.) and the `spicetify` command isn't found, you may need to add it to your PATH manually.
+If you installed Hamspot via a package manager (Homebrew, AUR, etc.) and the `hamspot` command isn't found, you may need to add it to your PATH manually.
 
 First, determine your shell:
 
@@ -144,13 +144,13 @@ First, determine your shell:
 echo $SHELL
 ```
 
-Then add `~/.spicetify` to your PATH based on your shell:
+Then add `~/.hamspot` to your PATH based on your shell:
 
 <Tabs>
 <TabItem value="zsh" label="zsh" default>
 
 ```bash
-echo 'export PATH=$PATH:~/.spicetify' >> ~/.zshrc
+echo 'export PATH=$PATH:~/.hamspot' >> ~/.zshrc
 source ~/.zshrc
 ```
 
@@ -158,7 +158,7 @@ source ~/.zshrc
 <TabItem value="bash" label="bash">
 
 ```bash
-echo 'export PATH=$PATH:~/.spicetify' >> ~/.bashrc
+echo 'export PATH=$PATH:~/.hamspot' >> ~/.bashrc
 source ~/.bashrc
 ```
 
@@ -166,7 +166,7 @@ source ~/.bashrc
 <TabItem value="fish" label="fish">
 
 ```fish
-fish_add_path ~/.spicetify
+fish_add_path ~/.hamspot
 ```
 
 </TabItem>
@@ -192,7 +192,7 @@ sudo chmod a+wr /opt/spotify/Apps -R
 The `spotify-launcher` package installs Spotify to a user directory. Set the path in your config:
 
 ```bash
-spicetify config spotify_path "$HOME/.local/share/spotify-launcher/install/usr/share/spotify"
+hamspot config spotify_path "$HOME/.local/share/spotify-launcher/install/usr/share/spotify"
 ```
 
 :::warning
@@ -257,7 +257,7 @@ Snap apps cannot be modified. You'll need to switch to the apt version:
 2. Set the path:
 
    ```bash
-   spicetify config spotify_path "/var/lib/flatpak/app/com.spotify.Client/x86_64/stable/active/files/extra/share/spotify"
+   hamspot config spotify_path "/var/lib/flatpak/app/com.spotify.Client/x86_64/stable/active/files/extra/share/spotify"
    ```
 
 3. Find and set your prefs file (check both locations):
@@ -268,7 +268,7 @@ Snap apps cannot be modified. You'll need to switch to the apt version:
    ls ~/.var/app/com.spotify.Client/config/spotify/prefs
 
    # Set whichever exists (use the full absolute path):
-   spicetify config prefs_path /home/username/.var/app/com.spotify.Client/config/spotify/prefs
+   hamspot config prefs_path /home/username/.var/app/com.spotify.Client/config/spotify/prefs
    ```
 
 4. Grant permissions:
@@ -293,27 +293,27 @@ curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
 <TabItem value="homebrew" label="Homebrew">
 
 ```bash
-brew install spicetify-cli
+brew install hamspot-cli
 ```
 
 After installing via Homebrew, set the Spotify path:
 
 ```bash
-spicetify config spotify_path "/Applications/Spotify.app/Contents/Resources"
+hamspot config spotify_path "/Applications/Spotify.app/Contents/Resources"
 ```
 
 </TabItem>
 <TabItem value="nix-macos" label="Nix / nix-darwin">
 
-For nix-darwin and Home Manager users on macOS, use the [spicetify-nix](https://github.com/Gerg-L/spicetify-nix) flake:
+For nix-darwin and Home Manager users on macOS, use the [hamspot-nix](https://github.com/Gerg-L/spicetify-nix) flake:
 
 ```nix
 {
-  inputs.spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+  inputs.hamspot-nix.url = "github:Gerg-L/hamspot-nix";
 }
 ```
 
-Import the module (`spicetify-nix.darwinModules.spicetify` for nix-darwin or `spicetify-nix.homeManagerModules.spicetify` for Home Manager) and configure `programs.spicetify`. See the [Linux Nix tab](#linux) for a configuration example.
+Import the module (`hamspot-nix.darwinModules.hamspot` for nix-darwin or `hamspot-nix.homeManagerModules.hamspot` for Home Manager) and configure `programs.hamspot`. See the [Linux Nix tab](#linux) for a configuration example.
 
 </TabItem>
 </Tabs>
@@ -323,14 +323,14 @@ Import the module (`spicetify-nix.darwinModules.spicetify` for nix-darwin or `sp
 ## Before First Run
 
 :::tip
-If this is a fresh Spotify install, open Spotify and log in for at least 60 seconds before running Spicetify. This allows Spotify to generate the files that Spicetify needs to function.
+If this is a fresh Spotify install, open Spotify and log in for at least 60 seconds before running Hamspot. This allows Spotify to generate the files that Hamspot needs to function.
 :::
 
 ---
 
 ## Marketplace
 
-The [Spicetify Marketplace](https://github.com/spicetify/marketplace) gives you a tab in Spotify's sidebar to browse and install themes, extensions, and snippets.
+The [Hamspot Marketplace](https://github.com/spicetify/marketplace) gives you a tab in Spotify's sidebar to browse and install themes, extensions, and snippets.
 
 <Tabs groupId="os">
 <TabItem value="windows-mp" label="Windows" default>
@@ -353,35 +353,35 @@ curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resource
 
 ## Basic Usage
 
-After installing Spicetify and Marketplace, you can customize Spotify using themes and extensions from the Marketplace tab in Spotify's sidebar.
+After installing Hamspot and Marketplace, you can customize Spotify using themes and extensions from the Marketplace tab in Spotify's sidebar.
 
 ### Updating
 
-Spotify updates periodically. After a Spotify update, you'll need to re-apply Spicetify:
+Spotify updates periodically. After a Spotify update, you'll need to re-apply Hamspot:
 
 ```bash
-spicetify backup apply
+hamspot backup apply
 ```
 
-If that doesn't work, Spicetify itself may need an update:
+If that doesn't work, Hamspot itself may need an update:
 
 ```bash
-spicetify update
+hamspot update
 ```
 
-If you updated Spicetify via a package manager (Homebrew, AUR, etc.) or the update command didn't fully apply changes, run:
+If you updated Hamspot via a package manager (Homebrew, AUR, etc.) or the update command didn't fully apply changes, run:
 
 ```bash
-spicetify restore backup apply
+hamspot restore backup apply
 ```
 
-If no Spicetify upgrade is available yet, the team is likely still working on compatibility with the new Spotify version.
+If no Hamspot upgrade is available yet, the team is likely still working on compatibility with the new Spotify version.
 
 ---
 
 ## Legacy Versions
 
-If you need an older Spicetify version (e.g., for Spotify v1.1.56 or older):
+If you need an older Hamspot version (e.g., for Spotify v1.1.56 or older):
 
 <Tabs groupId="os">
 <TabItem value="windows-legacy" label="Windows" default>
@@ -402,5 +402,5 @@ sh /tmp/install.sh 1.2.1
 </Tabs>
 
 Legacy resources:
-- [Spicetify v1 source (legacy branch)](https://github.com/spicetify/cli/tree/legacy)
+- [Hamspot v1 source (legacy branch)](https://github.com/spicetify/cli/tree/legacy)
 - [Legacy themes](https://github.com/spicetify/spicetify-themes/tree/legacy)

@@ -182,6 +182,6 @@ jobs:
       - name: Update Winget package
         uses: vedantmgoyal9/winget-releaser@main
         with:
-          identifier: Spicetify.Spicetify
+          identifier: Hamspot.Hamspot
           installers-regex: '-windows-\w+\.zip$'
-          token: ${{ secrets.SPICETIFY_WINGET_TOKEN }}
+          token: ${{ secrets.HAMSPOT_WINGET_TOKEN }}

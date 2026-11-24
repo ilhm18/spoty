@@ -31,8 +31,8 @@ An object containing the audio data. See the [Spotify Web API reference](https:/
 
 ```ts
 // Get audio data from current track
-const audioData = await Spicetify.getAudioData();
+const audioData = await Hamspot.getAudioData();
 
 // Get audio data from a specific track
-const audioData = await Spicetify.getAudioData("spotify:track:1qDrWA6lyx8cLECdZE7TV7");
+const audioData = await Hamspot.getAudioData("spotify:track:1qDrWA6lyx8cLECdZE7TV7");
 ```

@@ -7,35 +7,35 @@ param(
 $ErrorActionPreference = 'Stop'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-function Invoke-Spicetify {
+function Invoke-Hamspot {
     param (
         [Parameter(Mandatory = $true, Position = 0, ValueFromRemainingArguments = $true)]
         [string[]]$Arguments
     )
     
-    $spicetifyArgs = @()
+    $hamspotArgs = @()
     if ($BypassAdmin) {
-        $spicetifyArgs += "--bypass-admin"
+        $hamspotArgs += "--bypass-admin"
     }
-    $spicetifyArgs += $Arguments
+    $hamspotArgs += $Arguments
     
-    & spicetify $spicetifyArgs
+    & hamspot $hamspotArgs
     return $LASTEXITCODE
 }
 
-function Invoke-SpicetifyWithOutput {
+function Invoke-HamspotWithOutput {
     param (
         [Parameter(Mandatory = $true, Position = 0, ValueFromRemainingArguments = $true)]
         [string[]]$Arguments
     )
     
-    $spicetifyArgs = @()
+    $hamspotArgs = @()
     if ($BypassAdmin) {
-        $spicetifyArgs += "--bypass-admin"
+        $hamspotArgs += "--bypass-admin"
     }
-    $spicetifyArgs += $Arguments
+    $hamspotArgs += $Arguments
     
-    $output = (& spicetify $spicetifyArgs 2>&1 | Out-String).Trim()
+    $output = (& hamspot $hamspotArgs 2>&1 | Out-String).Trim()
     return @{
         Output = $output
         ExitCode = $LASTEXITCODE
@@ -44,8 +44,8 @@ function Invoke-SpicetifyWithOutput {
 
 Write-Host -Object 'Setting up...' -ForegroundColor 'Cyan'
 
-if (-not (Get-Command -Name 'spicetify' -ErrorAction 'SilentlyContinue')) {
-    Write-Host -Object 'Spicetify not found.' -ForegroundColor 'Yellow'
+if (-not (Get-Command -Name 'hamspot' -ErrorAction 'SilentlyContinue')) {
+    Write-Host -Object 'Hamspot not found.' -ForegroundColor 'Yellow'
     Write-Host -Object 'Installing it for you...' -ForegroundColor 'Cyan'
     $Parameters = @{
         Uri             = 'https://raw.githubusercontent.com/spicetify/cli/main/install.ps1'
@@ -55,37 +55,37 @@ if (-not (Get-Command -Name 'spicetify' -ErrorAction 'SilentlyContinue')) {
 }
 
 try {
-    $result = Invoke-SpicetifyWithOutput "path" "userdata"
+    $result = Invoke-HamspotWithOutput "path" "userdata"
     if ($result.ExitCode -ne 0) {
-        Write-Host -Object "Error from Spicetify:" -ForegroundColor 'Red'
+        Write-Host -Object "Error from Hamspot:" -ForegroundColor 'Red'
         Write-Host -Object $result.Output -ForegroundColor 'Red'
         return
     }
     $spiceUserDataPath = $result.Output
 } catch {
-    Write-Host -Object "Error running Spicetify:" -ForegroundColor 'Red'
+    Write-Host -Object "Error running Hamspot:" -ForegroundColor 'Red'
     Write-Host -Object $_.Exception.Message.Trim() -ForegroundColor 'Red'
     return
 }
 
 if (-not (Test-Path -Path $spiceUserDataPath -PathType 'Container' -ErrorAction 'SilentlyContinue')) {
-    $spiceUserDataPath = "$env:APPDATA\spicetify"
+    $spiceUserDataPath = "$env:APPDATA\hamspot"
 }
 $marketAppPath = "$spiceUserDataPath\CustomApps\marketplace"
 $marketThemePath = "$spiceUserDataPath\Themes\marketplace"
 
 $isThemeInstalled = $(
-    Invoke-Spicetify "path" "-s" | Out-Null
+    Invoke-Hamspot "path" "-s" | Out-Null
     -not $LASTEXITCODE
 )
-$currentTheme = (Invoke-SpicetifyWithOutput "config" "current_theme").Output
+$currentTheme = (Invoke-HamspotWithOutput "config" "current_theme").Output
 $setTheme = $true
 
 Write-Host -Object 'Removing and creating Marketplace folders...' -ForegroundColor 'Cyan'
 try {
-    $result = Invoke-SpicetifyWithOutput "path" "userdata"
+    $result = Invoke-HamspotWithOutput "path" "userdata"
     if ($result.ExitCode -ne 0) {
-        Write-Host -Object "Error: Failed to get Spicetify path. Details:" -ForegroundColor 'Red'
+        Write-Host -Object "Error: Failed to get Hamspot path. Details:" -ForegroundColor 'Red'
         Write-Host -Object $result.Output -ForegroundColor 'Red'
         return
     }
@@ -114,9 +114,9 @@ Write-Host -Object 'Unzipping and installing...' -ForegroundColor 'Cyan'
 Expand-Archive -Path $marketArchivePath -DestinationPath $marketAppPath -Force
 Move-Item -Path "$unpackedFolderPath\*" -Destination $marketAppPath -Force
 Remove-Item -Path $marketArchivePath, $unpackedFolderPath -Force
-Invoke-Spicetify "config" "custom_apps" "spicetify-marketplace-" "-q"
-Invoke-Spicetify "config" "custom_apps" "marketplace"
-Invoke-Spicetify "config" "inject_css" "1" "replace_colors" "1"
+Invoke-Hamspot "config" "custom_apps" "hamspot-marketplace-" "-q"
+Invoke-Hamspot "config" "custom_apps" "marketplace"
+Invoke-Hamspot "config" "inject_css" "1" "replace_colors" "1"
 
 Write-Host -Object 'Downloading placeholder theme...' -ForegroundColor 'Cyan'
 $Parameters = @{
@@ -138,10 +138,10 @@ if ($isThemeInstalled -and ($currentTheme -ne 'marketplace')) {
     if ($choice = 1) { $setTheme = $false }
 }
 if ($setTheme) {
-    Invoke-Spicetify "config" "current_theme" "marketplace"
+    Invoke-Hamspot "config" "current_theme" "marketplace"
 }
-Invoke-Spicetify "backup"
-Invoke-Spicetify "apply"
+Invoke-Hamspot "backup"
+Invoke-Hamspot "apply"
 
 Write-Host -Object 'Done!' -ForegroundColor 'Green'
 Write-Host -Object 'If nothing has happened, check the messages above for errors'

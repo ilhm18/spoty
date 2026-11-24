@@ -12,7 +12,7 @@ This type is deducted from Spotify's internal usage. It may not be accurate and 
 The `Queue` object contains a list of queuing tracks, history of played tracks, and current track metadata.
 
 ```ts
-Spicetify.Queue
+Hamspot.Queue
 ```
 
 ## Return
@@ -35,9 +35,9 @@ const Queue: {
 
 ## Usage
 
-If you plan on developing extensions that need to access the current queue, you can use the `Spicetify.Queue` object.
+If you plan on developing extensions that need to access the current queue, you can use the `Hamspot.Queue` object.
 
 ```ts
-const queue = Spicetify.Queue;
+const queue = Hamspot.Queue;
 const currentTrack = queue.track;
 ```

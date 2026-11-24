@@ -3,11 +3,11 @@ title: ReactComponent
 description: Set of stock React components used by Spotify.
 ---
 
-Spicetify provides a set of stock React components used by Spotify. You can use these components to create your own custom UI.
+Hamspot provides a set of stock React components used by Spotify. You can use these components to create your own custom UI.
 
 :::note
 
-It is recommended that you be familiar with [`React`](https://react.dev/) and [`spicetify-creator`](/docs/development/spicetify-creator/the-basics) before using these components.
+It is recommended that you be familiar with [`React`](https://react.dev/) and [`hamspot-creator`](/docs/development/hamspot-creator/the-basics) before using these components.
 
 :::
 
@@ -37,7 +37,7 @@ namespace ReactComponent {
 
 :::info
 
-These components may be wrappers for other components such as [`Tippy`](https://atomiks.github.io/tippyjs/) or [`styled-components`](https://styled-components.com/). They may accept additional props that are not listed here.
+These components may be wrappers for other components such as [`Tippy`](https://styled-components.com/) or [`styled-components`](https://styled-components.com/). They may accept additional props that are not listed here.
 
 As such, type definitions are not forced for these components but they act as a guideline for what you can use and what Spotify uses.
 
@@ -58,22 +58,22 @@ See [`ContextMenuProps`](/docs/development/api-wrapper/types/react-component/con
 ```tsx
 // See Menu section for more details
 const menuWrapper = React.memo((props: MenuProps) =>
-    <Spicetify.ReactComponent.Menu {...props}>
-        <Spicetify.ReactComponent.MenuItem
+    <Hamspot.ReactComponent.Menu {...props}>
+        <Hamspot.ReactComponent.MenuItem
             label="Hello World"
-            onClick={() => Spicetify.showNotification('Hello World')}
+            onClick={() => Hamspot.showNotification('Hello World')}
         />
-    </Spicetify.ReactComponent.Menu>
+    </Hamspot.ReactComponent.Menu>
 });
 
 const contextMenu = React.memo((props: ContextMenuProps) => {
     return (
-        <Spicetify.ReactComponent.ContextMenu {...props}
+        <Hamspot.ReactComponent.ContextMenu {...props}
             trigger="click"
             menu={<menuWrapper {...props} />}
         >
             <div>Click me</div>
-        </Spicetify.ReactComponent.ContextMenu>
+        </Hamspot.ReactComponent.ContextMenu>
     );
 });
 ```
@@ -90,21 +90,21 @@ See [`ContextMenuProps`](/docs/development/api-wrapper/types/react-component/con
 
 ```tsx
 const menuWrapper = React.memo((props: MenuProps) =>
-    <Spicetify.ReactComponent.Menu {...props}>
-        <Spicetify.ReactComponent.MenuItem
+    <Hamspot.ReactComponent.Menu {...props}>
+        <Hamspot.ReactComponent.MenuItem
             label="Hello World"
-            onClick={() => Spicetify.showNotification('Hello World')}
+            onClick={() => Hamspot.showNotification('Hello World')}
         />
-    </Spicetify.ReactComponent.Menu>
+    </Hamspot.ReactComponent.Menu>
 });
 // Same as ContextMenu example, but appears on right-click
 const contextMenu = React.memo((props: ContextMenuProps) => {
     return (
-        <Spicetify.ReactComponent.RightClickMenu {...props}
+        <Hamspot.ReactComponent.RightClickMenu {...props}
             menu={<menuWrapper {...props} />}
         >
             <div>Right-click me</div>
-        </Spicetify.ReactComponent.RightClickMenu>
+        </Hamspot.ReactComponent.RightClickMenu>
     );
 });
 ```
@@ -121,12 +121,12 @@ See [`MenuProps`](/docs/development/api-wrapper/types/react-component/menu-props
 
 ```tsx
 const menuWrapper = React.memo((props: MenuProps) =>
-    <Spicetify.ReactComponent.Menu {...props} onClose={() => Spicetify.showNotification('Menu closed')}>
-        <Spicetify.ReactComponent.MenuItem
+    <Hamspot.ReactComponent.Menu {...props} onClose={() => Hamspot.showNotification('Menu closed')}>
+        <Hamspot.ReactComponent.MenuItem
             label="Hello World"
-            onClick={() => Spicetify.showNotification('Hello World')}
+            onClick={() => Hamspot.showNotification('Hello World')}
         />
-    </Spicetify.ReactComponent.Menu>
+    </Hamspot.ReactComponent.Menu>
 });
 ```
 
@@ -142,16 +142,16 @@ See [`MenuItemProps`](/docs/development/api-wrapper/types/react-component/menu-i
 
 ```tsx
 const icon = React.memo((props: IconComponentProps) =>
-    <Spicetify.ReactComponent.IconComponent {...props}
+    <Hamspot.ReactComponent.IconComponent {...props}
         semanticColor="textBase"
-        dangerouslySetInnerHTML={{ __html: Spicetify.SVGIcons["play"] }}
+        dangerouslySetInnerHTML={{ __html: Hamspot.SVGIcons["play"] }}
         iconSize={16}
     />
 );
 
 const menuItem = React.memo((props: MenuItemProps) =>
-    <Spicetify.ReactComponent.MenuItem {...props}
-        onClick={() => Spicetify.showNotification('Hello World')}
+    <Hamspot.ReactComponent.MenuItem {...props}
+        onClick={() => Hamspot.showNotification('Hello World')}
         disabled={false}
         divider="after"
         {/* It is recommended that you use both `icon` and `trailingIcon` for compatibility between older versions */}
@@ -159,7 +159,7 @@ const menuItem = React.memo((props: MenuItemProps) =>
         trailingIcon={<icon />}
     >
         Hello World
-    </Spicetify.ReactComponent.MenuItem>
+    </Hamspot.ReactComponent.MenuItem>
 );
 ```
 
@@ -181,11 +181,11 @@ interface AlbumMenuProps extends MenuProps {
 #### Example
 
 ```tsx
-const currentAlbumURI = Spicetify.Player.data.item.metadata.album_uri;
+const currentAlbumURI = Hamspot.Player.data.item.metadata.album_uri;
 
 const albumMenu = React.memo((props: AlbumMenuProps) =>
-    <Spicetify.ReactComponent.AlbumMenu {...props}
-        onClose={() => Spicetify.showNotification('Menu closed')}
+    <Hamspot.ReactComponent.AlbumMenu {...props}
+        onClose={() => Hamspot.showNotification('Menu closed')}
         uri={currentAlbumURI}
     />
 );
@@ -209,12 +209,12 @@ See [`TooltipProps`](/docs/development/api-wrapper/types/react-component/tooltip
 
 ```tsx
 const elementHasTooltip = React.memo((props: TooltipProps) =>
-    <Spicetify.ReactComponent.TooltipWrapper {...props}
+    <Hamspot.ReactComponent.TooltipWrapper {...props}
         label="Hello World"
         placement="bottom"
     >
         <div>Hover me</div>
-    </Spicetify.ReactComponent.TooltipWrapper>
+    </Hamspot.ReactComponent.TooltipWrapper>
 );
 ```
 
@@ -236,9 +236,9 @@ See [`IconComponentProps`](/docs/development/api-wrapper/types/react-component/i
 
 ```tsx
 const icon = React.memo((props: IconComponentProps) =>
-    <Spicetify.ReactComponent.IconComponent {...props}
+    <Hamspot.ReactComponent.IconComponent {...props}
         semanticColor="textBase"
-        dangerouslySetInnerHTML={{ __html: Spicetify.SVGIcons["play"] }}
+        dangerouslySetInnerHTML={{ __html: Hamspot.SVGIcons["play"] }}
         iconSize={16}
     />
 );
@@ -262,13 +262,13 @@ See [`TextComponentProps`](/docs/development/api-wrapper/types/react-component/t
 
 ```tsx
 const text = React.memo((props: TextComponentProps) =>
-    <Spicetify.ReactComponent.TextComponent {...props}
+    <Hamspot.ReactComponent.TextComponent {...props}
         semanticColor="textBase"
         variant="viola"
         weight="book"
     >
         Hello World
-    </Spicetify.ReactComponent.TextComponent>
+    </Hamspot.ReactComponent.TextComponent>
 );
 ```
 
@@ -294,19 +294,19 @@ const ConfirmButton = () => {
     const [showModal, setShowModal] = React.useState(false);
 
     return (
-        <Spicetify.ReactComponent.ConfirmDialog
+        <Hamspot.ReactComponent.ConfirmDialog
             isOpen={showModal}
             onConfirm={() => {
                 setShowModal(false);
-                Spicetify.showNotification('Confirmed');
+                Hamspot.showNotification('Confirmed');
             }}
             onCancel={() => {
                 setShowModal(false);
-                Spicetify.showNotification('Cancelled');
+                Hamspot.showNotification('Cancelled');
             }}
             onOutsideClick={() => {
                 setShowModal(false);
-                Spicetify.showNotification('Clicked outside');
+                Hamspot.showNotification('Clicked outside');
             }}
             titleText="Confirm Modal"
             descriptionText="Are you sure you want to confirm?"
@@ -331,12 +331,12 @@ const Toggle = () => {
     const [enabled, setEnabled] = React.useState(false);
 
     return (
-        <Spicetify.ReactComponent.Toggle
+        <Hamspot.ReactComponent.Toggle
             value={enabled}
             onSelected={setEnabled}
             id="my-toggle-id"
             class="my-toggle-class"
-        ></Spicetify.ReactComponent.Toggle>
+        ></Hamspot.ReactComponent.Toggle>
     );
 }
 ```
@@ -356,14 +356,14 @@ const Slider = () => {
     const [value, setValue] = useState(0);
 
     return (
-        <Spicetify.ReactComponent.Slider
+        <Hamspot.ReactComponent.Slider
             max={100}
             step={1}
             value={value}
             onDragStart={() => {}}
             onDragMove={setValue}
             onDragEnd={(value) => {console.log(`final value is ${value}`)}}
-        ></Spicetify.ReactComponent.Slider>
+        ></Hamspot.ReactComponent.Slider>
     );
 }
 ```

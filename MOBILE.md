@@ -5,7 +5,7 @@ are sandboxed and do not expose the desktop `Apps` directory, so this project ca
 patch or replace the official mobile app directly.
 
 This feature provides a mobile-friendly control panel in a browser. The mobile phone
-does not run Spicetify; it sends authenticated commands to Spicetify running on the
+does not run Hamspot; it sends authenticated commands to Hamspot running on the
 Windows, macOS, or Linux desktop.
 
 ## Start the server

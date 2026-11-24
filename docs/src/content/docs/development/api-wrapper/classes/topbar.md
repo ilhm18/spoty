@@ -62,8 +62,8 @@ This is due to the limitations of Tippy itself and how HTML elements work.
 ```ts
 // Button is automatically added to the top bar when created.
 // Each button comes with a preconfigured Tippy instance that aims to mimic the original Spotify tooltip.
-const button = new Spicetify.Topbar.Button("Hello", "download", () => {
-    Spicetify.showNotification("Hello world!");
+const button = new Hamspot.Topbar.Button("Hello", "download", () => {
+    Hamspot.showNotification("Hello world!");
 });
 
 // Change button properties.
@@ -75,11 +75,11 @@ button.disabled = true;
 // You can also set properties of the HTML element.
 button.element.style.color = "red";
 button.element.oncontextmenu = () => {
-    Spicetify.showNotification("You right-clicked me!");
+    Hamspot.showNotification("You right-clicked me!");
 };
 button.element.addEventListener("click", () => {
     // Do something else.
-    Spicetify.showNotification("You clicked me!");
+    Hamspot.showNotification("You clicked me!");
 });
 
 // You can also change properties of the Tippy instance. For more information, see https://atomiks.github.io/tippyjs/v6/tippy-instance/.

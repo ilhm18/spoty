@@ -78,7 +78,7 @@
     },
     "updateModal": {
       "title": "Update the Marketplace",
-      "description": "Update Spicetify Marketplace to receive new features and bug fixes.",
+      "description": "Update Hamspot Marketplace to receive new features and bug fixes.",
       "currentVersion": "Current version: {{version}}",
       "latestVersion": "Latest version: {{version}}",
       "whatsChanged": "What's Changed",
@@ -87,7 +87,7 @@
       "viewGuide": "View guide"
     },
     "grid": {
-      "spicetifyMarketplace": "Spicetify Marketplace",
+      "spicetifyMarketplace": "Hamspot Marketplace",
       "newUpdate": "New update",
       "addCSS": "Add CSS",
       "search": "Search",
@@ -112,7 +112,7 @@
       }
     },
     "readmePage": {
-      "title": "$t(grid.spicetifyMarketplace) - Readme",
+      "title": "$t(grid.hamspotMarketplace) - Readme",
       "loading": "Loading...",
       "errorLoading": "Error loading README"
     },

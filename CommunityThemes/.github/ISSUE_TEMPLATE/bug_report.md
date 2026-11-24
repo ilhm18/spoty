@@ -9,8 +9,8 @@ assignees: ''
 
 **Prerequisites**
 Before opening an issue, make sure
-1. You have the most recent `spicetify` version.
-2. Your Spotify version is compatible with the `spicetify` version you are using.
+1. You have the most recent `hamspot` version.
+2. Your Spotify version is compatible with the `hamspot` version you are using.
 3. You have the most recent version of the themes.
 4. You followed the installation instructions for the theme you are using (please go through the entire theme README).
 
@@ -32,7 +32,7 @@ If applicable, add screenshots to help explain your problem.
 
 **Logs**
 Add logs from console. To do that
-1. Run `spicetify enable-devtools` in terminal
+1. Run `hamspot enable-devtools` in terminal
 2. Spotify will be restarted
 3. Hit <kbd>Ctrl + Shift + I</kbd> to open DevTools window
 4. Navigate to tab Console
@@ -45,5 +45,5 @@ Add logs from console. To do that
 **Specifics (please complete the following information):**
  - OS: [e.g. iOS]
  - Spotify version [e.g. 1.1.10.546.ge08ef575]
- - Spicetify version [e.g. 1.1.0]
+ - Hamspot version [e.g. 1.1.0]
  - Theme name

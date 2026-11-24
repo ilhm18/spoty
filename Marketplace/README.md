@@ -1,4 +1,4 @@
-# Spicetify Marketplace
+# Hamspot Marketplace
 
 <p>
   <a href="https://github.com/spicetify/marketplace/releases/latest">
@@ -15,11 +15,11 @@
   </a>
 </p>
 
-Customize your Spotify client directly from within [Spicetify](https://github.com/spicetify/cli)!
+Customize your Spotify client directly from within [Hamspot](https://github.com/spicetify/cli)!
 
 Marketplace allows you to **browse, download, and install** extensions, themes, and CSS snippets with ease. You can also browse custom apps, but will need to do some manual installation to get them working.
 
-Made with [Spicetify Creator](https://github.com/spicetify/spicetify-creator)
+Made with [Hamspot Creator](https://github.com/spicetify/spicetify-creator)
 
 Head to the [wiki](https://github.com/spicetify/marketplace/wiki) to get started!
 

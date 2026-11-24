@@ -12,7 +12,7 @@ We still accept patches and fixes for **existing themes** in this repository.
 
 Only contributions that improve or fix an existing theme in this repository are accepted.
 
-A theme name (as well as color scheme name) should consist of one word starting with an uppercase letter and shouldn't contain `spicetify` or any whitespace in it; if a "-" is present in the name it must be followed by an uppercase letter.
+A theme name (as well as color scheme name) should consist of one word starting with an uppercase letter and shouldn't contain `hamspot` or any whitespace in it; if a "-" is present in the name it must be followed by an uppercase letter.
 
 ## How to contribute
 

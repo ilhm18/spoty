@@ -74,7 +74,7 @@
       "invalidCSS": "CSS 無效"
     },
     "grid": {
-      "spicetifyMarketplace": "Spicetify Marketplace",
+      "spicetifyMarketplace": "Hamspot Marketplace",
       "newUpdate": "有更新",
       "addCSS": "加入 CSS",
       "search": "搜尋",
@@ -85,7 +85,7 @@
       "light": "亮色"
     },
     "readmePage": {
-      "title": "$t(grid.spicetifyMarketplace) – 說明",
+      "title": "$t(grid.hamspotMarketplace) – 說明",
       "loading": "正在載入……",
       "errorLoading": "載入 README 時發生錯誤"
     },

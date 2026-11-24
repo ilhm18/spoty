@@ -1,13 +1,13 @@
 ---
 title: Themes
-description: ✨ Creating Themes for Spicetify.
+description: ✨ Creating Themes for Hamspot.
 ---
 
 ## Theme Structure
 
 ```text
-~/.config/spicetify/Themes/       # Linux/macOS
-%appdata%\spicetify\Themes\       # Windows
+~/.config/hamspot/Themes/       # Linux/macOS
+%appdata%\hamspot\Themes\       # Windows
 └── MyTheme/
     ├── color.ini                 # Required: color definitions
     ├── user.css                  # Required: custom CSS rules
@@ -24,10 +24,10 @@ There are 2 places you can put your themes:
 
 | Platform            | Path                              |
 | ------------------- | --------------------------------- |
-| **Windows**         | `%appdata%\spicetify\Themes`      |
-| **Linux**/**MacOS** | `~/.config/spicetify/Themes`      |
+| **Windows**         | `%appdata%\hamspot\Themes`      |
+| **Linux**/**MacOS** | `~/.config/hamspot/Themes`      |
 
-2. `Themes` folder in Spicetify executable directory
+2. `Themes` folder in Hamspot executable directory
 
 If there are 2 themes with the same name, the theme in the Home directory is prioritized.
 

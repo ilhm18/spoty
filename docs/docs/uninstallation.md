@@ -1,6 +1,6 @@
 ---
 title: Uninstallation
-description: How to remove Spicetify from your system.
+description: How to remove Hamspot from your system.
 ---
 
 import Tabs from '@theme/Tabs';
@@ -12,18 +12,18 @@ import TabItem from '@theme/TabItem';
 <TabItem value="windows" label="Windows" default>
 
 ```powershell
-spicetify restore
-rmdir -r -fo $env:APPDATA\spicetify
-rmdir -r -fo $env:LOCALAPPDATA\spicetify
+hamspot restore
+rmdir -r -fo $env:APPDATA\hamspot
+rmdir -r -fo $env:LOCALAPPDATA\hamspot
 ```
 
 </TabItem>
 <TabItem value="linux-macos" label="Linux / macOS">
 
 ```bash
-spicetify restore
-rm -rf ~/.spicetify
-rm -rf ~/.config/spicetify
+hamspot restore
+rm -rf ~/.hamspot
+rm -rf ~/.config/hamspot
 ```
 
 </TabItem>
@@ -33,15 +33,15 @@ rm -rf ~/.config/spicetify
 
 ### 1. Restore Spotify
 
-First, remove Spicetify modifications from Spotify:
+First, remove Hamspot modifications from Spotify:
 
 ```bash
-spicetify restore
+hamspot restore
 ```
 
 This returns Spotify to its vanilla state.
 
-### 2. Remove Spicetify Files
+### 2. Remove Hamspot Files
 
 <Tabs>
 <TabItem value="windows-files" label="Windows" default>
@@ -49,8 +49,8 @@ This returns Spotify to its vanilla state.
 Remove the config and data directories:
 
 ```powershell
-rmdir -r -fo $env:APPDATA\spicetify
-rmdir -r -fo $env:LOCALAPPDATA\spicetify
+rmdir -r -fo $env:APPDATA\hamspot
+rmdir -r -fo $env:LOCALAPPDATA\hamspot
 ```
 
 </TabItem>
@@ -59,8 +59,8 @@ rmdir -r -fo $env:LOCALAPPDATA\spicetify
 Remove the config and data directories:
 
 ```bash
-rm -rf ~/.spicetify
-rm -rf ~/.config/spicetify
+rm -rf ~/.hamspot
+rm -rf ~/.config/hamspot
 ```
 
 </TabItem>
@@ -72,11 +72,11 @@ If you installed via a package manager, use it to uninstall:
 
 | Method | Uninstall Command |
 |--------|-------------------|
-| Scoop | `scoop uninstall spicetify-cli` |
-| Winget | `winget uninstall Spicetify.Spicetify` |
-| Chocolatey | `choco uninstall spicetify-cli` |
-| Homebrew | `brew uninstall spicetify-cli` |
-| AUR | `yay -R spicetify-cli` |
+| Scoop | `scoop uninstall hamspot-cli` |
+| Winget | `winget uninstall Hamspot.Hamspot` |
+| Chocolatey | `choco uninstall hamspot-cli` |
+| Homebrew | `brew uninstall hamspot-cli` |
+| AUR | `yay -R hamspot-cli` |
 
 If you used the install script, the binary is in your PATH. You can find and remove it:
 
@@ -84,7 +84,7 @@ If you used the install script, the binary is in your PATH. You can find and rem
 <TabItem value="windows-binary" label="Windows" default>
 
 ```powershell
-where spicetify
+where hamspot
 # Remove the file shown
 ```
 
@@ -92,9 +92,9 @@ where spicetify
 <TabItem value="linux-macos-binary" label="Linux / macOS">
 
 ```bash
-which spicetify
+which hamspot
 # Remove the file shown, e.g.:
-rm $(which spicetify)
+rm $(which hamspot)
 ```
 
 </TabItem>
@@ -105,7 +105,7 @@ rm $(which spicetify)
 If you might reinstall later and want to keep your settings:
 
 ```bash
-spicetify restore
+hamspot restore
 ```
 
-This removes Spicetify from Spotify but preserves your config file, themes, and extensions.
+This removes Hamspot from Spotify but preserves your config file, themes, and extensions.

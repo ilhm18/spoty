@@ -12,7 +12,7 @@ Create and prepend custom menu items in the profile menu.
 Single menu item.
 
 ```ts
-new Spicetify.Menu.Item(
+new Hamspot.Menu.Item(
   name: string,
   isEnabled: boolean,
   onClick: (self: Item) => void,
@@ -100,7 +100,7 @@ deregister(): void
 #### Example
 
 ```ts
-const item = new Spicetify.Menu.Item("My Item", true, () => {
+const item = new Hamspot.Menu.Item("My Item", true, () => {
   console.log("My Item is clicked");
 });
 
@@ -123,7 +123,7 @@ Create a sub menu to contain `Item` toggles.
 `Item`s in `subItems` array shouldn't be registered.
 
 ```ts
-new Spicetify.Menu.SubMenu(
+new Hamspot.Menu.SubMenu(
   name: string,
   subItems: Item[],
 )
@@ -205,15 +205,15 @@ deregister(): void
 #### Example
 
 ```ts
-const item1 = new Spicetify.Menu.Item("My Item 1", true, () => {
+const item1 = new Hamspot.Menu.Item("My Item 1", true, () => {
   console.log("My Item 1 is clicked");
 });
 
-const item2 = new Spicetify.Menu.Item("My Item 2", true, () => {
+const item2 = new Hamspot.Menu.Item("My Item 2", true, () => {
   console.log("My Item 2 is clicked");
 });
 
-const subMenu = new Spicetify.Menu.SubMenu("My Sub Menu", [item1, item2]);
+const subMenu = new Hamspot.Menu.SubMenu("My Sub Menu", [item1, item2]);
 
 subMenu.register();
 
@@ -222,7 +222,7 @@ subMenu.setName("My Sub Menu (Updated)");
 
 // subMenu.addItem(item3);
 subMenu.addItem(
-  new Spicetify.Menu.Item("My Item 3", true, () => {
+  new Hamspot.Menu.Item("My Item 3", true, () => {
     console.log("My Item 3 is clicked");
   })
 );

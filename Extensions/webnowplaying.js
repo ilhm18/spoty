@@ -25,7 +25,7 @@ class WNPReduxWebSocket {
   connectionTimeout = null;
   reconnectTimeout = null;
   isClosed = false;
-  spicetifyInfo = {
+  hamspotInfo = {
     player: "Spotify Desktop",
     state: "STOPPED",
     title: "",
@@ -51,27 +51,27 @@ class WNPReduxWebSocket {
   updateSpicetifyInfo(data) {
     if (!data?.item?.metadata) return;
     const meta = data.item.metadata;
-    this.spicetifyInfo.title = meta.title;
-    this.spicetifyInfo.album = meta.album_title;
-    this.spicetifyInfo.duration = timeInSecondsToString(Math.round(Number.parseInt(meta.duration) / 1000));
-    this.spicetifyInfo.state = !data.isPaused ? "PLAYING" : "PAUSED";
-    this.spicetifyInfo.repeat = data.repeat === 2 ? "ONE" : data.repeat === 1 ? "ALL" : "NONE";
-    this.spicetifyInfo.shuffle = data.shuffle;
-    this.spicetifyInfo.artist = meta.artist_name;
+    this.hamspotInfo.title = meta.title;
+    this.hamspotInfo.album = meta.album_title;
+    this.hamspotInfo.duration = timeInSecondsToString(Math.round(Number.parseInt(meta.duration) / 1000));
+    this.hamspotInfo.state = !data.isPaused ? "PLAYING" : "PAUSED";
+    this.hamspotInfo.repeat = data.repeat === 2 ? "ONE" : data.repeat === 1 ? "ALL" : "NONE";
+    this.hamspotInfo.shuffle = data.shuffle;
+    this.hamspotInfo.artist = meta.artist_name;
     let artistCount = 1;
     while (meta[`artist_name:${artistCount}`]) {
-      this.spicetifyInfo.artist += `, ${meta[`artist_name:${artistCount}`]}`;
+      this.hamspotInfo.artist += `, ${meta[`artist_name:${artistCount}`]}`;
       artistCount++;
     }
-    if (!this.spicetifyInfo.artist) this.spicetifyInfo.artist = meta.album_title; // Podcast
+    if (!this.hamspotInfo.artist) this.hamspotInfo.artist = meta.album_title; // Podcast
 
     Spicetify.Platform.LibraryAPI.contains(data.item.uri).then(([added]) => {
-      this.spicetifyInfo.rating = added ? 5 : 0;
+      this.hamspotInfo.rating = added ? 5 : 0;
     });
 
     const cover = meta.image_xlarge_url;
-    if (cover?.indexOf("localfile") === -1) this.spicetifyInfo.cover = `https://i.scdn.co/image/${cover.substring(cover.lastIndexOf(":") + 1)}`;
-    else this.spicetifyInfo.cover = "";
+    if (cover?.indexOf("localfile") === -1) this.hamspotInfo.cover = `https://i.scdn.co/image/${cover.substring(cover.lastIndexOf(":") + 1)}`;
+    else this.hamspotInfo.cover = "";
   }
 
   init() {
@@ -146,8 +146,8 @@ class WNPReduxWebSocket {
       }
 
       // Sending an update immediately would normally do nothing, as it takes some time for
-      // spicetifyInfo to be updated via the Cosmos subscription. However, we try to
-      // optimistically update spicetifyInfo after receiving events.
+      // hamspotInfo to be updated via the Cosmos subscription. However, we try to
+      // optimistically update hamspotInfo after receiving events.
       this.sendUpdate();
     } else {
       if (event.data.startsWith("Version:")) {
@@ -177,13 +177,13 @@ class WNPReduxWebSocket {
 }
 
 function OnMessageLegacy(self, message) {
-  // Quite lengthy functions because we optimistically update spicetifyInfo after receiving events.
+  // Quite lengthy functions because we optimistically update hamspotInfo after receiving events.
   try {
     const [type, data] = message.toUpperCase().split(" ");
     switch (type) {
       case "PLAYPAUSE": {
         Spicetify.Player.togglePlay();
-        self.spicetifyInfo.state = self.spicetifyInfo.state === "PLAYING" ? "PAUSED" : "PLAYING";
+        self.hamspotInfo.state = self.hamspotInfo.state === "PLAYING" ? "PAUSED" : "PLAYING";
         break;
       }
       case "NEXT":
@@ -203,32 +203,32 @@ function OnMessageLegacy(self, message) {
         break;
       case "REPEAT": {
         Spicetify.Player.toggleRepeat();
-        self.spicetifyInfo.repeat = self.spicetifyInfo.repeat === "NONE" ? "ALL" : self.spicetifyInfo.repeat === "ALL" ? "ONE" : "NONE";
+        self.hamspotInfo.repeat = self.hamspotInfo.repeat === "NONE" ? "ALL" : self.hamspotInfo.repeat === "ALL" ? "ONE" : "NONE";
         break;
       }
       case "SHUFFLE": {
         Spicetify.Player.toggleShuffle();
-        self.spicetifyInfo.shuffle = !self.spicetifyInfo.shuffle;
+        self.hamspotInfo.shuffle = !self.hamspotInfo.shuffle;
         break;
       }
       case "TOGGLETHUMBSUP": {
         Spicetify.Player.toggleHeart();
-        self.spicetifyInfo.rating = self.spicetifyInfo.rating === 5 ? 0 : 5;
+        self.hamspotInfo.rating = self.hamspotInfo.rating === 5 ? 0 : 5;
         break;
       }
       // Spotify doesn't have a negative rating
       // case 'TOGGLETHUMBSDOWN': break
       case "RATING": {
         const rating = Number.parseInt(data);
-        const isLiked = self.spicetifyInfo.rating > 3;
+        const isLiked = self.hamspotInfo.rating > 3;
         if (rating >= 3 && !isLiked) Spicetify.Player.toggleHeart();
         else if (rating < 3 && isLiked) Spicetify.Player.toggleHeart();
-        self.spicetifyInfo.rating = rating;
+        self.hamspotInfo.rating = rating;
         break;
       }
     }
   } catch (e) {
-    self.send(`Error:Error sending event to ${self.spicetifyInfo.player}`);
+    self.send(`Error:Error sending event to ${self.hamspotInfo.player}`);
     self.send(`ErrorD:${e}`);
   }
 }
@@ -240,12 +240,12 @@ function SendUpdateLegacy(self) {
     return;
   }
 
-  self.spicetifyInfo.position = timeInSecondsToString(Math.round(Spicetify.Player.getProgress() / 1000));
-  self.spicetifyInfo.volume = Math.round(Spicetify.Player.getVolume() * 100);
+  self.hamspotInfo.position = timeInSecondsToString(Math.round(Spicetify.Player.getProgress() / 1000));
+  self.hamspotInfo.volume = Math.round(Spicetify.Player.getVolume() * 100);
 
-  for (const key of Object.keys(self.spicetifyInfo)) {
+  for (const key of Object.keys(self.hamspotInfo)) {
     try {
-      let value = self.spicetifyInfo[key];
+      let value = self.hamspotInfo[key];
       // For numbers, round it to an integer
       if (typeof value === "number") value = Math.round(value);
 
@@ -260,21 +260,21 @@ function SendUpdateLegacy(self) {
         self.cache.set(key, value);
       }
     } catch (e) {
-      self.send(`Error: Error updating ${key} for ${self.spicetifyInfo.player}`);
+      self.send(`Error: Error updating ${key} for ${self.hamspotInfo.player}`);
       self.send(`ErrorD:${e}`);
     }
   }
 }
 
 function OnMessageRev1(self, message) {
-  // Quite lengthy functions because we optimistically update spicetifyInfo after receiving events.
+  // Quite lengthy functions because we optimistically update hamspotInfo after receiving events.
   const [type, data] = message.split(" ");
 
   try {
     switch (type) {
       case "TOGGLE_PLAYING": {
         Spicetify.Player.togglePlay();
-        self.spicetifyInfo.state = self.spicetifyInfo.state === "PLAYING" ? "PAUSED" : "PLAYING";
+        self.hamspotInfo.state = self.hamspotInfo.state === "PLAYING" ? "PAUSED" : "PLAYING";
         break;
       }
       case "NEXT":
@@ -293,32 +293,32 @@ function OnMessageRev1(self, message) {
         break;
       case "TOGGLE_REPEAT": {
         Spicetify.Player.toggleRepeat();
-        self.spicetifyInfo.repeat = self.spicetifyInfo.repeat === "NONE" ? "ALL" : self.spicetifyInfo.repeat === "ALL" ? "ONE" : "NONE";
+        self.hamspotInfo.repeat = self.hamspotInfo.repeat === "NONE" ? "ALL" : self.hamspotInfo.repeat === "ALL" ? "ONE" : "NONE";
         break;
       }
       case "TOGGLE_SHUFFLE": {
         Spicetify.Player.toggleShuffle();
-        self.spicetifyInfo.shuffle = !self.spicetifyInfo.shuffle;
+        self.hamspotInfo.shuffle = !self.hamspotInfo.shuffle;
         break;
       }
       case "TOGGLE_THUMBS_UP": {
         Spicetify.Player.toggleHeart();
-        self.spicetifyInfo.rating = self.spicetifyInfo.rating === 5 ? 0 : 5;
+        self.hamspotInfo.rating = self.hamspotInfo.rating === 5 ? 0 : 5;
         break;
       }
       // Spotify doesn't have a negative rating
       // case 'TOGGLE_THUMBS_DOWN': break
       case "SET_RATING": {
         const rating = Number.parseInt(data);
-        const isLiked = self.spicetifyInfo.rating > 3;
+        const isLiked = self.hamspotInfo.rating > 3;
         if (rating >= 3 && !isLiked) Spicetify.Player.toggleHeart();
         else if (rating < 3 && isLiked) Spicetify.Player.toggleHeart();
-        self.spicetifyInfo.rating = rating;
+        self.hamspotInfo.rating = rating;
         break;
       }
     }
   } catch (e) {
-    self.send(`ERROR Error sending event to ${self.spicetifyInfo.player}`);
+    self.send(`ERROR Error sending event to ${self.hamspotInfo.player}`);
     self.send(`ERRORDEBUG ${e}`);
   }
 }
@@ -330,12 +330,12 @@ function SendUpdateRev1(self) {
     return;
   }
 
-  self.spicetifyInfo.position = timeInSecondsToString(Math.round(Spicetify.Player.getProgress() / 1000));
-  self.spicetifyInfo.volume = Math.round(Spicetify.Player.getVolume() * 100);
+  self.hamspotInfo.position = timeInSecondsToString(Math.round(Spicetify.Player.getProgress() / 1000));
+  self.hamspotInfo.volume = Math.round(Spicetify.Player.getVolume() * 100);
 
-  for (const key of Object.keys(self.spicetifyInfo)) {
+  for (const key of Object.keys(self.hamspotInfo)) {
     try {
-      let value = self.spicetifyInfo[key];
+      let value = self.hamspotInfo[key];
       // For numbers, round it to an integer
       if (typeof value === "number") value = Math.round(value);
       // Check for null, and not just falsy, because 0 and '' are falsy
@@ -344,7 +344,7 @@ function SendUpdateRev1(self) {
         self.cache.set(key, value);
       }
     } catch (e) {
-      self.send(`ERROR Error updating ${key} for ${self.spicetifyInfo.player}`);
+      self.send(`ERROR Error updating ${key} for ${self.hamspotInfo.player}`);
       self.send(`ERRORDEBUG ${e}`);
     }
   }

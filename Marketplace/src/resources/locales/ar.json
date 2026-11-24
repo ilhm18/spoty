@@ -108,7 +108,7 @@
       }
     },
     "readmePage": {
-      "title": "$t(grid.spicetifyMarketplace) - اقرأني",
+      "title": "$t(grid.hamspotMarketplace) - اقرأني",
       "loading": "جارٍ التحميل...",
       "errorLoading": "README خطأ في تحميل ملف اقرأني"
     },

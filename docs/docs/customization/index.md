@@ -3,7 +3,7 @@ title: Customization
 description: Customize Spotify with themes, extensions, and custom apps.
 ---
 
-Spicetify lets you customize Spotify in three ways:
+Hamspot lets you customize Spotify in three ways:
 
 | Type | What it does |
 |------|--------------|
@@ -17,7 +17,7 @@ There are two ways to install customizations:
 
 ### Marketplace (Recommended)
 
-The **[Spicetify Marketplace](./marketplace.md)** is a built-in browser that lets you discover, install, and manage themes, extensions, and snippets directly from Spotify's sidebar.
+The **[Hamspot Marketplace](./marketplace.md)** is a built-in browser that lets you discover, install, and manage themes, extensions, and snippets directly from Spotify's sidebar.
 
 If you followed the [Getting Started](/docs/getting-started) guide, you already have Marketplace installed.
 
@@ -28,12 +28,12 @@ If you followed the [Getting Started](/docs/getting-started) guide, you already 
 
 ### Manual Installation
 
-Manual installation gives you direct control over your Spicetify configuration.
+Manual installation gives you direct control over your Hamspot configuration.
 
 **Use manual installation when:**
 - The theme/extension isn't available in Marketplace
 - You're developing your own customizations
-- You want to use built-in extensions that ship with Spicetify
+- You want to use built-in extensions that ship with Hamspot
 - You need precise control over what's installed
 
 Each customization page in this section covers both Marketplace usage and manual installation.
@@ -42,7 +42,7 @@ Each customization page in this section covers both Marketplace usage and manual
 
 All manual customizations are controlled through:
 
-- **CLI commands**: `spicetify config <key> <value>` followed by `spicetify apply`
+- **CLI commands**: `hamspot config <key> <value>` followed by `hamspot apply`
 - **Config file**: Direct editing of `config-xpui.ini`
 
 See the **[Configuration Reference](./config-file.md)** for details on the config file and all available options.

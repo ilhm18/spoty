@@ -19,7 +19,7 @@ type ContextMenuProps = {
     placement?: 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end';
     offset?: [number, number];
     preventScrollingWhileOpen?: boolean;
-    menu: typeof Spicetify.ReactComponent.Menu;
+    menu: typeof Hamspot.ReactComponent.Menu;
     children: Element | ((isOpen?: boolean, handleContextMenu?: (e: MouseEvent) => void, ref?: (e: Element) => void) => Element);
 };
 ```
@@ -34,4 +34,4 @@ type ContextMenuProps = {
 | `placement` | `'top'` &#124; `'top-start'` &#124; `'top-end'` &#124; `'right'` &#124; `'right-start'` &#124; `'right-end'` &#124; `'bottom'` &#124; `'bottom-start'` &#124; `'bottom-end'` &#124; `'left'` &#124; `'left-start'` &#124; `'left-end'` | The preferred placement of the context menu when it opens. Relative to trigger element. |
 | `offset` | `[number, number]` | The x and y offset distances at which the context menu should open. Relative to trigger element and `position`. |
 | `preventScrollingWhileOpen` | `boolean` | Will stop the client from scrolling while the context menu is open |
-| `menu` | `typeof Spicetify.ReactComponent.Menu` | The menu UI to render inside of the context menu. |
+| `menu` | `typeof Hamspot.ReactComponent.Menu` | The menu UI to render inside of the context menu. |

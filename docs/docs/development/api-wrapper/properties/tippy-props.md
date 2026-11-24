@@ -3,12 +3,12 @@ title: TippyProps
 description: Predefined props for Tippy.js tooltips.
 ---
 
-Spicetify provides a set of predefined props for Tippy.js tooltips. This is aimed to create tooltips that mimic the style of Spotify's tooltips.
+Hamspot provides a set of predefined props for Tippy.js tooltips. This is aimed to create tooltips that mimic the style of Spotify's tooltips.
 
 This is utilized for [`Topbar`](/docs/development/api-wrapper/classes/topbar) and [`Playbar`](/docs/development/api-wrapper/classes/playbar) tooltips.
 
 ```ts
-Spicetify.TippyProps = {
+Hamspot.TippyProps = {
     delay: [200, 0],
     animation: true,
     render(instance) {
@@ -50,13 +50,13 @@ Spicetify.TippyProps = {
 
 #### Usage
 
-If you want to use this set of props for your own Tippy.js tooltips, you can simply spread the `Spicetify.TippyProps` object into your Tippy.js instance.
+If you want to use this set of props for your own Tippy.js tooltips, you can simply spread the `Hamspot.TippyProps` object into your Tippy.js instance.
 
 ```ts
 const element = document.createElement("div");
 
 const tooltip = tippy(element, {
-    ...Spicetify.TippyProps,
+    ...Hamspot.TippyProps,
     content: "Tooltip content",
     // For example, if you want to override the delay
     delay: [100, 0],

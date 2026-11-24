@@ -1,23 +1,23 @@
-$checkSpice = Get-Command spicetify -ErrorAction Silent
+$checkSpice = Get-Command hamspot -ErrorAction Silent
 if ($null -eq $checkSpice) {
-    Write-Host -ForegroundColor Red "Spicetify not found"
+    Write-Host -ForegroundColor Red "Hamspot not found"
     Write-Host "Follow instruction on:", "https://spicetify.app/docs/getting-started/simple-installation#windows"
     return
 }
 
 Write-Host "Downloading themes package:" -ForegroundColor Green
-$zipFile = "$env:TEMP\spicetify-themes.zip"
+$zipFile = "$env:TEMP\hamspot-themes.zip"
 Invoke-WebRequest "https://github.com/spicetify/spicetify-themes/archive/refs/heads/master.zip" -OutFile $zipFile
 
 Write-Host "Extracting themes package:" -ForegroundColor Green
-$extractPath = "$env:TEMP\spicetify-themes-master"
+$extractPath = "$env:TEMP\hamspot-themes-master"
 if (Test-Path $extractPath) {
     Remove-Item $extractPath -Recurse -Force
 }
 Expand-Archive $zipFile -DestinationPath $env:TEMP
 
 # Copy to personal Themes folder
-$spicePath = spicetify -c | Split-Path
+$spicePath = hamspot -c | Split-Path
 $dribPath = "$extractPath\Dribbblish"
 
 $destPath = "$spicePath\Themes\Dribbblish"
@@ -27,8 +27,8 @@ if (Test-Path $destPath) {
 Copy-Item $dribPath $destPath -Recurse
 
 Write-Host "Configuring:" -ForegroundColor Green
-spicetify
-spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_js 1 current_theme Dribbblish
+hamspot
+hamspot config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_js 1 current_theme Dribbblish
 
 # Add patch
 $configFile = Get-Content "$spicePath\config-xpui.ini"
@@ -49,7 +49,7 @@ xpui.js_repl_8008=,`${1}56,
 $backupVer = $configFile -match "^version"
 $version = ConvertFrom-StringData $backupVer[0]
 if ($version.version.Length -gt 0) {
-    spicetify apply
+    hamspot apply
 } else {
-    spicetify backup apply
+    hamspot backup apply
 }

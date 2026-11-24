@@ -20,7 +20,7 @@ func checkSpotifyWriteAccess() {
 }
 
 func checkDirectoryWritable(path string) error {
-	probe, err := os.MkdirTemp(path, ".spicetify-write-test-")
+	probe, err := os.MkdirTemp(path, ".hamspot-write-test-")
 	if err != nil {
 		return err
 	}

@@ -3,7 +3,7 @@ title: Themes
 description: Change Spotify's visual appearance with themes.
 ---
 
-Themes let you customize Spotify's colors, fonts, and visual styling. From subtle tweaks to complete visual overhauls, themes are one of the most popular Spicetify features.
+Themes let you customize Spotify's colors, fonts, and visual styling. From subtle tweaks to complete visual overhauls, themes are one of the most popular Hamspot features.
 
 ## Installing Themes
 
@@ -21,14 +21,14 @@ For themes not in Marketplace:
 
    | Platform | Path |
    |----------|------|
-   | **Windows** | `%appdata%\spicetify\Themes\` |
-   | **Linux / macOS** | `~/.config/spicetify/Themes/` |
+   | **Windows** | `%appdata%\hamspot\Themes\` |
+   | **Linux / macOS** | `~/.config/hamspot/Themes/` |
 
 3. Apply the theme:
 
    ```bash
-   spicetify config current_theme <theme-folder-name>
-   spicetify apply
+   hamspot config current_theme <theme-folder-name>
+   hamspot apply
    ```
 
 ### Color Schemes
@@ -36,8 +36,8 @@ For themes not in Marketplace:
 Many themes include multiple color schemes. To use a specific scheme:
 
 ```bash
-spicetify config current_theme <theme-folder-name> color_scheme <scheme-name>
-spicetify apply
+hamspot config current_theme <theme-folder-name> color_scheme <scheme-name>
+hamspot apply
 ```
 
 Check the theme's `color.ini` file to see available schemes (each `[SectionName]` is a scheme).
@@ -47,8 +47,8 @@ Check the theme's `color.ini` file to see available schemes (each `[SectionName]
 To go back to Spotify's default appearance, set the theme to an empty value:
 
 ```bash
-spicetify config current_theme ""
-spicetify apply
+hamspot config current_theme ""
+hamspot apply
 ```
 
 Or set a different theme name.
@@ -57,13 +57,13 @@ Or set a different theme name.
 
 ## Community Themes
 
-The Spicetify community has created many themes. Here are some popular repositories:
+The Hamspot community has created many themes. Here are some popular repositories:
 
 ### Official Repository
 
 The official collection, open for contributions:
 
-- **[spicetify/spicetify-themes](https://github.com/spicetify/spicetify-themes)**
+- **[hamspot/hamspot-themes](https://github.com/spicetify/spicetify-themes)**
 
 ### Popular Third-Party Themes
 
@@ -77,7 +77,7 @@ The official collection, open for contributions:
 | [Gruvify](https://github.com/Skaytacium/Gruvify) | Gruvbox color scheme |
 | [Spotify Dark](https://github.com/SyndiShanX/Spotify-Dark) | Enhanced dark theme |
 | [Throwback](https://github.com/bluedrift/Spicetify-Throwback) | Classic Spotify look |
-| [SpicetifyCat](https://github.com/Adrien5902/SpicetifyCat) | Cat-themed customization |
+| [HamspotCat](https://github.com/Adrien5902/SpicetifyCat) | Cat-themed customization |
 | [RetroPlayer](https://github.com/Seglats/Spicetify-retro) | Retro aesthetic |
 | [Dracula (m0squdev)](https://github.com/m0squdev/dracula-spicetify-theme) | Dracula color palette |
 
@@ -122,16 +122,16 @@ subtext        = b3b3b3
 
 ### Theme not applying
 
-1. Make sure the theme folder name matches what you used in `spicetify config`
+1. Make sure the theme folder name matches what you used in `hamspot config`
 2. Verify the folder contains both `color.ini` and `user.css`
-3. Run `spicetify apply` after any config changes
+3. Run `hamspot apply` after any config changes
 
 ### Theme looks broken after Spotify update
 
 After Spotify updates, themes may need adjustment. Try:
 
 ```bash
-spicetify restore backup apply
+hamspot restore backup apply
 ```
 
 If issues persist, check the theme's repository for updates or reported issues.
@@ -141,6 +141,6 @@ If issues persist, check the theme's repository for updates or reported issues.
 Make sure you're setting both the theme and color scheme:
 
 ```bash
-spicetify config current_theme MyTheme color_scheme Dark
-spicetify apply
+hamspot config current_theme MyTheme color_scheme Dark
+hamspot apply
 ```

@@ -19,14 +19,14 @@ Some custom apps are available through the **[Marketplace](./marketplace.md)**. 
 
    | Platform | Path |
    |----------|------|
-   | **Windows** | `%appdata%\spicetify\CustomApps\` |
-   | **Linux / macOS** | `~/.config/spicetify/CustomApps/` |
+   | **Windows** | `%appdata%\hamspot\CustomApps\` |
+   | **Linux / macOS** | `~/.config/hamspot/CustomApps/` |
 
 3. Enable the custom app:
 
    ```bash
-   spicetify config custom_apps <folder-name>
-   spicetify apply
+   hamspot config custom_apps <folder-name>
+   hamspot apply
    ```
 
 :::tip
@@ -38,8 +38,8 @@ The `config custom_apps` command **appends** to your existing custom apps. It do
 To remove a custom app, append a `-` after the folder name:
 
 ```bash
-spicetify config custom_apps <folder-name>-
-spicetify apply
+hamspot config custom_apps <folder-name>-
+hamspot apply
 ```
 
 ## Manual Config Editing
@@ -51,13 +51,13 @@ You can also edit the config file directly. Custom apps are listed in the `custo
 custom_apps = reddit|lyrics-plus|new-releases
 ```
 
-After editing, run `spicetify apply`.
+After editing, run `hamspot apply`.
 
 ---
 
 ## Built-in Custom Apps
 
-These custom apps ship with Spicetify and are available immediately.
+These custom apps ship with Hamspot and are available immediately.
 
 ### Lyrics Plus
 
@@ -66,8 +66,8 @@ Advanced lyrics display with multiple providers (Musixmatch, Netease, LRCLIB).
 **Folder:** `lyrics-plus`
 
 ```bash
-spicetify config custom_apps lyrics-plus
-spicetify apply
+hamspot config custom_apps lyrics-plus
+hamspot apply
 ```
 
 **Features:**
@@ -92,8 +92,8 @@ Aggregates new releases from artists and podcasts you follow.
 **Folder:** `new-releases`
 
 ```bash
-spicetify config custom_apps new-releases
-spicetify apply
+hamspot config custom_apps new-releases
+hamspot apply
 ```
 
 **Features:**
@@ -112,8 +112,8 @@ Browse Spotify-related subreddits and discover music shared by the community.
 **Folder:** `reddit`
 
 ```bash
-spicetify config custom_apps reddit
-spicetify apply
+hamspot config custom_apps reddit
+hamspot apply
 ```
 
 **Features:**
@@ -134,7 +134,7 @@ Custom apps are React applications. A basic app needs:
 - `index.js`: Main application code with a `render()` function
 - `manifest.json`: Metadata including name, icons, and optional subfiles
 
-For a streamlined development experience, check out **[Spicetify Creator](/docs/development/spicetify-creator/the-basics)** which supports TypeScript, JSX, and hot reloading.
+For a streamlined development experience, check out **[Hamspot Creator](/docs/development/hamspot-creator/the-basics)** which supports TypeScript, JSX, and hot reloading.
 
 ---
 
@@ -144,7 +144,7 @@ For a streamlined development experience, check out **[Spicetify Creator](/docs/
 
 1. Verify the folder is in the correct CustomApps location
 2. Check that `manifest.json` exists and has valid JSON
-3. Run `spicetify apply`
+3. Run `hamspot apply`
 4. Restart Spotify
 
 ### App shows but doesn't load

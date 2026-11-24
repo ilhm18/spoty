@@ -3,12 +3,12 @@ title: Platform
 description: A vast collection of internal APIs used throughout the Spotify client.
 ---
 
-Spicetify provides a vast collection of internal APIs used throughout the Spotify client. These APIs are used to interact with the Spotify client and modify its behavior.
+Hamspot provides a vast collection of internal APIs used throughout the Spotify client. These APIs are used to interact with the Spotify client and modify its behavior.
 
 Explore all available methods in DevTools:
 
 ```js
-Spicetify.Platform
+Hamspot.Platform
 ```
 
 :::warning
@@ -66,10 +66,10 @@ Example:
 
 ```ts
 // Will be copied as "Hello World!"
-await Spicetify.Platform.ClipboardAPI.copy("Hello World!");
+await Hamspot.Platform.ClipboardAPI.copy("Hello World!");
 
 // Will be stringified to '{"0":0,"1":0,"2":0,"3":0}'
-await Spicetify.Platform.ClipboardAPI.copy(new Uint16Array(4));
+await Hamspot.Platform.ClipboardAPI.copy(new Uint16Array(4));
 ```
 
 #### `paste`
@@ -85,11 +85,11 @@ If the content of the clipboard is not a string, this method will return `undefi
 Example:
 
 ```ts
-await Spicetify.Platform.ClipboardAPI.copy("Hello World!");
-await Spicetify.Platform.ClipboardAPI.paste(); // "Hello World!"
+await Hamspot.Platform.ClipboardAPI.copy("Hello World!");
+await Hamspot.Platform.ClipboardAPI.paste(); // "Hello World!"
 
-await Spicetify.Platform.ClipboardAPI.copy(new Uint16Array(4));
-await Spicetify.Platform.ClipboardAPI.paste(); // '{"0":0,"1":0,"2":0,"3":0}'
+await Hamspot.Platform.ClipboardAPI.copy(new Uint16Array(4));
+await Hamspot.Platform.ClipboardAPI.paste(); // '{"0":0,"1":0,"2":0,"3":0}'
 ```
 
 ### History
@@ -129,9 +129,9 @@ You can pass either a `Location` object or a `pathname` string to this method.
 | `path` | `Location` &#124; `string` | Location to push. |
 
 ```ts
-Spicetify.Platform.History.push("/app/your-app");
+Hamspot.Platform.History.push("/app/your-app");
 
-Spicetify.Platform.History.push({
+Hamspot.Platform.History.push({
     pathname: "/app/your-app",
     search: "?foo=bar",
     hash: "#baz",
@@ -157,9 +157,9 @@ You can pass either a `Location` object or a `pathname` string to this method.
 
 ```ts
 // Replace the current location with a new one.
-Spicetify.Platform.History.replace("/app/your-app");
+Hamspot.Platform.History.replace("/app/your-app");
 
-Spicetify.Platform.History.replace({
+Hamspot.Platform.History.replace({
     pathname: "/app/your-app",
     search: "?foo=bar",
     hash: "#baz",
@@ -192,7 +192,7 @@ Listen to changes in the history stack. Fires whenever the user navigates to a n
 Example:
 
 ```ts
-Spicetify.Platform.History.listen((location) => {
+Hamspot.Platform.History.listen((location) => {
     // Log the current pathname every time the user navigates to a new page.
     console.log(location.pathname);
 });
@@ -220,7 +220,7 @@ Inside `localStorage`, the keys are stored using the following format:
 
 All keys created using this method will be namespaced using the current user's username.
 
-If you wish to create a generic key, you can use [`Spicetify.LocalStorage`](./local-storage) instead.
+If you wish to create a generic key, you can use [`Hamspot.LocalStorage`](./local-storage) instead.
 
 :::
 
@@ -243,7 +243,7 @@ All keys in `items` are stored using the aforementioned format, with it's value 
 Example:
 
 ```ts
-Spicetify.Platform.LocalStorageAPI.items; // { "username:foo": "bar" }
+Hamspot.Platform.LocalStorageAPI.items; // { "username:foo": "bar" }
 ```
 
 #### `namespace`
@@ -261,9 +261,9 @@ Get a value from the local storage. Returns a parsed value using `JSON.parse`.
 Example:
 
 ```ts
-// This is equivalent to Spicetify.Platform.LocalStorageAPI.items["username:foo"]
+// This is equivalent to Hamspot.Platform.LocalStorageAPI.items["username:foo"]
 // or localStorage.getItem("username:foo")
-Spicetify.Platform.LocalStorageAPI.getItem("foo"); // "bar"
+Hamspot.Platform.LocalStorageAPI.getItem("foo"); // "bar"
 ```
 
 #### `setItem`
@@ -278,7 +278,7 @@ Set a value in the local storage. The value will be stringified using `JSON.stri
 Example:
 
 ```ts
-Spicetify.Platform.LocalStorageAPI.setItem("foo", { bar: "baz" });
+Hamspot.Platform.LocalStorageAPI.setItem("foo", { bar: "baz" });
 // localStorage.getItem("username:foo") === '{"bar":"baz"}'
 ```
 
@@ -293,7 +293,7 @@ Clear a value from the local storage.
 Example:
 
 ```ts
-Spicetify.Platform.LocalStorageAPI.clearItem("foo");
+Hamspot.Platform.LocalStorageAPI.clearItem("foo");
 // localStorage.getItem("username:foo") === null
 ```
 
@@ -321,7 +321,7 @@ The current Spotify client platform.
 Example:
 
 ```ts
-Spicetify.Platform.PlatformData.app_platform; // "win32"
+Hamspot.Platform.PlatformData.app_platform; // "win32"
 ```
 
 #### `client_capabilities`
@@ -339,7 +339,7 @@ An object containing information about the current operating system. Used for an
 Example:
 
 ```ts
-Spicetify.Platform.PlatformData.event_sender_context_information; // { "platform_type:"windows", "os_version": "10.0.19042" }
+Hamspot.Platform.PlatformData.event_sender_context_information; // { "platform_type:"windows", "os_version": "10.0.19042" }
 ```
 
 This could also help you diagnose issues with your custom apps. For example, if you're using a custom app on Windows and you're getting an error, you can check the `event_sender_context_information` object to see if the `platform_type` is `windows` or `macos`.
@@ -351,7 +351,7 @@ The current operating system.
 Example:
 
 ```ts
-Spicetify.Platform.PlatformData.os_name; // "windows"
+Hamspot.Platform.PlatformData.os_name; // "windows"
 ```
 
 #### `os_version`
@@ -361,7 +361,7 @@ The current operating system version.
 Example:
 
 ```ts
-Spicetify.Platform.PlatformData.os_version; // "10.0.19042"
+Hamspot.Platform.PlatformData.os_version; // "10.0.19042"
 ```
 
 ### Session
@@ -397,7 +397,7 @@ The current user's locale.
 Example:
 
 ```ts
-Spicetify.Platform.Session.locale; // "en"
+Hamspot.Platform.Session.locale; // "en"
 ```
 
 ### Translations
@@ -458,12 +458,12 @@ Add items to the current user's queue.
 
 This works as if the user had clicked the `Add to queue` button in the Spotify client, meaning a notification will be shown.
 
-If you want to add items to the queue without showing a notification, use [`Spicetify.addToQueue`](/docs/development/api-wrapper/functions/add-to-queue).
+If you want to add items to the queue without showing a notification, use [`Hamspot.addToQueue`](/docs/development/api-wrapper/functions/add-to-queue).
 
 :::
 
 ```ts
-await Spicetify.Platform.PlayerAPI.addToQueue(items);
+await Hamspot.Platform.PlayerAPI.addToQueue(items);
 ```
 
 | Parameter | Type | Description |
@@ -478,7 +478,7 @@ await Spicetify.Platform.PlayerAPI.addToQueue(items);
 // 505 - Arctic Monkeys
 const track = { uri: "spotify:track:0BxE4FqsDD1Ot4YuBXwAPp" };
 
-await Spicetify.Platform.PlayerAPI.addToQueue([track]);
+await Hamspot.Platform.PlayerAPI.addToQueue([track]);
 ```
 
 #### `clearQueue`
@@ -486,7 +486,7 @@ await Spicetify.Platform.PlayerAPI.addToQueue([track]);
 Clear the current user's queue.
 
 ```ts
-await Spicetify.Platform.PlayerAPI.clearQueue();
+await Hamspot.Platform.PlayerAPI.clearQueue();
 ```
 
 #### `pause`
@@ -494,7 +494,7 @@ await Spicetify.Platform.PlayerAPI.clearQueue();
 Pause the current user's playback.
 
 ```ts
-await Spicetify.Platform.PlayerAPI.pause();
+await Hamspot.Platform.PlayerAPI.pause();
 ```
 
 #### `play`
@@ -508,7 +508,7 @@ It is recommended to use [`Player.playUri`](/docs/development/api-wrapper/method
 Start playback of a track.
 
 ```ts
-await Spicetify.Platform.PlayerAPI.play(uri, context, options);
+await Hamspot.Platform.PlayerAPI.play(uri, context, options);
 ```
 
 | Parameter | Type | Description |
@@ -524,8 +524,8 @@ await Spicetify.Platform.PlayerAPI.play(uri, context, options);
 const track = { uri: "spotify:track:0BxE4FqsDD1Ot4YuBXwAPp" };
 
 // Play the track
-// Spicetify.Player.playUri(track.uri);
-await Spicetify.Platform.PlayerAPI.play(track, {}, {});
+// Hamspot.Player.playUri(track.uri);
+await Hamspot.Platform.PlayerAPI.play(track, {}, {});
 ```
 
 #### `removeFromQueue`
@@ -534,12 +534,12 @@ Remove items from the current user's queue.
 
 :::tip
 
-This works similarly to [`Spicetify.removeFromQueue`](/docs/development/api-wrapper/functions/remove-from-queue).
+This works similarly to [`Hamspot.removeFromQueue`](/docs/development/api-wrapper/functions/remove-from-queue).
 
 :::
 
 ```ts
-await Spicetify.Platform.PlayerAPI.removeFromQueue(items);
+await Hamspot.Platform.PlayerAPI.removeFromQueue(items);
 ```
 
 | Parameter | Type | Description |
@@ -555,7 +555,7 @@ await Spicetify.Platform.PlayerAPI.removeFromQueue(items);
 const track = { uri: "spotify:track:0BxE4FqsDD1Ot4YuBXwAPp" };
 
 // Remove the track if it's in the queue
-await Spicetify.Platform.PlayerAPI.removeFromQueue([track]);
+await Hamspot.Platform.PlayerAPI.removeFromQueue([track]);
 ```
 
 #### `resume`
@@ -563,7 +563,7 @@ await Spicetify.Platform.PlayerAPI.removeFromQueue([track]);
 Resume the current user's playback.
 
 ```ts
-await Spicetify.Platform.PlayerAPI.resume();
+await Hamspot.Platform.PlayerAPI.resume();
 ```
 
 #### `seekBackward`
@@ -571,7 +571,7 @@ await Spicetify.Platform.PlayerAPI.resume();
 Seek backward in the current user's playback.
 
 ```ts
-await Spicetify.Platform.PlayerAPI.seekBackward(ms);
+await Hamspot.Platform.PlayerAPI.seekBackward(ms);
 ```
 
 | Parameter | Type | Description |
@@ -582,7 +582,7 @@ await Spicetify.Platform.PlayerAPI.seekBackward(ms);
 
 ```ts
 // Seek backward 10 seconds
-await Spicetify.Platform.PlayerAPI.seekBackward(10000);
+await Hamspot.Platform.PlayerAPI.seekBackward(10000);
 ```
 
 #### `seekBy`
@@ -592,7 +592,7 @@ Seek by a number of milliseconds in the current user's playback.
 If passed a negative number, it will seek backward.
 
 ```ts
-await Spicetify.Platform.PlayerAPI.seekBy(ms);
+await Hamspot.Platform.PlayerAPI.seekBy(ms);
 ```
 
 | Parameter | Type | Description |
@@ -603,10 +603,10 @@ await Spicetify.Platform.PlayerAPI.seekBy(ms);
 
 ```ts
 // Seek forward 10 seconds
-await Spicetify.Platform.PlayerAPI.seekBy(10000);
+await Hamspot.Platform.PlayerAPI.seekBy(10000);
 
 // Seek backward 10 seconds
-await Spicetify.Platform.PlayerAPI.seekBy(-10000);
+await Hamspot.Platform.PlayerAPI.seekBy(-10000);
 ```
 
 #### `seekForward`
@@ -614,7 +614,7 @@ await Spicetify.Platform.PlayerAPI.seekBy(-10000);
 Seek forward in the current user's playback.
 
 ```ts
-await Spicetify.Platform.PlayerAPI.seekForward(ms);
+await Hamspot.Platform.PlayerAPI.seekForward(ms);
 ```
 
 | Parameter | Type | Description |
@@ -625,7 +625,7 @@ await Spicetify.Platform.PlayerAPI.seekForward(ms);
 
 ```ts
 // Seek forward 10 seconds
-await Spicetify.Platform.PlayerAPI.seekForward(10000);
+await Hamspot.Platform.PlayerAPI.seekForward(10000);
 ```
 
 #### `seekTo`
@@ -639,7 +639,7 @@ Seek to a specific position in the current user's playback.
 :::
 
 ```ts
-await Spicetify.Platform.PlayerAPI.seekTo(ms);
+await Hamspot.Platform.PlayerAPI.seekTo(ms);
 ```
 
 | Parameter | Type | Description |
@@ -650,7 +650,7 @@ await Spicetify.Platform.PlayerAPI.seekTo(ms);
 
 ```ts
 // Seek to 1 minute
-await Spicetify.Platform.PlayerAPI.seekTo(60000);
+await Hamspot.Platform.PlayerAPI.seekTo(60000);
 ```
 
 #### `setRepeat`
@@ -658,7 +658,7 @@ await Spicetify.Platform.PlayerAPI.seekTo(60000);
 Set the current user's repeat mode.
 
 ```ts
-await Spicetify.Platform.PlayerAPI.setRepeat(mode);
+await Hamspot.Platform.PlayerAPI.setRepeat(mode);
 ```
 
 | Parameter | Type | Description |
@@ -669,7 +669,7 @@ await Spicetify.Platform.PlayerAPI.setRepeat(mode);
 
 ```ts
 // Set repeat mode to repeat one
-await Spicetify.Platform.PlayerAPI.setRepeat(2);
+await Hamspot.Platform.PlayerAPI.setRepeat(2);
 ```
 
 #### `setShuffle`
@@ -677,7 +677,7 @@ await Spicetify.Platform.PlayerAPI.setRepeat(2);
 Set the current user's shuffle mode.
 
 ```ts
-await Spicetify.Platform.PlayerAPI.setShuffle(shuffle);
+await Hamspot.Platform.PlayerAPI.setShuffle(shuffle);
 ```
 
 | Parameter | Type | Description |
@@ -688,7 +688,7 @@ await Spicetify.Platform.PlayerAPI.setShuffle(shuffle);
 
 ```ts
 // Enable shuffle mode
-await Spicetify.Platform.PlayerAPI.setShuffle(true);
+await Hamspot.Platform.PlayerAPI.setShuffle(true);
 ```
 
 #### `setSpeed`
@@ -702,7 +702,7 @@ This only works for podcasts. Music playback speed is unaffected.
 :::
 
 ```ts
-await Spicetify.Platform.PlayerAPI.setSpeed(speed);
+await Hamspot.Platform.PlayerAPI.setSpeed(speed);
 ```
 
 | Parameter | Type | Description |
@@ -713,5 +713,5 @@ await Spicetify.Platform.PlayerAPI.setSpeed(speed);
 
 ```ts
 // Set playback speed to 1.5x
-await Spicetify.Platform.PlayerAPI.setSpeed(1.5);
+await Hamspot.Platform.PlayerAPI.setSpeed(1.5);
 ```

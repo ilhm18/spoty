@@ -3,7 +3,7 @@ title: AppTitle
 description: Set of API methods to interact with the Spotify client app title.
 ---
 
-Spicetify provides a set of API methods to interact with the Spotify client app title.
+Hamspot provides a set of API methods to interact with the Spotify client app title.
 
 :::note
 
@@ -49,7 +49,7 @@ Promise that resolves to a function to cancel forced title. This doesn't reset t
 #### Example
 
 ```ts
-await Spicetify.AppTitle.set("My Extension");
+await Hamspot.AppTitle.set("My Extension");
 ```
 
 ### `reset`
@@ -63,7 +63,7 @@ function reset(): Promise<void>;
 #### Example
 
 ```ts
-await Spicetify.AppTitle.reset(); // Spotify Premium
+await Hamspot.AppTitle.reset(); // Spotify Premium
 ```
 
 ### `get`
@@ -87,7 +87,7 @@ Current default app title.
 #### Example
 
 ```ts
-const title = await Spicetify.AppTitle.get();
+const title = await Hamspot.AppTitle.get();
 console.log(title); // Spotify Premium
 ```
 
@@ -118,11 +118,11 @@ Object with method to unsubscribe.
 #### Example
 
 ```ts
-const { clear } = Spicetify.AppTitle.sub((title) => {
+const { clear } = Hamspot.AppTitle.sub((title) => {
     console.log(title);
 });
 
-await Spicetify.AppTitle.set("My Extension"); // Console: My Extension
+await Hamspot.AppTitle.set("My Extension"); // Console: My Extension
 
 clear();
 ```

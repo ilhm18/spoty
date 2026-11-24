@@ -344,7 +344,7 @@ const mobilePage = `<!doctype html>
 const tokenInput = document.querySelector("#token");
 const statusEl = document.querySelector("#status");
 const messageEl = document.querySelector("#message");
-tokenInput.value = localStorage.getItem("spicetify-mobile-token") || "";
+tokenInput.value = localStorage.getItem("hamspot-mobile-token") || "";
 
 async function api(path, options = {}) {
   const token = tokenInput.value.trim();
@@ -376,7 +376,7 @@ async function refreshStatus() {
 }
 
 document.querySelector("#connect").addEventListener("click", async () => {
-  localStorage.setItem("spicetify-mobile-token", tokenInput.value.trim());
+  localStorage.setItem("hamspot-mobile-token", tokenInput.value.trim());
   messageEl.textContent = "";
   try {
     await refreshStatus();

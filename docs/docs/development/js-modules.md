@@ -1,13 +1,13 @@
 ---
 title: Javascript NPM Modules
-description: 📦 Using NPM Modules for Spicetify.
+description: 📦 Using NPM Modules for Hamspot.
 ---
 
-Since v0.9.8, Spicetify injects extension with file extension `.mjs` as a script with type="module" and automatically symlink `node_modules` folder found in user's Extensions folder to `zlink` app.
+Since v0.9.8, Hamspot injects extension with file extension `.mjs` as a script with type="module" and automatically symlink `node_modules` folder found in user's Extensions folder to `zlink` app.
 
 In Javascript module, Javascript would work just the same as normal script but now you can use `import` to include other Javascript files. [Click here for details](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules).
 
-Node Package Manager (NPM) is a commandline app bundled with NodeJS. You can use it to download and install hundreds of utility packages to ease your development process. Since Spicetify symlinks `node_modules` to Spotify main app folder, all packages files are mutually linked and available for you to use in your extension. Simply just use `import`:
+Node Package Manager (NPM) is a commandline app bundled with NodeJS. You can use it to download and install hundreds of utility packages to ease your development process. Since Hamspot symlinks `node_modules` to Spotify main app folder, all packages files are mutually linked and available for you to use in your extension. Simply just use `import`:
 
 ```js
 import './node_modules/package_name/file.js';
@@ -27,7 +27,7 @@ Result should show as a notification:
 
 ![img2](/images/development/js-modules-2.png)
 
-To translate Japanese text to Romaji, I use a package named [kuroshiro](https://github.com/hexenq/kuroshiro). Luckily, this package will export distribution files as ES6 Module. This is quite important because package itself relies on other utilities packages too. When it is compiled as an ES6 module, everything is transpiled to Browser supported Javascript and combined in one file. Moreover, kuroshiro also needs [kuroshiro-analyzer-kuromoji](https://github.com/hexenq/kuroshiro-analyzer-kuromoji) package to be usable, which relies on dictionaries gzip files. You can see there is no easy way to utiltise both packages and their external files if we use traditional Javascript extension.
+To translate Japanese text to Romaji, I use a package named [kuroshiro](https://github.com/hexenq/kuroshiro-analyzer-kuromoji). Luckily, this package will export distribution files as ES6 Module. This is quite important because package itself relies on other utilities packages too. When it is compiled as an ES6 module, everything is transpiled to Browser supported Javascript and combined in one file. Moreover, kuroshiro also needs [kuroshiro-analyzer-kuromoji](https://github.com/hexenq/kuroshiro-analyzer-kuromoji-analyzer-kuromoji) package to be usable, which relies on dictionaries gzip files. You can see there is no easy way to utiltise both packages and their external files if we use traditional Javascript extension.
 
 **Following are steps to make and install this extension from scratch:**
 
@@ -36,13 +36,13 @@ To translate Japanese text to Romaji, I use a package named [kuroshiro](https://
 - **Windows, in Powershell:**
 
 ```powershell
-cd "$(dirname "$(spicetify -c)")/Extensions"
+cd "$(dirname "$(hamspot -c)")/Extensions"
 ```
 
 - **Linux and MacOS**, in Bash:
 
 ```
-cd "$(dirname "$(spicetify -c)")/Extensions"
+cd "$(dirname "$(hamspot -c)")/Extensions"
 ```
 
 2. Now install needed packages with NPM
@@ -73,12 +73,12 @@ function converter(input) {
 }
 
 const fetchAlbum = async (uri) => {
-  const res = await Spicetify.CosmosAsync.get(`hm://album/v1/album-app/album/${uri.split(':')[2]}/desktop`);
+  const res = await Hamspot.CosmosAsync.get(`hm://album/v1/album-app/album/${uri.split(':')[2]}/desktop`);
   return res.name;
 };
 
 const fetchShow = async (uri) => {
-  const res = await Spicetify.CosmosAsync.get(
+  const res = await Hamspot.CosmosAsync.get(
     `sp://core-show/v1/shows/${uri.split(':')[2]}?responseFormat=protobufJson`,
     {
       policy: { list: { index: true } },
@@ -88,22 +88,22 @@ const fetchShow = async (uri) => {
 };
 
 const fetchArtist = async (uri) => {
-  const res = await Spicetify.CosmosAsync.get(`hm://artist/v1/${uri.split(':')[2]}/desktop?format=json`);
+  const res = await Hamspot.CosmosAsync.get(`hm://artist/v1/${uri.split(':')[2]}/desktop?format=json`);
   return res.info.name;
 };
 
 const fetchTrack = async (uri) => {
-  const res = await Spicetify.CosmosAsync.get(`https://api.spotify.com/v1/tracks/${uri.split(':')[2]}`);
+  const res = await Hamspot.CosmosAsync.get(`https://api.spotify.com/v1/tracks/${uri.split(':')[2]}`);
   return res.name;
 };
 
 const fetchEpisode = async (uri) => {
-  const res = await Spicetify.CosmosAsync.get(`https://api.spotify.com/v1/episodes/${uri.split(':')[2]}`);
+  const res = await Hamspot.CosmosAsync.get(`https://api.spotify.com/v1/episodes/${uri.split(':')[2]}`);
   return res.name;
 };
 
 const fetchPlaylist = async (uri) => {
-  const res = await Spicetify.CosmosAsync.get(`sp://core-playlist/v1/playlist/${uri}/metadata`, {
+  const res = await Hamspot.CosmosAsync.get(`sp://core-playlist/v1/playlist/${uri}/metadata`, {
     policy: { name: true },
   });
   return res.metadata.name;
@@ -113,23 +113,23 @@ async function showRomaji([uri]) {
   const type = uri.split(':')[1];
   let name;
   switch (type) {
-    case Spicetify.URI.Type.TRACK:
+    case Hamspot.URI.Type.TRACK:
       name = await fetchTrack(uri);
       break;
-    case Spicetify.URI.Type.ALBUM:
+    case Hamspot.URI.Type.ALBUM:
       name = await fetchAlbum(uri);
       break;
-    case Spicetify.URI.Type.ARTIST:
+    case Hamspot.URI.Type.ARTIST:
       name = await fetchArtist(uri);
       break;
-    case Spicetify.URI.Type.SHOW:
+    case Hamspot.URI.Type.SHOW:
       name = await fetchShow(uri);
       break;
-    case Spicetify.URI.Type.EPISODE:
+    case Hamspot.URI.Type.EPISODE:
       name = await fetchEpisode(uri);
       break;
-    case Spicetify.URI.Type.PLAYLIST:
-    case Spicetify.URI.Type.PLAYLIST_V2:
+    case Hamspot.URI.Type.PLAYLIST:
+    case Hamspot.URI.Type.PLAYLIST_V2:
       name = await fetchPlaylist(uri);
       break;
   }
@@ -137,10 +137,10 @@ async function showRomaji([uri]) {
     name = await converter(name);
     name = name.replace(/(^|\s)\S/g, (t) => t.toUpperCase());
   }
-  Spicetify.showNotification(name);
+  Hamspot.showNotification(name);
 }
 
-new Spicetify.ContextMenu.Item(`Show Romaji`, showRomaji).register();
+new Hamspot.ContextMenu.Item(`Show Romaji`, showRomaji).register();
 ```
 
 Save this file to `Extensions` folder.
@@ -148,6 +148,6 @@ Save this file to `Extensions` folder.
 4. Finally, push my extension to Spotify:
 
 ```bash
-spicetify config extensions romaji.mjs
-spicetify apply
+hamspot config extensions romaji.mjs
+hamspot apply
 ```

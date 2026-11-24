@@ -74,7 +74,7 @@
       "invalidCSS": "CSS invàlid"
     },
     "grid": {
-      "spicetifyMarketplace": "Marketplace de Spicetify",
+      "spicetifyMarketplace": "Marketplace de Hamspot",
       "newUpdate": "Nova Actualització",
       "addCSS": "Afegir CSS",
       "search": "Buscar",
@@ -85,7 +85,7 @@
       "light": "clar"
     },
     "readmePage": {
-      "title": "$t(grid.spicetifyMarketplace) - Readme",
+      "title": "$t(grid.hamspotMarketplace) - Readme",
       "loading": "Carregant...",
       "errorLoading": "Error carregant el README"
     },

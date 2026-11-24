@@ -1,7 +1,7 @@
 {
   "translation": {
     "settings": {
-      "title": "Réglages Marché Spicetify",
+      "title": "Réglages Marché Hamspot",
       "optionsHeading": "Options",
       "starCountLabel": "Nombres d’étoiles",
       "tagsLabel": "Tags",
@@ -74,7 +74,7 @@
       "invalidCSS": "CSS invalide"
     },
     "grid": {
-      "spicetifyMarketplace": "Marché Spicetify",
+      "spicetifyMarketplace": "Marché Hamspot",
       "newUpdate": "Nouvelle mise à jour",
       "addCSS": "Ajouter CSS",
       "search": "Rechercher",
@@ -95,7 +95,7 @@
       }
     },
     "readmePage": {
-      "title": "$t(grid.spicetifyMarketplace) - Readme",
+      "title": "$t(grid.hamspotMarketplace) - Readme",
       "loading": "Chargement…",
       "errorLoading": "Erreur lors du chargement du README"
     },

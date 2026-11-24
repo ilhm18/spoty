@@ -16,9 +16,9 @@
 
 ![Spotify](screenshots/Spotify.png)
 
-### Spicetify
+### Hamspot
 
-![Spicetify](screenshots/Spicetify.png)
+![Hamspot](screenshots/Hamspot.png)
 
 ### CatppuccinMocha
 
@@ -112,7 +112,7 @@
 
 ### Description
 
-a spicetify theme that mimics the look of [spotify-tui](https://github.com/Rigellute/spotify-tui)
+a hamspot theme that mimics the look of [spotify-tui](https://github.com/Rigellute/spotify-tui)
 
 ### Credits
 
@@ -185,7 +185,7 @@ created by [darkthemer](https://github.com/darkthemer/)
     --display-header-image: none; /* none | block */
     --display-sidebar-image: block; /* none | block */
     --display-tracklist-image: none; /* none | block */
-    --display-spicetify-banner-ascii: block; /* none | block */
+    --display-hamspot-banner-ascii: block; /* none | block */
     --display-music-banner-ascii: none; /* none | block */
 
     --border-radius: 0px;

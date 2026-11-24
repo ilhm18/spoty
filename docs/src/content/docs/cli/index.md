@@ -1,23 +1,23 @@
 ---
 title: CLI Reference
-description: Command-line interface reference for Spicetify.
+description: Command-line interface reference for Hamspot.
 ---
 
-Spicetify is primarily a command-line tool. This section covers the command reference.
+Hamspot is primarily a command-line tool. This section covers the command reference.
 
 ## Quick Start
 
-After [installing Spicetify](/docs/getting-started), the basic workflow is:
+After [installing Hamspot](/docs/getting-started), the basic workflow is:
 
 ```bash
 # Generate config (first run only)
-spicetify
+hamspot
 
-# Backup Spotify and apply Spicetify
-spicetify backup apply
+# Backup Spotify and apply Hamspot
+hamspot backup apply
 
 # After making changes, apply them
-spicetify apply
+hamspot apply
 ```
 
 ## Getting Help
@@ -25,12 +25,12 @@ spicetify apply
 For help on any command:
 
 ```bash
-spicetify --help
-spicetify --help <command>
+hamspot --help
+hamspot --help <command>
 ```
 
 Example:
 
 ```bash
-spicetify --help config
+hamspot --help config
 ```

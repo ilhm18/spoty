@@ -42,11 +42,11 @@
 
 ### Description
 
-a Spicetify theme which features a distinct top bar, quick-to-edit CSS variables, and color schemes from Windows visual styles by KDr3w
+a Hamspot theme which features a distinct top bar, quick-to-edit CSS variables, and color schemes from Windows visual styles by KDr3w
 
 ### Credits
 
--   Based on [Matte by KDr3w](https://www.deviantart.com/kdr3w/art/Matte-758699852) and their [other themes](https://www.deviantart.com/kdr3w/gallery/68078309/windows-10-themes)
+-   Based on [Matte by KDr3w](https://www.deviantart.com/kdr3w/gallery/68078309/windows-10-themes) and their [other themes](https://www.deviantart.com/kdr3w/gallery/68078309/windows-10-themes)
 
 -   Created by [darkthemer](https://github.com/darkthemer)
 

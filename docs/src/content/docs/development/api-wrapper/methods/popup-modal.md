@@ -3,7 +3,7 @@ title: PopupModal
 description: Set of methods to create and control popup modals.
 ---
 
-Spicetify provides a set of methods to create and control popup modals. This will display a modal on top of the client, which can be used to display information or ask for user input.
+Hamspot provides a set of methods to create and control popup modals. This will display a modal on top of the client, which can be used to display information or ask for user input.
 
 ```ts
 namespace PopupModal {
@@ -47,7 +47,7 @@ This method will replace the current modal if there is one.
 | `content` | [`Content`](#content) | Information about the modal. |
 
 ```ts
-Spicetify.PopupModal.display({
+Hamspot.PopupModal.display({
     title: 'Hello World',
     content: 'This is a simple text',
 });
@@ -59,10 +59,10 @@ Hides the current modal.
 
 :::note
 
-This method will hide *any* modal currently displayed via `Spicetify.PopupModal.display`.
+This method will hide *any* modal currently displayed via `Hamspot.PopupModal.display`.
 
 :::
 
 ```ts
-Spicetify.PopupModal.hide();
+Hamspot.PopupModal.hide();
 ```

@@ -43,7 +43,7 @@ While you can technically make requests to the GraphQL endpoints using [`CosmosA
 Take the following endpoint for example, to get the extracted colors used in the _Now Playing View_ panel, you would need to make a request to the following endpoint using [`CosmosAsync`](/docs/development/api-wrapper/methods/cosmos-async):
 
 ```ts
-await Spicetify.CosmosAsync.get(
+await Hamspot.CosmosAsync.get(
   `https://api-partner.spotify.com/pathfinder/v1/query?operationName=fetchExtractedColors&variables={"uris":["spotify:image:ab67616d00001e02f16ab998eea7e598a0928ad7"]}&extensions={"persistedQuery":{"version":1,"sha256Hash":"d7696dd106f3c84a1f3ca37225a1de292e66a2d5aced37a66632585eeb3bbbfa"}}`
 );
 ```
@@ -51,8 +51,8 @@ await Spicetify.CosmosAsync.get(
 compared to using the GraphQL API wrapper:
 
 ```ts
-const { fetchExtractedColors } = Spicetify.GraphQL.Definitions;
-await Spicetify.GraphQL.Request(
+const { fetchExtractedColors } = Hamspot.GraphQL.Definitions;
+await Hamspot.GraphQL.Request(
   fetchExtractedColors,
   { uris: ['spotify:image:ab67616d00001e02f16ab998eea7e598a0928ad7'] },
 );
@@ -321,8 +321,8 @@ This is the name of the variable that you want to pass to the operation. We only
 In the example above, the name of the variable is `uris`, so in the [`Request`](#request) method, we would pass the variable as follows:
 
 ```ts
-Spicetify.GraphQL.Request(
-  Spicetify.GraphQL.Definitions.fetchExtractedColors,
+Hamspot.GraphQL.Request(
+  Hamspot.GraphQL.Definitions.fetchExtractedColors,
   { uris: /* ... */ },
 );
 ```
@@ -358,8 +358,8 @@ To conclude, the `fetchExtractedColors` method requires:
 So the request would look like this:
 
 ```ts
-Spicetify.GraphQL.Request(
-  Spicetify.GraphQL.Definitions.fetchExtractedColors,
+Hamspot.GraphQL.Request(
+  Hamspot.GraphQL.Definitions.fetchExtractedColors,
   { uris: ['spotify:image:ab67616d00001e02f16ab998eea7e598a0928ad7'] },
 );
 ```
@@ -424,8 +424,8 @@ The `context` parameter is the context to use for the request. It can be any val
 
 ```ts
 // Get all data displayed in an album page
-const { getAlbum } = Spicetify.GraphQL.Definitions;
-await Spicetify.GraphQL.Request(
+const { getAlbum } = Hamspot.GraphQL.Definitions;
+await Hamspot.GraphQL.Request(
   getAlbum,
   { uri: "spotify:album:3lvY0ag1k3qiPCsEM3Wnku", locale: "en", limit: 50, offset: 0 },
   { persistCache: true },

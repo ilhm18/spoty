@@ -3,7 +3,7 @@ title: ReactHook
 description: Set of React hooks used by the Spotify client.
 ---
 
-Spicetify provides a set of React hooks used by the Spotify client. You can use these hooks to create a React component interactive with the client.
+Hamspot provides a set of React hooks used by the Spotify client. You can use these hooks to create a React component interactive with the client.
 
 :::note
 
@@ -65,7 +65,7 @@ const DraggableComponent = () => {
     const uri = "spotify:track:5FVd6KXrgO9B3JPmC8OPst";
     const label = "Do I Wanna Know? - Arctic Monkeys";
 
-    const handleDragStart = Spicetify.ReactHook.DragHandler([uri], label);
+    const handleDragStart = Hamspot.ReactHook.DragHandler([uri], label);
 
     return (
         <div draggable onDragStart={handleDragStart}>
@@ -102,8 +102,8 @@ Object with methods of the panel.
 
 ```tsx
 const PanelComponent = () => {
-    // The ID can be either Spotify's default panel IDs or your custom panel ID registered via `Spicetify.Panel.registerPanel`
-    const { toggle, isActive } = Spicetify.ReactHook.usePanelState(5);
+    // The ID can be either Spotify's default panel IDs or your custom panel ID registered via `Hamspot.Panel.registerPanel`
+    const { toggle, isActive } = Hamspot.ReactHook.usePanelState(5);
 
     return (
         <div>
@@ -148,23 +148,23 @@ Extracted color hex code.
 ```tsx
 import { useEffect, useState } from "react";
 
-const { QueryClient, QueryClientProvider } = Spicetify.ReactQuery;
-const { useExtractedColor } = Spicetify.ReactHook;
+const { QueryClient, QueryClientProvider } = Hamspot.ReactQuery;
+const { useExtractedColor } = Hamspot.ReactHook;
 
 const queryClient = new QueryClient();
 
 const Component = () => {
-    const [imageUri, setImageUri] = useState(Spicetify.Player.data?.item?.metadata?.image_xlarge_url ?? "");
+    const [imageUri, setImageUri] = useState(Hamspot.Player.data?.item?.metadata?.image_xlarge_url ?? "");
     const color = useExtractedColor(imageUri);
 
     useEffect(() => {
         // Listen to track change
         const listener = () => {
-            setImageUri(Spicetify.Player.data?.item?.metadata?.image_xlarge_url ?? "");
+            setImageUri(Hamspot.Player.data?.item?.metadata?.image_xlarge_url ?? "");
         };
-        Spicetify.Player.addEventListener("songchange", listener);
+        Hamspot.Player.addEventListener("songchange", listener);
 
-        return () => Spicetify.Player.removeEventListener("songchange", listener);
+        return () => Hamspot.Player.removeEventListener("songchange", listener);
     }, []);
 
     return (

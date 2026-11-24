@@ -1,6 +1,6 @@
-spicetify config current_theme " "
+hamspot config current_theme " "
 
-$configPath = spicetify -c
+$configPath = hamspot -c
 $configFile = Get-Content $configPath
 $find = $configFile -match "xpui.js_find_8008"
 if ($find) {
@@ -12,4 +12,4 @@ if ($repl) {
 }
 Set-Content $configPath $configFile
 
-spicetify apply
+hamspot apply

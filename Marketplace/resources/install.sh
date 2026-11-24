@@ -23,11 +23,11 @@ echo "FETCHING Version $tag"
 download_uri=$releases_uri/download/v$tag/marketplace.zip
     default_color_uri="https://raw.githubusercontent.com/spicetify/marketplace/main/resources/color.ini"
 
-SPICETIFY_CONFIG_DIR="$SPICETIFY_CONFIG"
-if [ -z "$SPICETIFY_CONFIG_DIR" ]; then
-	SPICETIFY_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/spicetify"
+HAMSPOT_CONFIG_DIR="$HAMSPOT_CONFIG"
+if [ -z "$HAMSPOT_CONFIG_DIR" ]; then
+	HAMSPOT_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/hamspot"
 fi
-INSTALL_DIR="$SPICETIFY_CONFIG_DIR/CustomApps"
+INSTALL_DIR="$HAMSPOT_CONFIG_DIR/CustomApps"
 
 if [ ! -d "$INSTALL_DIR" ]; then
     echo "MAKING FOLDER  $INSTALL_DIR";
@@ -52,31 +52,31 @@ echo "INSTALLING"
 cd "$INSTALL_DIR/marketplace"
 
 # Remove old custom app name if exists
-spicetify config custom_apps spicetify-marketplace-
+hamspot config custom_apps hamspot-marketplace-
 
 # Color injection fix
-spicetify config inject_css 1
-spicetify config replace_colors 1
+hamspot config inject_css 1
+hamspot config replace_colors 1
 
-current_theme=$(spicetify config current_theme)
+current_theme=$(hamspot config current_theme)
 if [ ${#current_theme} -le 3 ]; then
     echo "No theme selected, using placeholder theme"
-    if [ ! -d "$SPICETIFY_CONFIG_DIR/Themes/marketplace" ]; then
-        echo "MAKING FOLDER  $SPICETIFY_CONFIG_DIR/Themes/marketplace";
-        mkdir -p "$SPICETIFY_CONFIG_DIR/Themes/marketplace"
+    if [ ! -d "$HAMSPOT_CONFIG_DIR/Themes/marketplace" ]; then
+        echo "MAKING FOLDER  $HAMSPOT_CONFIG_DIR/Themes/marketplace";
+        mkdir -p "$HAMSPOT_CONFIG_DIR/Themes/marketplace"
     fi
-    curl --fail --location --progress-bar --output "$SPICETIFY_CONFIG_DIR/Themes/marketplace/color.ini" "$default_color_uri"
-    spicetify config current_theme marketplace;
+    curl --fail --location --progress-bar --output "$HAMSPOT_CONFIG_DIR/Themes/marketplace/color.ini" "$default_color_uri"
+    hamspot config current_theme marketplace;
 fi
 
-if spicetify config custom_apps marketplace ; then
+if hamspot config custom_apps marketplace ; then
     echo "Added to config!"
     echo "APPLYING"
-    spicetify apply
+    hamspot apply
 else
     echo "Command failed"
-    echo "Please run \`spicetify config custom_apps marketplace\` manually "
-    echo "Next run \`spicetify apply\`"
+    echo "Please run \`hamspot config custom_apps marketplace\` manually "
+    echo "Next run \`hamspot apply\`"
 fi
 
 echo "CLEANING UP"

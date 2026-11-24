@@ -86,7 +86,7 @@
       "viewGuide": "Посмотреть инструкцию"
     },
     "grid": {
-      "spicetifyMarketplace": "Маркетплейс Spicetify",
+      "spicetifyMarketplace": "Маркетплейс Hamspot",
       "newUpdate": "Доступно обновление",
       "addCSS": "Добавить CSS",
       "search": "Искать",
@@ -108,7 +108,7 @@
       }
     },
     "readmePage": {
-      "title": "$t(grid.spicetifyMarketplace) - Readme",
+      "title": "$t(grid.hamspotMarketplace) - Readme",
       "loading": "Загрузка...",
       "errorLoading": "Ошибка загрузки README"
     },

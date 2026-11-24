@@ -78,7 +78,7 @@
     },
     "updateModal": {
       "title": "Абнаўленне Marketplace",
-      "description": "Абнавіце Spicetify Marketplace для атрыманія новых функцыі і выпраўленні памылак.",
+      "description": "Абнавіце Hamspot Marketplace для атрыманія новых функцыі і выпраўленні памылак.",
       "currentVersion": "Сучасная версія: {{version}}",
       "latestVersion": "Апошняя версія: {{version}}",
       "whatsChanged": "Што зменено",
@@ -87,7 +87,7 @@
       "viewGuide": "Прасматрець гайд"
     },
     "grid": {
-      "spicetifyMarketplace": "Spicetify Marketplace",
+      "spicetifyMarketplace": "Hamspot Marketplace",
       "newUpdate": "Новае абнаўленне",
       "addCSS": "Дабавіць CSS",
       "search": "Пошук",
@@ -109,7 +109,7 @@
       }
     },
     "readmePage": {
-      "title": "$t(grid.spicetifyMarketplace) - Readme",
+      "title": "$t(grid.hamspotMarketplace) - Readme",
       "loading": "Загрузка...",
       "errorLoading": "Памылка загрузкі README"
     },

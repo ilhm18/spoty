@@ -77,7 +77,7 @@
     },
     "updateModal": {
       "title": "Оновити Маркетплейс",
-      "description": "Оновіть Spicetify Marketplace щоб отримувати нові функції і багфікси.",
+      "description": "Оновіть Hamspot Marketplace щоб отримувати нові функції і багфікси.",
       "currentVersion": "Поточна версія: {{version}}",
       "latestVersion": "Остання версія: {{version}}",
       "whatsChanged": "Що змінилося",
@@ -86,7 +86,7 @@
       "viewGuide": "Переглянути посібник"
     },
     "grid": {
-      "spicetifyMarketplace": "Маркетплейс Spicetify",
+      "spicetifyMarketplace": "Маркетплейс Hamspot",
       "newUpdate": "Нове оновлення",
       "addCSS": "Додати CSS",
       "search": "Пошук",
@@ -108,7 +108,7 @@
       }
     },
     "readmePage": {
-      "title": "$t(grid.spicetifyMarketplace) - Readme",
+      "title": "$t(grid.hamspotMarketplace) - Readme",
       "loading": "Завантаження...",
       "errorLoading": "Помилка завантаження README"
     },

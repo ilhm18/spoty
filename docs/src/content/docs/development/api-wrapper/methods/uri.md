@@ -3,7 +3,7 @@ title: URI
 description: Set of API methods to parse and validate URIs.
 ---
 
-Spicetify provides a set of API methods to parse and validate URIs. These are internal APIs used by Spotify in almost every component in the client.
+Hamspot provides a set of API methods to parse and validate URIs. These are internal APIs used by Spotify in almost every component in the client.
 
 This would be useful if you want to develop extensions that need to interact with Spotify components (e.g. open a track in the player, get playlist tracks, etc.).
 
@@ -55,7 +55,7 @@ To get a URI of an item using the client interface, simply right-click on it, ho
 
 ## Usage
 
-`Spicetify.URI` itself is a class that helps you create a URI object, as well as provide static methods to parse and validate URIs.
+`Hamspot.URI` itself is a class that helps you create a URI object, as well as provide static methods to parse and validate URIs.
 
 :::note
 
@@ -97,12 +97,12 @@ Almost all properties are optional, except for `type` and `hasBase62Id`. The `ty
 
 All other properties are dependent on the type of the URI. For example, a track URI _may_ include a `context` property, while a playlist URI _may_ include a `username` property.
 
-The `type` property matches one of the values in the [`Spicetify.URI.Type`](/docs/development/api-wrapper/types/uri/type) enum.
+The `type` property matches one of the values in the [`Hamspot.URI.Type`](/docs/development/api-wrapper/types/uri/type) enum.
 
 ### Example
 
 ```ts
-const uri = new Spicetify.URI('track', {
+const uri = new Hamspot.URI('track', {
   id: '6rqhFgbbKwnb9MLmUQDhG6',
   context: 'spotify:album:1Je1IMUlBXcx1Fz0WE7oPT',
 });
@@ -110,14 +110,14 @@ const uri = new Spicetify.URI('track', {
 
 ### Dynamic methods
 
-These methods are included in every instance of `Spicetify.URI`.
+These methods are included in every instance of `Hamspot.URI`.
 
 #### toURI
 
 Creates a URI string from the URI object.
 
 ```ts
-const uri = new Spicetify.URI('track', {
+const uri = new Hamspot.URI('track', {
   id: '6rqhFgbbKwnb9MLmUQDhG6',
   context: 'spotify:album:1Je1IMUlBXcx1Fz0WE7oPT',
 });
@@ -130,7 +130,7 @@ uri.toURI(); // spotify:track:6rqhFgbbKwnb9MLmUQDhG6?context=spotify:album:1Je1I
 Alias of [`toURI`](#touri)
 
 ```ts
-const uri = new Spicetify.URI('track', {
+const uri = new Hamspot.URI('track', {
   id: '6rqhFgbbKwnb9MLmUQDhG6',
   context: 'spotify:album:1Je1IMUlBXcx1Fz0WE7oPT',
 });
@@ -147,7 +147,7 @@ Creates a URL path from the URI object.
 | opt_leadingSlash | `boolean` &#124; `undefined` | Whether to prepend a leading slash to the path. |
 
 ```ts
-const uri = new Spicetify.URI('track', {
+const uri = new Hamspot.URI('track', {
   id: '6rqhFgbbKwnb9MLmUQDhG6',
   context: 'spotify:album:1Je1IMUlBXcx1Fz0WE7oPT',
 });
@@ -166,14 +166,14 @@ Creates a URL from the URI object.
 | origin    | `string` &#124; `undefined` | The origin to use for the URL. Defaults to `https://open.spotify.com`. |
 
 ```ts
-const uri = new Spicetify.URI('track', {
+const uri = new Hamspot.URI('track', {
   id: '6rqhFgbbKwnb9MLmUQDhG6',
   context: 'spotify:album:1Je1IMUlBXcx1Fz0WE7oPT',
 });
 
 uri.toURL(); // https://open.spotify.com/track/6rqhFgbbKwnb9MLmUQDhG6?context=spotify:album:1Je1IMUlBXcx1Fz0WE7oPT
 
-uri.toURL('https://example.com/'); // https://example.com/track/6rqhFgbbKwnb9MLmUQDhG6?context=spotify:album:1Je1IMUlBXcx1Fz0WE7oPT
+uri.toURL('https://example.com/track/6rqhFgbbKwnb9MLmUQDhG6?context=spotify:album:1Je1IMUlBXcx1Fz0WE7oPT); // https://example.com/track/6rqhFgbbKwnb9MLmUQDhG6?context=spotify:album:1Je1IMUlBXcx1Fz0WE7oPT
 ```
 
 #### clone
@@ -181,7 +181,7 @@ uri.toURL('https://example.com/'); // https://example.com/track/6rqhFgbbKwnb9MLm
 Clones the URI object.
 
 ```ts
-const uri = new Spicetify.URI('track', {
+const uri = new Hamspot.URI('track', {
   id: '6rqhFgbbKwnb9MLmUQDhG6',
   context: 'spotify:album:1Je1IMUlBXcx1Fz0WE7oPT',
 });
@@ -196,7 +196,7 @@ clone.toURI(); // spotify:track:6rqhFgbbKwnb9MLmUQDhG6?context=spotify:album:1Je
 Gets the path of the URI object by removing all hash and query parameters.
 
 ```ts
-const uri = new Spicetify.URI('track', {
+const uri = new Hamspot.URI('track', {
   id: '6rqhFgbbKwnb9MLmUQDhG6',
   context: 'spotify:album:1Je1IMUlBXcx1Fz0WE7oPT',
 });
@@ -206,31 +206,31 @@ uri.getPath(); // spotify:track:6rqhFgbbKwnb9MLmUQDhG6
 
 ### Static methods
 
-These methods are included in the `Spicetify.URI` class.
+These methods are included in the `Hamspot.URI` class.
 
 #### Type
 
 An enum of all URI types.
 
 ```ts
-const { Type } = Spicetify.URI;
+const { Type } = Hamspot.URI;
 
 Type.ALBUM; // album
 ```
 
-For a list of all URI types, see the [`Spicetify.URI.Type`](/docs/development/api-wrapper/types/uri/type) enum and explore in DevTools.
+For a list of all URI types, see the [`Hamspot.URI.Type`](/docs/development/api-wrapper/types/uri/type) enum and explore in DevTools.
 
 ##### Usage
 
 You can use this enum to check and validate the type of a URI.
 
 ```ts
-const uri = new Spicetify.URI('track', {
+const uri = new Hamspot.URI('track', {
   id: '6rqhFgbbKwnb9MLmUQDhG6',
   context: 'spotify:album:1Je1IMUlBXcx1Fz0WE7oPT',
 });
 
-uri.type === Spicetify.URI.Type.TRACK; // true
+uri.type === Hamspot.URI.Type.TRACK; // true
 ```
 
 #### from
@@ -255,15 +255,15 @@ class URI {
 | value     | `any` | The value to parse. |
 
 ```ts
-Spicetify.URI.from('spotify:track:6rqhFgbbKwnb9MLmUQDhG6'); // URI instance
+Hamspot.URI.from('spotify:track:6rqhFgbbKwnb9MLmUQDhG6'); // URI instance
 
-Spicetify.URI.from('https://open.spotify.com/track/6rqhFgbbKwnb9MLmUQDhG6'); // URI instance
+Hamspot.URI.from('https://open.spotify.com/track/6rqhFgbbKwnb9MLmUQDhG6'); // URI instance
 
-Spicetify.URI.from(new Spicetify.URI('track', { id: '6rqhFgbbKwnb9MLmUQDhG6' })); // URI instance
+Hamspot.URI.from(new Hamspot.URI('track', { id: '6rqhFgbbKwnb9MLmUQDhG6' })); // URI instance
 
-Spicetify.URI.from(Spicetify.URI.from('spotify:track:6rqhFgbbKwnb9MLmUQDhG6')); // URI instance
+Hamspot.URI.from(Hamspot.URI.from('spotify:track:6rqhFgbbKwnb9MLmUQDhG6')); // URI instance
 
-Spicetify.URI.from({ id: '6rqhFgbbKwnb9MLmUQDhG6' }); // null
+Hamspot.URI.from({ id: '6rqhFgbbKwnb9MLmUQDhG6' }); // null
 ```
 
 #### fromString
@@ -287,13 +287,13 @@ class URI {
 | uri       | `string` | The URI to parse. |
 
 ```ts
-Spicetify.URI.fromString('spotify:track:6rqhFgbbKwnb9MLmUQDhG6'); // URI instance
+Hamspot.URI.fromString('spotify:track:6rqhFgbbKwnb9MLmUQDhG6'); // URI instance
 
-Spicetify.URI.fromString('https://open.spotify.com/track/6rqhFgbbKwnb9MLmUQDhG6'); // URI instance
+Hamspot.URI.fromString('https://open.spotify.com/track/6rqhFgbbKwnb9MLmUQDhG6'); // URI instance
 
-Spicetify.URI.fromString('spotify:track:6rqhFgbbKwnb9MLmUQDhG6?context=spotify:album:1Je1IMUlBXcx1Fz0WE7oPT'); // URI instance
+Hamspot.URI.fromString('spotify:track:6rqhFgbbKwnb9MLmUQDhG6?context=spotify:album:1Je1IMUlBXcx1Fz0WE7oPT'); // URI instance
 
-Spicetify.URI.fromString(new Spicetify.URI('track', { id: '6rqhFgbbKwnb9MLmUQDhG6' })); // TypeError: Argument `uri` must be a string.
+Hamspot.URI.fromString(new Hamspot.URI('track', { id: '6rqhFgbbKwnb9MLmUQDhG6' })); // TypeError: Argument `uri` must be a string.
 ```
 
 #### Validation functions
@@ -304,14 +304,14 @@ For a list of all validation functions, see [`Validation functions`](/docs/devel
 
 :::caution
 
-Almost all playlists use the `playlist-v2` type, so use `Spicetify.URI.isPlaylistV2URI` instead.
+Almost all playlists use the `playlist-v2` type, so use `Hamspot.URI.isPlaylistV2URI` instead.
 
-Similarly, you can use `Spicetify.URI.isPlaylistV1OrV2` to check if a URI is a playlist of any version.
+Similarly, you can use `Hamspot.URI.isPlaylistV1OrV2` to check if a URI is a playlist of any version.
 
 :::
 
 ```ts
-const { isAlbumURI } = Spicetify.URI;
+const { isAlbumURI } = Hamspot.URI;
 
 isAlbumURI('spotify:album:1Je1IMUlBXcx1Fz0WE7oPT'); // true
 ```

@@ -3,11 +3,11 @@ title: Keyboard
 description: A wrapper for keyboard shortcuts.
 ---
 
-Spicetify provides its own method for global keyboard shortcuts. You can specify actions for your extension when the user presses a keyboard shortcut.
+Hamspot provides its own method for global keyboard shortcuts. You can specify actions for your extension when the user presses a keyboard shortcut.
 
 :::tip
 
-`Spicetify.Keyboard` is a wrapper of [`Spicetify.Mousetrap`](/docs/development/api-wrapper/modules#mousetrap) configured to be compatible with legacy Spotify.
+`Hamspot.Keyboard` is a wrapper of [`Hamspot.Mousetrap`](/docs/development/api-wrapper/modules#mousetrap) configured to be compatible with legacy Spotify.
 
 New extensions are advised to use the module instead.
 
@@ -15,7 +15,7 @@ New extensions are advised to use the module instead.
 
 :::caution
 
-All shortcuts registered by `Spicetify.Keyboard` are global. Be mindful of conflicts with other extensions or the Spotify client itself.
+All shortcuts registered by `Hamspot.Keyboard` are global. Be mindful of conflicts with other extensions or the Spotify client itself.
 
 :::
 
@@ -35,7 +35,7 @@ namespace Keyboard {
 An object containing a list of valid keys, mapped to their valid names.
 
 ```ts
-const { KEYS } = Spicetify.Keyboard;
+const { KEYS } = Hamspot.Keyboard;
 ```
 
 Refer to [this table](/docs/development/api-wrapper/types/keyboard/validkey) for a list of valid keys.
@@ -43,7 +43,7 @@ Refer to [this table](/docs/development/api-wrapper/types/keyboard/validkey) for
 #### Example
 
 ```ts
-const { KEYS } = Spicetify.Keyboard;
+const { KEYS } = Hamspot.Keyboard;
 console.log(KEYS["CAPS"]); // "Capslock"
 ```
 
@@ -67,10 +67,10 @@ function registerShortcut(keys: KeysDefine, callback: (event: KeyboardEvent) => 
 #### Example
 
 ```ts
-// Equivalent to `Spicetify.Keyboard.registerShortcut({ key: "p", ctrl: true, shift: true }, (event) => { ... })`
-Spicetify.Keyboard.registerShortcut("ctrl+shift+p", (event) => {
+// Equivalent to `Hamspot.Keyboard.registerShortcut({ key: "p", ctrl: true, shift: true }, (event) => { ... })`
+Hamspot.Keyboard.registerShortcut("ctrl+shift+p", (event) => {
     // Do something with the event
-    Spicetify.showNotification("Shortcut triggered!");
+    Hamspot.showNotification("Shortcut triggered!");
 });
 ```
 
@@ -91,7 +91,7 @@ function _deregisterShortcut(keys: KeysDefine): void;
 #### Example
 
 ```ts
-Spicetify.Keyboard._deregisterShortcut("ctrl+shift+p");
+Hamspot.Keyboard._deregisterShortcut("ctrl+shift+p");
 ```
 
 ### `changeShortcut`
@@ -112,5 +112,5 @@ function changeShortcut(keys: KeysDefine, newKeys: KeysDefine): void;
 #### Example
 
 ```ts
-Spicetify.Keyboard.changeShortcut("ctrl+shift+p", "ctrl+shift+o");
+Hamspot.Keyboard.changeShortcut("ctrl+shift+p", "ctrl+shift+o");
 ```

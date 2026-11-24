@@ -15,7 +15,7 @@ Single context menu item.
 
 
 ```ts
-new Spicetify.ContextMenu.Item(
+new Hamspot.ContextMenu.Item(
   name: string,
   onClick: OnClickCallback,
   shouldAdd?: ShouldAddCallback,
@@ -73,7 +73,7 @@ deregister(): void
 ```ts
 // This function will determine if the selected item is a track
 function ifItemIsTrack(uri) {
-  let uriObj = Spicetify.URI.fromString(uri[0]);
+  let uriObj = Hamspot.URI.fromString(uri[0]);
   switch (uriObj.type) {
     case Type.TRACK:
       return true;
@@ -82,13 +82,13 @@ function ifItemIsTrack(uri) {
 }
 
 // Create a new menu item that only appears when a track is selected
-const menuItem = new Spicetify.ContextMenu.Item(
+const menuItem = new Hamspot.ContextMenu.Item(
   "My Menu Item",
   () => {
-    Spicetify.showNotification("My Menu Item clicked!");
+    Hamspot.showNotification("My Menu Item clicked!");
   },
   ifItemIsTrack,
-  Spicetify.SVGIcons["play"],
+  Hamspot.SVGIcons["play"],
   false,
 );
 
@@ -113,7 +113,7 @@ Create a sub menu to contain `Item`s.
 
 
 ```ts
-new Spicetify.ContextMenu.SubMenu(
+new Hamspot.ContextMenu.SubMenu(
   name: string,
   subItems: Iterable<Item>,
   shouldAdd?: ShouldAddCallback,
@@ -190,18 +190,18 @@ deregister(): void
 
 ```ts
 // Create a new menu item
-const menuItem = new Spicetify.ContextMenu.Item(
+const menuItem = new Hamspot.ContextMenu.Item(
   "My Menu Item",
   () => {
-    Spicetify.showNotification("My Menu Item clicked!");
+    Hamspot.showNotification("My Menu Item clicked!");
   },
   () => true,
-  Spicetify.SVGIcons["play"],
+  Hamspot.SVGIcons["play"],
   false,
 );
 
 // Create a new sub menu
-const subMenu = new Spicetify.ContextMenu.SubMenu(
+const subMenu = new Hamspot.ContextMenu.SubMenu(
   "My Sub Menu",
   [menuItem],
   () => true,
@@ -218,13 +218,13 @@ subMenu.deregister();
 subMenu.name = "My New Sub Menu";
 
 // Add a new menu item to the sub menu
-subMenu.addItem(new Spicetify.ContextMenu.Item(
+subMenu.addItem(new Hamspot.ContextMenu.Item(
   "My New Menu Item",
   () => {
-    Spicetify.showNotification("My New Menu Item clicked!");
+    Hamspot.showNotification("My New Menu Item clicked!");
   },
   () => true,
-  Spicetify.SVGIcons["play"],
+  Hamspot.SVGIcons["play"],
   false,
 ));
 ```

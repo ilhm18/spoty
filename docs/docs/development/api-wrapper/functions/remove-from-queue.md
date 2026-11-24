@@ -5,7 +5,7 @@ description: Removes a track or array of tracks from prioritized queue.
 
 :::tip
 
-This works similarly to [`Spicetify.Platform.PlayerAPI.removeFromQueue`](/docs/development/api-wrapper/methods/platform#removefromqueue).
+This works similarly to [`Hamspot.Platform.PlayerAPI.removeFromQueue`](/docs/development/api-wrapper/methods/platform#removefromqueue).
 
 :::
 
@@ -29,12 +29,12 @@ function removeFromQueue(uri: ContextTrack[]): Promise<void>;
 
 ```ts
 // Remove current track from queue
-const currentTrack = Spicetify.Player.data.item;
+const currentTrack = Hamspot.Player.data.item;
 
-await Spicetify.removeFromQueue([currentTrack]);
+await Hamspot.removeFromQueue([currentTrack]);
 
 // Remove a track from queue
 const trackUri = "spotify:track:4iV5W9uYEdYUVa79Axb7Rh";
 
-await Spicetify.removeFromQueue([ { uri: trackUri } ]);
+await Hamspot.removeFromQueue([ { uri: trackUri } ]);
 ```

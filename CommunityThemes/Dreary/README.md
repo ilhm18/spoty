@@ -24,7 +24,7 @@
 ## Important
 Certain aspects of the theme, such as the borders around playlist names, require Sidebar Config to be enabled. It is not required but recommended.
 
-You can enable it by running `spicetify config sidebar_config 1`.
+You can enable it by running `hamspot config sidebar_config 1`.
 
 ## More
 

@@ -2,7 +2,6 @@
 bin
 cli
 spicetify
-spicetify-cli
 hamspot
 hamspot-cli
 *.exe

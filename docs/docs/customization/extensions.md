@@ -13,20 +13,20 @@ The easiest way to install extensions is through the **[Marketplace](./marketpla
 
 ### Manual Installation
 
-For extensions not in Marketplace, or for Spicetify's built-in extensions:
+For extensions not in Marketplace, or for Hamspot's built-in extensions:
 
 1. Place the extension file in your Extensions folder:
 
    | Platform | Path |
    |----------|------|
-   | **Windows** | `%appdata%\spicetify\Extensions\` |
-   | **Linux / macOS** | `~/.config/spicetify/Extensions/` |
+   | **Windows** | `%appdata%\hamspot\Extensions\` |
+   | **Linux / macOS** | `~/.config/hamspot/Extensions/` |
 
 2. Enable the extension:
 
    ```bash
-   spicetify config extensions <filename.js>
-   spicetify apply
+   hamspot config extensions <filename.js>
+   hamspot apply
    ```
 
 :::tip
@@ -38,8 +38,8 @@ The `config extensions` command **appends** to your existing extensions. It does
 To remove an extension, append a `-` after the filename:
 
 ```bash
-spicetify config extensions <filename.js>-
-spicetify apply
+hamspot config extensions <filename.js>-
+hamspot apply
 ```
 
 ## Manual Config Editing
@@ -51,13 +51,13 @@ You can also edit the config file directly. Extensions are listed in the `extens
 extensions = fullAppDisplay.js|keyboardShortcut.js|trashbin.js
 ```
 
-After editing, run `spicetify apply`.
+After editing, run `hamspot apply`.
 
 ---
 
 ## Built-in Extensions
 
-These extensions ship with Spicetify and are available immediately after installation.
+These extensions ship with Hamspot and are available immediately after installation.
 
 ### Full App Display
 
@@ -66,8 +66,8 @@ A minimal, full-screen album art display with blur effect background.
 **Filename:** `fullAppDisplay.js`
 
 ```bash
-spicetify config extensions fullAppDisplay.js
-spicetify apply
+hamspot config extensions fullAppDisplay.js
+hamspot apply
 ```
 
 **Usage:** Click the button in the top bar to activate. Double-click anywhere to exit. Right-click to open settings.
@@ -83,8 +83,8 @@ Extends Spotify's keyboard shortcuts with vim-like navigation.
 **Filename:** `keyboardShortcut.js`
 
 ```bash
-spicetify config extensions keyboardShortcut.js
-spicetify apply
+hamspot config extensions keyboardShortcut.js
+hamspot apply
 ```
 
 **Shortcuts:**
@@ -105,8 +105,8 @@ Save and quickly access pages, tracks, or specific timestamps.
 **Filename:** `bookmark.js`
 
 ```bash
-spicetify config extensions bookmark.js
-spicetify apply
+hamspot config extensions bookmark.js
+hamspot apply
 ```
 
 **Usage:** Useful for bookmarking artists, albums, or playlists to check out later without following them.
@@ -122,8 +122,8 @@ Skip songs or artists automatically. They'll never play again.
 **Filename:** `trashbin.js`
 
 ```bash
-spicetify config extensions trashbin.js
-spicetify apply
+hamspot config extensions trashbin.js
+hamspot apply
 ```
 
 **Usage:** Right-click any track or artist and select "Throw to Trashbin". Trashed items are automatically skipped.
@@ -139,8 +139,8 @@ True shuffle using the Fisher-Yates algorithm (zero bias).
 **Filename:** `shuffle+.js`
 
 ```bash
-spicetify config extensions shuffle+.js
-spicetify apply
+hamspot config extensions shuffle+.js
+hamspot apply
 ```
 
 **Usage:** Right-click any album, playlist, or artist and select "Play with Shuffle+". Also works with multi-selected tracks.
@@ -156,8 +156,8 @@ Loop a specific portion of a track.
 **Filename:** `loopyLoop.js`
 
 ```bash
-spicetify config extensions loopyLoop.js
-spicetify apply
+hamspot config extensions loopyLoop.js
+hamspot apply
 ```
 
 **Usage:** Mark start and end points on the progress bar to loop that section automatically.
@@ -173,8 +173,8 @@ Display lyrics in a separate pop-up window.
 **Filename:** `popupLyrics.js`
 
 ```bash
-spicetify config extensions popupLyrics.js
-spicetify apply
+hamspot config extensions popupLyrics.js
+hamspot apply
 ```
 
 **Usage:** Click the microphone icon in the top bar. Right-click for settings and lyrics provider options.
@@ -194,8 +194,8 @@ Automatically skip video content that can't play in your region.
 **Filename:** `autoSkipVideo.js`
 
 ```bash
-spicetify config extensions autoSkipVideo.js
-spicetify apply
+hamspot config extensions autoSkipVideo.js
+hamspot apply
 ```
 
 **Why:** Some video content is region-locked. Without this extension, playback just stops instead of moving to the next track.
@@ -209,8 +209,8 @@ Automatically skip explicit tracks.
 **Filename:** `autoSkipExplicit.js`
 
 ```bash
-spicetify config extensions autoSkipExplicit.js
-spicetify apply
+hamspot config extensions autoSkipExplicit.js
+hamspot apply
 ```
 
 **Usage:** Toggle in the profile menu (top-right button).
@@ -226,20 +226,20 @@ Send track metadata to Rainmeter's WebNowPlaying plugin.
 **Filename:** `webnowplaying.js`
 
 ```bash
-spicetify config extensions webnowplaying.js
-spicetify apply
+hamspot config extensions webnowplaying.js
+hamspot apply
 ```
 
 **For minimal setup** (no UI changes):
 
 ```bash
-spicetify config inject_css 0 replace_colors 0
-spicetify config extensions webnowplaying.js
-spicetify apply
+hamspot config inject_css 0 replace_colors 0
+hamspot config extensions webnowplaying.js
+hamspot apply
 ```
 
 ---
 
 ## Creating Extensions
 
-Want to build your own extension? See the **[Development Guide](/docs/development)** and **[Spicetify Creator](/docs/development/spicetify-creator/the-basics)** for tools and tutorials.
+Want to build your own extension? See the **[Development Guide](/docs/development)** and **[Hamspot Creator](/docs/development/hamspot-creator/the-basics)** for tools and tutorials.

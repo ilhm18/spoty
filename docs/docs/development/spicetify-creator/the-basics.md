@@ -1,6 +1,6 @@
 ---
 title: The Basics
-description: 🤠 Spicetify Creator 101.
+description: 🤠 Hamspot Creator 101.
 ---
 
 import Tabs from '@theme/Tabs';
@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 ## Introduction
 
-[Spicetify Creator](https://github.com/FlafyDev/spicetify-creator) is a tool to compile modern TypeScript/JavaScript code to Spicetify extensions and custom apps.
+[Hamspot Creator](https://github.com/FlafyDev/spicetify-creator) is a tool to compile modern TypeScript/JavaScript code to Hamspot extensions and custom apps.
 
 Its built-in features include:
 
@@ -20,8 +20,8 @@ Its built-in features include:
 
 ## Getting Started
 
-The easiest way to start using Spicetify Creator is with Create Spicetify App.  
-Create Spicetify App allows you to effortlessly create new Spicetify Creator projects through the terminal.
+The easiest way to start using Hamspot Creator is with Create Hamspot App.  
+Create Hamspot App allows you to effortlessly create new Hamspot Creator projects through the terminal.
 
 Install Node.js and either npm or Yarn.  
 Open the terminal in your desired directory and enter the following command
@@ -29,27 +29,27 @@ Open the terminal in your desired directory and enter the following command
 <Tabs groupId="package-managers">
   <TabItem value="npm" label="npm" default>
     ```shell
-      npx create-spicetify-app
+      npx create-hamspot-app
     ```
   </TabItem>
   <TabItem value="yarn" label="Yarn">
     ```shell
-      yarn create spicetify-app
+      yarn create hamspot-app
     ```
   </TabItem>
   <TabItem value="pnpm" label="pnpm">
     ```shell
-      pnpm create spicetify-app
+      pnpm create hamspot-app
     ```
   </TabItem>
 </Tabs>
 
-The command will ask you 3-4 simple questions about the app you plan to create and generate a Spicetify Creator project accordingly.  
+The command will ask you 3-4 simple questions about the app you plan to create and generate a Hamspot Creator project accordingly.  
 After creation, read one of the following pages depending on what type of app you chose to create.
 
 <div style={{width: '100%', justifyContent: 'center', alignItems: 'center', display: 'flex', padding: '20px', textAlign: 'center'}}>
-  <span style={{margin: '0 20px'}}><a href='/docs/development/spicetify-creator/create-extensions'>Create Extensions</a></span>
-  <span style={{margin: '0 20px'}}><a href='/docs/development/spicetify-creator/create-custom-apps'>Create Custom Apps</a></span>
+  <span style={{margin: '0 20px'}}><a href='/docs/development/hamspot-creator/create-extensions'>Create Extensions</a></span>
+  <span style={{margin: '0 20px'}}><a href='/docs/development/hamspot-creator/create-custom-apps'>Create Custom Apps</a></span>
 </div>
 
 ## CSS
@@ -98,7 +98,7 @@ import packageName from '<package-name>';
 
 ## Plugins
 
-Plugins are node packages designed for Spicetify Creator projects, and they support either extensions, custom apps, or both.  
+Plugins are node packages designed for Hamspot Creator projects, and they support either extensions, custom apps, or both.  
 The convention is to name every plugin like so: `spcr-<name>`.
 
 For a list of plugins: https://github.com/FlafyDev/spicetify-creator-plugins
@@ -131,22 +131,22 @@ import plugin from 'spcr-<name>';
 - [spcr-settings](https://github.com/FlafyDev/spicetify-creator-plugins/tree/main/packages/spcr-settings)
 - [spcr-navigation-bar](https://github.com/FlafyDev/spicetify-creator-plugins/tree/main/packages/spcr-navigation-bar)
 
-## Update Spicetify Creator
+## Update Hamspot Creator
 
 <Tabs groupId="package-managers">
   <TabItem value="npm" label="npm" default>
     ```shell
-      npm update spicetify-creator
+      npm update hamspot-creator
     ```
   </TabItem>
   <TabItem value="yarn" label="Yarn">
     ```shell
-      yarn upgrade spicetify-creator
+      yarn upgrade hamspot-creator
     ```
   </TabItem>
   <TabItem value="pnpm" label="pnpm">
     ```shell
-      pnpm update spicetify-creator
+      pnpm update hamspot-creator
     ```
   </TabItem>
 </Tabs>
