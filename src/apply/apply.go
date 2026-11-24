@@ -142,6 +142,45 @@ func htmlMod(htmlPath string, flags Flag) {
 	extensionsHTML.WriteByte('\n')
 	helperHTML.WriteByte('\n')
 
+	helperHTML.WriteString(`<style>
+		#hamspot-credit {
+			position: fixed;
+			right: 18px;
+			bottom: 98px;
+			z-index: 9999;
+			pointer-events: auto;
+			font-family: var(--encore-body-font-stack, "Helvetica Neue", Helvetica, Arial, sans-serif);
+			font-size: 11px;
+			line-height: 1;
+			letter-spacing: .02em;
+			color: rgba(255, 255, 255, .72);
+			background: rgba(0, 0, 0, .58);
+			border: 1px solid rgba(255, 255, 255, .12);
+			border-radius: 999px;
+			padding: 8px 11px;
+			backdrop-filter: blur(8px);
+			user-select: none;
+		}
+		#hamspot-credit a {
+			color: inherit;
+			text-decoration: none;
+		}
+		#hamspot-credit a:hover {
+			color: #fff;
+			text-decoration: underline;
+		}
+	</style>
+	<script defer>
+		window.addEventListener("DOMContentLoaded", function () {
+			if (document.getElementById("hamspot-credit")) return;
+			var credit = document.createElement("div");
+			credit.id = "hamspot-credit";
+			credit.innerHTML = 'modify by <a href="https://instagram.com/ilhamm.18" target="_blank" rel="noopener noreferrer">@ilhamm.18 on insta</a>';
+			document.body.appendChild(credit);
+		});
+	</script>
+	`)
+
 	if flags.InjectThemeJS {
 		extensionsHTML.WriteString("<script defer src='extensions/theme.js'></script>\n")
 	}
