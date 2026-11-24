@@ -144,55 +144,84 @@ func htmlMod(htmlPath string, flags Flag) {
 
 	helperHTML.WriteString(`<style>
 		#hamspot-credit {
-			position: fixed;
-			right: 18px;
-			bottom: 98px;
-			z-index: 9999;
-			pointer-events: auto;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			flex: 0 0 auto;
 			font-family: var(--encore-body-font-stack, "Helvetica Neue", Helvetica, Arial, sans-serif);
-			font-size: 11px;
-			line-height: 1;
-			letter-spacing: .02em;
-			color: rgba(255, 255, 255, .72);
-			background: rgba(0, 0, 0, .58);
-			border: 1px solid rgba(255, 255, 255, .12);
-			border-radius: 999px;
-			padding: 8px 11px;
-			backdrop-filter: blur(8px);
+			font-size: 14px;
+			font-weight: 700;
+			line-height: 16px;
+			letter-spacing: 0;
+			color: #000;
+			background: #fff;
+			border: 0;
+			border-radius: 9999px;
+			min-height: 32px;
+			padding: 8px 12px;
+			margin-inline: 4px;
 			user-select: none;
+			white-space: nowrap;
 		}
 		#hamspot-credit a {
 			color: inherit;
 			text-decoration: none;
 		}
 		#hamspot-credit a:hover {
-			color: #fff;
-			text-decoration: underline;
+			opacity: .75;
 		}
 	</style>
 	<script defer>
-		(function addHamspotCredit() {
+		(function mountHamspotCredit() {
 			if (document.getElementById("hamspot-credit")) return;
-			if (!document.body) {
-				requestAnimationFrame(addHamspotCredit);
+
+			var allLabels = Array.from(document.querySelectorAll("button, a, div")).filter(function (element) {
+				return element.children.length === 0 && element.textContent.trim() === "All";
+			});
+
+			for (var i = 0; i < allLabels.length; i++) {
+				var allLabel = allLabels[i];
+				var row = allLabel.parentElement;
+				for (var depth = 0; depth < 4 && row; depth++) {
+					if (row.children.length >= 3) break;
+					row = row.parentElement;
+				}
+				if (!row) continue;
+
+				var text = row.textContent;
+				if (!text.includes("Music") || !text.includes("Podcasts") || !text.includes("Audiobooks")) continue;
+
+				var credit = document.createElement("div");
+				credit.id = "hamspot-credit";
+				credit.innerHTML = 'modify by <a href="https://instagram.com/ilhamm.18" target="_blank" rel="noopener noreferrer">@ilhamm.18 on insta</a>';
+				row.appendChild(credit);
 				return;
 			}
-			var credit = document.createElement("div");
-			credit.id = "hamspot-credit";
-			credit.innerHTML = 'modify by <a href="https://instagram.com/ilhamm.18" target="_blank" rel="noopener noreferrer">@ilhamm.18 on insta</a>';
-			document.body.appendChild(credit);
+
+			requestAnimationFrame(mountHamspotCredit);
 		})();
 
-		if (document.body) {
-			new MutationObserver(function () {
-				if (!document.getElementById("hamspot-credit") && document.body) {
-					var credit = document.createElement("div");
-					credit.id = "hamspot-credit";
-					credit.innerHTML = 'modify by <a href="https://instagram.com/ilhamm.18" target="_blank" rel="noopener noreferrer">@ilhamm.18 on insta</a>';
-					document.body.appendChild(credit);
+		new MutationObserver(function () {
+			if (document.getElementById("hamspot-credit")) return;
+			var allLabels = Array.from(document.querySelectorAll("button, a, div")).filter(function (element) {
+				return element.children.length === 0 && element.textContent.trim() === "All";
+			});
+			for (var i = 0; i < allLabels.length; i++) {
+				var row = allLabels[i].parentElement;
+				for (var depth = 0; depth < 4 && row; depth++) {
+					if (row.children.length >= 3) break;
+					row = row.parentElement;
 				}
-			}).observe(document.documentElement, { childList: true, subtree: true });
-		}
+				if (!row) continue;
+				var text = row.textContent;
+				if (!text.includes("Music") || !text.includes("Podcasts") || !text.includes("Audiobooks")) continue;
+				var credit = document.createElement("div");
+				credit.id = "hamspot-credit";
+				credit.innerHTML = 'modify by <a href="https://instagram.com/ilhamm.18" target="_blank" rel="noopener noreferrer">@ilhamm.18 on insta</a>';
+				row.appendChild(credit);
+				break;
+			}
+		}).observe(document.documentElement, { childList: true, subtree: true });
 	</script>
 	`)
 
