@@ -32,7 +32,7 @@ jobs:
           go build -o dist/hamspot-mobile-android-arm64 .
 
       - name: Upload workflow artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: hamspot-mobile-android-arm64
           path: dist/hamspot-mobile-android-arm64
