@@ -174,28 +174,31 @@ func htmlMod(htmlPath string, flags Flag) {
 	<script defer>
 		(function mountHamspotCredit() {
 			if (document.getElementById("hamspot-credit")) return;
+			var labels = ["All", "Music", "Podcasts", "Audiobooks"];
+			var matches = [];
 
-			var allLabels = Array.from(document.querySelectorAll("button, a, div")).filter(function (element) {
-				return element.children.length === 0 && element.textContent.trim() === "All";
+			labels.forEach(function (label) {
+				var element = Array.from(document.querySelectorAll("button, a, div, span")).find(function (candidate) {
+					return candidate.children.length === 0 && candidate.textContent.trim() === label;
+				});
+				if (element) matches.push(element);
 			});
 
-			for (var i = 0; i < allLabels.length; i++) {
-				var allLabel = allLabels[i];
-				var row = allLabel.parentElement;
-				for (var depth = 0; depth < 4 && row; depth++) {
-					if (row.children.length >= 3) break;
-					row = row.parentElement;
-				}
-				if (!row) continue;
-
-				var text = row.textContent;
-				if (!text.includes("Music") || !text.includes("Podcasts") || !text.includes("Audiobooks")) continue;
-
-				var credit = document.createElement("div");
-				credit.id = "hamspot-credit";
-				credit.innerHTML = 'modify by <a href="https://instagram.com/ilhamm.18" target="_blank" rel="noopener noreferrer">@ilhamm.18 on insta</a>';
-				row.appendChild(credit);
+			if (matches.length !== labels.length) {
+				requestAnimationFrame(mountHamspotCredit);
 				return;
+			}
+
+			var row = matches[0];
+			while (row && row !== document.body) {
+				if (matches.every(function (match) { return row.contains(match); })) {
+					var credit = document.createElement("div");
+					credit.id = "hamspot-credit";
+					credit.innerHTML = 'modify by <a href="https://instagram.com/ilhamm.18" target="_blank" rel="noopener noreferrer">@ilhamm.18 on insta</a>';
+					row.appendChild(credit);
+					return;
+				}
+				row = row.parentElement;
 			}
 
 			requestAnimationFrame(mountHamspotCredit);
@@ -203,23 +206,25 @@ func htmlMod(htmlPath string, flags Flag) {
 
 		new MutationObserver(function () {
 			if (document.getElementById("hamspot-credit")) return;
-			var allLabels = Array.from(document.querySelectorAll("button, a, div")).filter(function (element) {
-				return element.children.length === 0 && element.textContent.trim() === "All";
+			var labels = ["All", "Music", "Podcasts", "Audiobooks"];
+			var matches = [];
+			labels.forEach(function (label) {
+				var element = Array.from(document.querySelectorAll("button, a, div, span")).find(function (candidate) {
+					return candidate.children.length === 0 && candidate.textContent.trim() === label;
+				});
+				if (element) matches.push(element);
 			});
-			for (var i = 0; i < allLabels.length; i++) {
-				var row = allLabels[i].parentElement;
-				for (var depth = 0; depth < 4 && row; depth++) {
-					if (row.children.length >= 3) break;
-					row = row.parentElement;
+			if (matches.length !== labels.length) return;
+			var row = matches[0];
+			while (row && row !== document.body) {
+				if (matches.every(function (match) { return row.contains(match); })) {
+					var credit = document.createElement("div");
+					credit.id = "hamspot-credit";
+					credit.innerHTML = 'modify by <a href="https://instagram.com/ilhamm.18" target="_blank" rel="noopener noreferrer">@ilhamm.18 on insta</a>';
+					row.appendChild(credit);
+					return;
 				}
-				if (!row) continue;
-				var text = row.textContent;
-				if (!text.includes("Music") || !text.includes("Podcasts") || !text.includes("Audiobooks")) continue;
-				var credit = document.createElement("div");
-				credit.id = "hamspot-credit";
-				credit.innerHTML = 'modify by <a href="https://instagram.com/ilhamm.18" target="_blank" rel="noopener noreferrer">@ilhamm.18 on insta</a>';
-				row.appendChild(credit);
-				break;
+				row = row.parentElement;
 			}
 		}).observe(document.documentElement, { childList: true, subtree: true });
 	</script>
