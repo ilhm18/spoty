@@ -99,7 +99,7 @@ function Get-Spicetify {
         $targetVersion = $null
       }
       if (-not $targetVersion) {
-        $targetVersion = '2.0.4'
+        $targetVersion = '2.0.5'
       }
       Write-Success
     }
@@ -247,6 +247,13 @@ else {
     UseBasicParsing = $true
   }
   Invoke-WebRequest @Parameters | Invoke-Expression
+}
+
+$installedHamspot = Join-Path -Path $spicetifyFolderPath -ChildPath 'hamspot.exe'
+if (Test-Path -LiteralPath $installedHamspot -PathType Leaf) {
+  Write-Host -Object 'Applying the latest Hamspot modification...' -ForegroundColor Cyan
+  & $installedHamspot apply
+  & $installedHamspot restart
 }
 #endregion Marketplace
 #endregion Main
