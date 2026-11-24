@@ -16,8 +16,8 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/ilhm18/hamspot/src/utils"
 	"github.com/pterm/pterm"
-	"github.com/spicetify/cli/src/utils"
 )
 
 const legacyFixedWidthGridCSS = `.main-gridContainer-gridContainer.main-gridContainer-fixedWidth{grid-template-columns:repeat(auto-fill,var(--column-width,minmax(var(--min-column-width),1fr)))}`

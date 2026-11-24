@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"github.com/spicetify/cli/src/utils"
+	"github.com/ilhm18/hamspot/src/utils"
 )
 
 func checkSpotifyWriteAccess() {

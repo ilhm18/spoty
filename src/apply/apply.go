@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/spicetify/cli/src/utils"
+	"github.com/ilhm18/hamspot/src/utils"
 )
 
 // Flag enables/disables additional feature

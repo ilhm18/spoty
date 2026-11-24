@@ -18,7 +18,7 @@ $env:GOARCH = "arm64"
 
 Push-Location $projectRoot
 try {
-    & $goCommand.Source build -o (Join-Path $distDir "spicetify-mobile-android-arm64") .
+    & $goCommand.Source build -o (Join-Path $distDir "hamspot-mobile-android-arm64") .
 } finally {
     Pop-Location
     Remove-Item Env:CGO_ENABLED -ErrorAction SilentlyContinue
@@ -26,4 +26,4 @@ try {
     Remove-Item Env:GOARCH -ErrorAction SilentlyContinue
 }
 
-Write-Host "Built: $distDir\spicetify-mobile-android-arm64"
+Write-Host "Built: $distDir\hamspot-mobile-android-arm64"

@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"github.com/spicetify/cli/src/utils"
+	"github.com/ilhm18/hamspot/src/utils"
 )
 
 func Update(currentVersion string) bool {
@@ -20,13 +20,13 @@ func Update(currentVersion string) bool {
 		return false
 	}
 	if currentVersion == tagName {
-		utils.PrintSuccess("Spicetify is up-to-date.")
+		utils.PrintSuccess("Hamspot is up-to-date.")
 		return false
 	}
 
 	utils.PrintInfo("Latest release: " + tagName)
-	var assetURL string = "https://github.com/spicetify/cli/releases/download/v" + tagName + "/spicetify-" + tagName + "-" + runtime.GOOS + "-"
-	var location string = os.TempDir() + "/spicetify-" + tagName
+	var assetURL string = "https://github.com/ilhm18/spoty/releases/download/v" + tagName + "/hamspot-" + tagName + "-" + runtime.GOOS + "-"
+	var location string = os.TempDir() + "/hamspot-" + tagName
 
 	if runtime.GOARCH == "386" && runtime.GOOS == "windows" {
 		assetURL += "x32"
@@ -46,11 +46,11 @@ func Update(currentVersion string) bool {
 		location += ".tar.gz"
 	}
 
-	spinner, _ := utils.Spinner.Start("Downloading Spicetify")
+	spinner, _ := utils.Spinner.Start("Downloading Hamspot")
 
 	out, err := os.Create(location)
 	if err != nil {
-		spinner.Fail("Failed to download Spicetify")
+		spinner.Fail("Failed to download Hamspot")
 		utils.Fatal(err)
 	}
 	defer out.Close()

@@ -4,8 +4,8 @@ import (
 	"path/filepath"
 
 	"github.com/go-ini/ini"
+	"github.com/ilhm18/hamspot/src/utils"
 	"github.com/pterm/pterm"
-	"github.com/spicetify/cli/src/utils"
 )
 
 // EditColor changes one or multiple colors' values

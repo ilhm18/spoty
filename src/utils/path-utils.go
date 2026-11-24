@@ -86,7 +86,10 @@ func ReplaceEnvVarsInString(input string) string {
 }
 
 func GetSpicetifyFolder() string {
-	result, isAvailable := os.LookupEnv("SPICETIFY_CONFIG")
+	result, isAvailable := os.LookupEnv("HAMSPOT_CONFIG")
+	if !isAvailable {
+		result, isAvailable = os.LookupEnv("SPICETIFY_CONFIG")
+	}
 	defer func() { CheckExistAndCreate(result) }()
 
 	if isAvailable && len(result) > 0 {
@@ -96,7 +99,7 @@ func GetSpicetifyFolder() string {
 	if runtime.GOOS == "windows" {
 		parent := os.Getenv("APPDATA")
 
-		result = filepath.Join(parent, "spicetify")
+		result = filepath.Join(parent, "hamspot")
 	} else if runtime.GOOS == "linux" {
 		parent, isAvailable := os.LookupEnv("XDG_CONFIG_HOME")
 
@@ -105,19 +108,22 @@ func GetSpicetifyFolder() string {
 			CheckExistAndCreate(parent)
 		}
 
-		result = filepath.Join(parent, "spicetify")
+		result = filepath.Join(parent, "hamspot")
 	} else if runtime.GOOS == "darwin" {
 		parent := filepath.Join(os.Getenv("HOME"), ".config")
 		CheckExistAndCreate(parent)
 
-		result = filepath.Join(parent, "spicetify")
+		result = filepath.Join(parent, "hamspot")
 	}
 
 	return result
 }
 
 func GetStateFolder(name string) string {
-	result, isAvailable := os.LookupEnv("SPICETIFY_STATE")
+	result, isAvailable := os.LookupEnv("HAMSPOT_STATE")
+	if !isAvailable {
+		result, isAvailable = os.LookupEnv("SPICETIFY_STATE")
+	}
 	defer func() { CheckExistAndCreate(result) }()
 
 	if isAvailable && len(result) > 0 {
@@ -127,7 +133,7 @@ func GetStateFolder(name string) string {
 	if runtime.GOOS == "windows" {
 		parent := os.Getenv("APPDATA")
 
-		result = filepath.Join(parent, "spicetify")
+		result = filepath.Join(parent, "hamspot")
 	} else if runtime.GOOS == "linux" {
 		parent, isAvailable := os.LookupEnv("XDG_STATE_HOME")
 
@@ -136,12 +142,12 @@ func GetStateFolder(name string) string {
 			CheckExistAndCreate(parent)
 		}
 
-		result = filepath.Join(parent, "spicetify")
+		result = filepath.Join(parent, "hamspot")
 	} else if runtime.GOOS == "darwin" {
 		parent := filepath.Join(os.Getenv("HOME"), ".local", "state")
 		CheckExistAndCreate(parent)
 
-		result = filepath.Join(parent, "spicetify")
+		result = filepath.Join(parent, "hamspot")
 	}
 
 	return GetSubFolder(result, name)

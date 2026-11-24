@@ -1,6 +1,6 @@
-# Spicetify Mobile
+# Hamspot Mobile
 
-Spicetify modifies the desktop Spotify client. Android and iPhone Spotify applications
+Hamspot modifies the desktop Spotify client. Android and iPhone Spotify applications
 are sandboxed and do not expose the desktop `Apps` directory, so this project cannot
 patch or replace the official mobile app directly.
 
@@ -13,13 +13,13 @@ Windows, macOS, or Linux desktop.
 Windows PowerShell:
 
 ```powershell
-spicetify mobile 0.0.0.0:27228
+hamspot mobile 0.0.0.0:27228
 ```
 
 macOS/Linux:
 
 ```sh
-spicetify mobile 0.0.0.0:27228
+hamspot mobile 0.0.0.0:27228
 ```
 
 The command prints the desktop's LAN address and a generated access token.
@@ -43,13 +43,13 @@ The command prints the desktop's LAN address and a generated access token.
 - Use `127.0.0.1:27228` for local desktop-only access.
 - Use `0.0.0.0:27228` only on a trusted network.
 - Keep the generated token private. It is required for every API request.
-- Rotating the token requires restarting `spicetify mobile`.
+- Rotating the token requires restarting `hamspot mobile`.
 - HTTP does not encrypt traffic. Do not expose the server to the public internet.
 - Stop the server with `Ctrl+C` on the desktop.
 
 ## Termux Android
 
-Android can run the Spicetify mobile client through Termux. It remains a remote
+Android can run the Hamspot mobile client through Termux. It remains a remote
 controller for the desktop: it does not patch the Spotify Android app.
 
 From a desktop with the repository, build the Android/Termux binary:
@@ -58,24 +58,24 @@ From a desktop with the repository, build the Android/Termux binary:
 scripts\build-mobile.ps1
 ```
 
-Copy `dist/spicetify-mobile-android-arm64` into Termux:
+Copy `dist/hamspot-mobile-android-arm64` into Termux:
 
 ```sh
 termux-setup-storage
-cp ~/storage/shared/Download/spicetify-mobile-android-arm64 ~/spicetify
-chmod +x ~/spicetify
+cp ~/storage/shared/Download/hamspot-mobile-android-arm64 ~/hamspot
+chmod +x ~/hamspot
 ```
 
 Set the desktop address and token:
 
 ```sh
-export SPICETIFY_MOBILE_URL=http://DESKTOP-LAN-IP:27228
-export SPICETIFY_MOBILE_TOKEN=TOKEN_FROM_DESKTOP
+export HAMSPOT_MOBILE_URL=http://DESKTOP-LAN-IP:27228
+export HAMSPOT_MOBILE_TOKEN=TOKEN_FROM_DESKTOP
 
-~/spicetify mobile-client "$SPICETIFY_MOBILE_URL" "$SPICETIFY_MOBILE_TOKEN" status
-~/spicetify mobile-client "$SPICETIFY_MOBILE_URL" "$SPICETIFY_MOBILE_TOKEN" backup
-~/spicetify mobile-client "$SPICETIFY_MOBILE_URL" "$SPICETIFY_MOBILE_TOKEN" apply
-~/spicetify mobile-client "$SPICETIFY_MOBILE_URL" "$SPICETIFY_MOBILE_TOKEN" restore
+~/hamspot mobile-client "$HAMSPOT_MOBILE_URL" "$HAMSPOT_MOBILE_TOKEN" status
+~/hamspot mobile-client "$HAMSPOT_MOBILE_URL" "$HAMSPOT_MOBILE_TOKEN" backup
+~/hamspot mobile-client "$HAMSPOT_MOBILE_URL" "$HAMSPOT_MOBILE_TOKEN" apply
+~/hamspot mobile-client "$HAMSPOT_MOBILE_URL" "$HAMSPOT_MOBILE_TOKEN" restore
 ```
 
 ## Install from GitHub in Termux
@@ -92,8 +92,8 @@ On an Android phone in Termux:
 ```sh
 pkg update -y
 pkg install -y curl bash
-export SPICETIFY_MOBILE_REPO=YOUR_GITHUB_USERNAME/YOUR_REPO
-bash <(curl -fsSL "https://raw.githubusercontent.com/$SPICETIFY_MOBILE_REPO/main/termux/install.sh")
+export HAMSPOT_MOBILE_REPO=ilhm18/spoty
+bash <(curl -fsSL "https://raw.githubusercontent.com/$HAMSPOT_MOBILE_REPO/main/termux/install.sh")
 ```
 
 Replace `YOUR_REPO` with the repository name and `main` with the default branch if it

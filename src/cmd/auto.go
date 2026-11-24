@@ -3,8 +3,8 @@ package cmd
 import (
 	"os"
 
-	backupstatus "github.com/spicetify/cli/src/status/backup"
-	spotifystatus "github.com/spicetify/cli/src/status/spotify"
+	backupstatus "github.com/ilhm18/hamspot/src/status/backup"
+	spotifystatus "github.com/ilhm18/hamspot/src/status/spotify"
 )
 
 // Auto checks Spotify state, re-backup and apply if needed, then launch

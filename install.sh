@@ -25,18 +25,18 @@ is_root() {
 
 if ! is_root && [ "${override_root:-0}" -eq 0 ]; then
     echo "The script was ran under sudo or as root. The script will now exit"
-    echo "If you hadn't intended to do this, please execute the script without root access to avoid problems with spicetify"
+    echo "If you hadn't intended to do this, please execute the script without root access to avoid problems with hamspot"
     echo "To override this behavior, pass the '--root' parameter to this script"
     exit
 fi
 
-spicetify_install="$HOME/.spicetify"
-exe="$spicetify_install/spicetify"
+spicetify_install="$HOME/.hamspot"
+exe="$spicetify_install/hamspot"
 installed_exe=
 if [ -x "$exe" ]; then
     installed_exe="$exe"
-elif command -v spicetify >/dev/null 2>&1; then
-    installed_exe=$(command -v spicetify)
+elif command -v hamspot >/dev/null 2>&1; then
+    installed_exe=$(command -v hamspot)
 fi
 
 if [ -n "$installed_exe" ]; then
@@ -70,7 +70,7 @@ command -v tar >/dev/null || { log "tar isn't installed!" >&2; exit 1; }
 command -v grep >/dev/null || { log "grep isn't installed!" >&2; exit 1; }
 
 # download uri
-releases_uri=https://github.com/spicetify/cli/releases
+releases_uri=https://github.com/ilhm18/spoty/releases
 if [ -z "$tag" ]; then
     tag=$(curl -LsH 'Accept: application/json' $releases_uri/latest)
     tag=${tag%\,\"update_url*}
@@ -82,10 +82,10 @@ tag=${tag#v}
 
 log "FETCHING Version $tag"
 
-download_uri=$releases_uri/download/v$tag/spicetify-$tag-$target.tar.gz
+download_uri=$releases_uri/download/v$tag/hamspot-$tag-$target.tar.gz
 
 # locations
-tar="$spicetify_install/spicetify.tar.gz"
+tar="$spicetify_install/hamspot.tar.gz"
 
 # installing
 [ ! -d "$spicetify_install" ] && log "CREATING $spicetify_install" && mkdir -p "$spicetify_install"
@@ -161,13 +161,13 @@ case ":$PATH:" in
 esac
 
 echo
-log "spicetify v$tag was installed successfully to $spicetify_install"
+log "Hamspot v$tag was installed successfully to $spicetify_install"
 if [ -n "${shellrc:-}" ] && [ -f "$shellrc" ]; then
-    log "Open a new terminal or reload your shell profile to use spicetify:"
+    log "Open a new terminal or reload your shell profile to use hamspot:"
     log "  source \"$shellrc\""
-    log "Then run 'spicetify --help' to get started"
+    log "Then run 'hamspot --help' to get started"
 else
-    log "After adding spicetify to your PATH, run 'spicetify --help' to get started"
+    log "After adding hamspot to your PATH, run 'hamspot --help' to get started"
 fi
 
 echo "Do you want to install spicetify Marketplace? (Y/n)"

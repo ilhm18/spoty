@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/spicetify/cli/src/utils"
+	"github.com/ilhm18/hamspot/src/utils"
 )
 
 func SpotifyKill() error {

@@ -29,17 +29,17 @@ jobs:
           GOARCH: arm64
         run: |
           mkdir -p dist
-          go build -o dist/spicetify-mobile-android-arm64 .
+          go build -o dist/hamspot-mobile-android-arm64 .
 
       - name: Upload workflow artifact
         uses: actions/upload-artifact@v4
         with:
-          name: spicetify-mobile-android-arm64
-          path: dist/spicetify-mobile-android-arm64
+          name: hamspot-mobile-android-arm64
+          path: dist/hamspot-mobile-android-arm64
           if-no-files-found: error
 
       - name: Attach binary to release
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/spicetify-mobile-android-arm64
+          files: dist/hamspot-mobile-android-arm64

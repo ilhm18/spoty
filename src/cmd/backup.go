@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"os"
 
-	spotifystatus "github.com/spicetify/cli/src/status/spotify"
+	spotifystatus "github.com/ilhm18/hamspot/src/status/spotify"
 
-	"github.com/spicetify/cli/src/backup"
-	"github.com/spicetify/cli/src/preprocess"
-	backupstatus "github.com/spicetify/cli/src/status/backup"
-	"github.com/spicetify/cli/src/utils"
+	"github.com/ilhm18/hamspot/src/backup"
+	"github.com/ilhm18/hamspot/src/preprocess"
+	backupstatus "github.com/ilhm18/hamspot/src/status/backup"
+	"github.com/ilhm18/hamspot/src/utils"
 )
 
 // Backup stores original apps packages, extracts them and preprocesses extracted apps' assets

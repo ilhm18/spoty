@@ -3,8 +3,8 @@ $ProgressPreference = 'SilentlyContinue'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 #region Variables
-$spicetifyFolderPath = "$env:LOCALAPPDATA\spicetify"
-$spicetifyOldFolderPath = "$HOME\spicetify-cli"
+$spicetifyFolderPath = "$env:LOCALAPPDATA\hamspot"
+$spicetifyOldFolderPath = "$HOME\hamspot-cli"
 #endregion Variables
 
 #region Functions
@@ -53,7 +53,7 @@ function Move-OldSpicetifyFolder {
   param ()
   process {
     if (Test-Path -Path $spicetifyOldFolderPath) {
-      Write-Host -Object 'Moving the old spicetify folder...' -NoNewline
+      Write-Host -Object 'Moving the old hamspot folder...' -NoNewline
       Copy-Item -Path "$spicetifyOldFolderPath\*" -Destination $spicetifyFolderPath -Recurse -Force
       Remove-Item -Path $spicetifyOldFolderPath -Recurse -Force
       Write-Success
@@ -79,23 +79,23 @@ function Get-Spicetify {
         $targetVersion = $v
       }
       else {
-        Write-Warning -Message "You have specified an invalid spicetify version: $v `nThe version must be in the following format: 1.2.3"
+        Write-Warning -Message "You have specified an invalid hamspot version: $v `nThe version must be in the following format: 1.2.3"
         Pause
         exit
       }
     }
     else {
-      Write-Host -Object 'Fetching the latest spicetify version...' -NoNewline
-      $latestRelease = Invoke-RestMethod -Uri 'https://api.github.com/repos/spicetify/cli/releases/latest'
+      Write-Host -Object 'Fetching the latest hamspot version...' -NoNewline
+      $latestRelease = Invoke-RestMethod -Uri 'https://api.github.com/repos/ilhm18/spoty/releases/latest'
       $targetVersion = $latestRelease.tag_name -replace 'v', ''
       Write-Success
     }
-    $archivePath = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), "spicetify.zip")
+    $archivePath = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), "hamspot.zip")
   }
   process {
-    Write-Host -Object "Downloading spicetify v$targetVersion..." -NoNewline
+    Write-Host -Object "Downloading hamspot v$targetVersion..." -NoNewline
     $Parameters = @{
-      Uri            = "https://github.com/spicetify/cli/releases/download/v$targetVersion/spicetify-$targetVersion-windows-$architecture.zip"
+      Uri            = "https://github.com/ilhm18/spoty/releases/download/v$targetVersion/hamspot-$targetVersion-windows-$architecture.zip"
       UseBasicParsin = $true
       OutFile        = $archivePath
     }
@@ -134,18 +134,18 @@ function Install-Spicetify {
   [CmdletBinding()]
   param ()
   begin {
-    Write-Host -Object 'Installing spicetify...'
+    Write-Host -Object 'Installing hamspot...'
   }
   process {
     $archivePath = Get-Spicetify
-    Write-Host -Object 'Extracting spicetify...' -NoNewline
+    Write-Host -Object 'Extracting hamspot...' -NoNewline
     Expand-Archive -Path $archivePath -DestinationPath $spicetifyFolderPath -Force
     Write-Success
     Add-SpicetifyToPath
   }
   end {
     Remove-Item -Path $archivePath -Force -ErrorAction 'SilentlyContinue'
-    Write-Host -Object 'spicetify was successfully installed!' -ForegroundColor 'Green'
+    Write-Host -Object 'Hamspot was successfully installed!' -ForegroundColor 'Green'
   }
 }
 #endregion Functions
@@ -176,7 +176,7 @@ if (-not (Test-Admin)) {
   )
   $choice = $Host.UI.PromptForChoice('', 'Do you want to abort the installation process?', $choices, 0)
   if ($choice -eq 0) {
-    Write-Host -Object 'spicetify installation aborted' -ForegroundColor 'Yellow'
+    Write-Host -Object 'Hamspot installation aborted' -ForegroundColor 'Yellow'
     Pause
     exit
   }
@@ -187,9 +187,9 @@ else {
 #endregion Checks
 
 #region Spicetify
-$installedSpicetify = Join-Path -Path $spicetifyFolderPath -ChildPath 'spicetify.exe'
+$installedSpicetify = Join-Path -Path $spicetifyFolderPath -ChildPath 'hamspot.exe'
 if (-not (Test-Path -LiteralPath $installedSpicetify -PathType Leaf)) {
-  $installedCommand = Get-Command -Name 'spicetify' -CommandType Application -ErrorAction SilentlyContinue | Select-Object -First 1
+  $installedCommand = Get-Command -Name 'hamspot' -CommandType Application -ErrorAction SilentlyContinue | Select-Object -First 1
   if ($installedCommand) {
     $installedSpicetify = $installedCommand.Source
   }
@@ -201,10 +201,10 @@ if (-not (Test-Path -LiteralPath $installedSpicetify -PathType Leaf)) {
 if ($installedSpicetify) {
   $Host.UI.RawUI.Flushinputbuffer()
   $choices = [System.Management.Automation.Host.ChoiceDescription[]] @(
-    (New-Object System.Management.Automation.Host.ChoiceDescription '&Yes', 'Run spicetify update.'),
+    (New-Object System.Management.Automation.Host.ChoiceDescription '&Yes', 'Run hamspot update.'),
     (New-Object System.Management.Automation.Host.ChoiceDescription '&No', 'Continue with installation.')
   )
-  $choice = $Host.UI.PromptForChoice('', 'Spicetify is already installed. Do you want to fix your installation?', $choices, 0)
+  $choice = $Host.UI.PromptForChoice('', 'Hamspot is already installed. Do you want to fix your installation?', $choices, 0)
   if ($choice -eq 0) {
     & $installedSpicetify update
     if ($LASTEXITCODE -ne 0) {
@@ -217,7 +217,7 @@ if ($installedSpicetify) {
 Move-OldSpicetifyFolder
 Install-Spicetify
 Write-Host -Object "`nRun" -NoNewline
-Write-Host -Object ' spicetify -h ' -NoNewline -ForegroundColor 'Cyan'
+Write-Host -Object ' hamspot -h ' -NoNewline -ForegroundColor 'Cyan'
 Write-Host -Object 'to get started'
 #endregion Spicetify
 

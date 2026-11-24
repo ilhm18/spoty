@@ -14,16 +14,22 @@ import (
 	"strings"
 	"time"
 
-	spotify "github.com/spicetify/cli/src/status/spotify"
-	"github.com/spicetify/cli/src/utils"
+	spotify "github.com/ilhm18/hamspot/src/status/spotify"
+	"github.com/ilhm18/hamspot/src/utils"
 )
 
 func RunMobileClient(address string, token string, action string) error {
 	if address == "" {
-		address = os.Getenv("SPICETIFY_MOBILE_URL")
+		address = os.Getenv("HAMSPOT_MOBILE_URL")
+		if address == "" {
+			address = os.Getenv("SPICETIFY_MOBILE_URL")
+		}
 	}
 	if token == "" {
-		token = os.Getenv("SPICETIFY_MOBILE_TOKEN")
+		token = os.Getenv("HAMSPOT_MOBILE_TOKEN")
+		if token == "" {
+			token = os.Getenv("SPICETIFY_MOBILE_TOKEN")
+		}
 	}
 	if action == "" {
 		action = "status"
@@ -101,16 +107,19 @@ type mobileAction struct {
 }
 
 type mobileStatus struct {
-	SpicetifyVersion string `json:"spicetifyVersion"`
-	SpotifyPath      string `json:"spotifyPath"`
-	BackupPath       string `json:"backupPath"`
-	State            string `json:"state"`
-	MobileAddress    string `json:"mobileAddress"`
+	HamspotVersion string `json:"hamspotVersion"`
+	SpotifyPath    string `json:"spotifyPath"`
+	BackupPath     string `json:"backupPath"`
+	State          string `json:"state"`
+	MobileAddress  string `json:"mobileAddress"`
 }
 
 func StartMobileServer(version string, address string) error {
 	if address == "" {
-		address = os.Getenv("SPICETIFY_MOBILE_ADDRESS")
+		address = os.Getenv("HAMSPOT_MOBILE_ADDRESS")
+		if address == "" {
+			address = os.Getenv("SPICETIFY_MOBILE_ADDRESS")
+		}
 	}
 	if address == "" {
 		address = "127.0.0.1:27228"
@@ -159,11 +168,11 @@ func StartMobileServer(version string, address string) error {
 		}
 
 		writeMobileJSON(w, http.StatusOK, mobileStatus{
-			SpicetifyVersion: version,
-			SpotifyPath:      spotifyPath,
-			BackupPath:       utils.GetStateFolder("Backup"),
-			State:            state,
-			MobileAddress:    address,
+			HamspotVersion: version,
+			SpotifyPath:    spotifyPath,
+			BackupPath:     utils.GetStateFolder("Backup"),
+			State:          state,
+			MobileAddress:  address,
 		})
 	})
 	mux.HandleFunc("/api/action", func(w http.ResponseWriter, r *http.Request) {
@@ -356,7 +365,7 @@ async function refreshStatus() {
   try {
     const s = await api("/api/status");
     statusEl.textContent =
-      "Version: " + s.spicetifyVersion +
+      "Version: " + s.hamspotVersion +
       "\nState: " + s.state +
       "\nSpotify: " + s.spotifyPath +
       "\nBackup: " + s.backupPath;
