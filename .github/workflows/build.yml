@@ -9,6 +9,8 @@ on:
     branches:
       - "main"
       - "*/main/*/**"
+    tags:
+      - "v*"
   release:
     types: [published]
 
