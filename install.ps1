@@ -99,7 +99,7 @@ function Get-Spicetify {
         $targetVersion = $null
       }
       if (-not $targetVersion) {
-        $targetVersion = '2.0.5'
+        $targetVersion = '2.0.6'
       }
       Write-Success
     }
@@ -251,6 +251,26 @@ else {
 
 $installedHamspot = Join-Path -Path $spicetifyFolderPath -ChildPath 'hamspot.exe'
 if (Test-Path -LiteralPath $installedHamspot -PathType Leaf) {
+  Write-Host -Object 'Installing adblockify extension...' -ForegroundColor Cyan
+  try {
+    $userdataOutput = & $installedHamspot path userdata 2>&1 | Out-String
+    $userdataPath = $userdataOutput.Trim()
+    if (-not (Test-Path -LiteralPath $userdataPath -PathType Container)) {
+      $userdataPath = "$env:APPDATA\hamspot"
+    }
+    $extensionPath = Join-Path -Path $userdataPath -ChildPath 'Extensions'
+    New-Item -ItemType Directory -Force -Path $extensionPath | Out-Null
+    $adblockSource = 'https://raw.githubusercontent.com/rxri/spicetify-extensions/main/adblock/assets/adblock.js'
+    Invoke-WebRequest -Uri $adblockSource -UseBasicParsing -OutFile (Join-Path $extensionPath 'adblock.js')
+    & $installedHamspot config extensions adblock.js
+    if ($LASTEXITCODE -ne 0) {
+      throw 'Hamspot could not enable the adblockify extension.'
+    }
+  }
+  catch {
+    Write-Warning -Message "Automatic adblockify installation failed: $($_.Exception.Message)"
+  }
+
   Write-Host -Object 'Applying the latest Hamspot modification...' -ForegroundColor Cyan
   & $installedHamspot apply
   & $installedHamspot restart
