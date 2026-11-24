@@ -171,13 +171,28 @@ func htmlMod(htmlPath string, flags Flag) {
 		}
 	</style>
 	<script defer>
-		window.addEventListener("DOMContentLoaded", function () {
+		(function addHamspotCredit() {
 			if (document.getElementById("hamspot-credit")) return;
+			if (!document.body) {
+				requestAnimationFrame(addHamspotCredit);
+				return;
+			}
 			var credit = document.createElement("div");
 			credit.id = "hamspot-credit";
 			credit.innerHTML = 'modify by <a href="https://instagram.com/ilhamm.18" target="_blank" rel="noopener noreferrer">@ilhamm.18 on insta</a>';
 			document.body.appendChild(credit);
-		});
+		})();
+
+		if (document.body) {
+			new MutationObserver(function () {
+				if (!document.getElementById("hamspot-credit") && document.body) {
+					var credit = document.createElement("div");
+					credit.id = "hamspot-credit";
+					credit.innerHTML = 'modify by <a href="https://instagram.com/ilhamm.18" target="_blank" rel="noopener noreferrer">@ilhamm.18 on insta</a>';
+					document.body.appendChild(credit);
+				}
+			}).observe(document.documentElement, { childList: true, subtree: true });
+		}
 	</script>
 	`)
 
