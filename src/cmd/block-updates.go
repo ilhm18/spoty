@@ -8,7 +8,7 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/ilhm18/hamspot/src/utils"
+	"github.com/ilhm18/spoty/src/utils"
 )
 
 // Block spotify updates. Taken from https://github.com/Delusoire/bespoke-cli/blob/main/cmd/spotify/update.go

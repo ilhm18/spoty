@@ -16,7 +16,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/ilhm18/hamspot/src/utils"
+	"github.com/ilhm18/spoty/src/utils"
 	"github.com/pterm/pterm"
 )
 
@@ -54,7 +54,7 @@ func applyPatches(input string, patches []Patch) string {
 }
 
 func readRemoteCssMap(tag string, cssTranslationMap *map[string]string) error {
-	var cssMapURL string = "https://raw.githubusercontent.com/hamspot/cli/" + tag + "/css-map.json"
+	var cssMapURL string = "https://raw.githubusercontent.com/ilhm18/spoty/" + tag + "/css-map.json"
 	cssMapResp, err := http.Get(cssMapURL)
 	if err != nil {
 		return err
@@ -1195,7 +1195,7 @@ func FetchLatestTagMatchingVersion(version string) (string, error) {
 	if version == "Dev" {
 		return "Dev", nil
 	}
-	res, err := http.Get("https://api.github.com/repos/hamspot/cli/releases")
+	res, err := http.Get("https://api.github.com/repos/ilhm18/spoty/releases")
 	if err != nil {
 		return "", err
 	}

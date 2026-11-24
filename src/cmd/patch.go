@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"regexp"
 
-	"github.com/ilhm18/hamspot/src/utils"
+	"github.com/ilhm18/spoty/src/utils"
 )
 
 type compiledPatch struct {

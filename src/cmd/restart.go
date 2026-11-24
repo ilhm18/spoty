@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ilhm18/hamspot/src/utils"
+	"github.com/ilhm18/spoty/src/utils"
 )
 
 func SpotifyKill() error {

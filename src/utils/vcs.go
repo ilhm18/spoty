@@ -1,10 +1,9 @@
 package utils
 
 import (
-	"encoding/json"
 	"errors"
-	"io"
 	"net/http"
+	"strings"
 )
 
 type GithubRelease struct {
@@ -13,24 +12,20 @@ type GithubRelease struct {
 }
 
 func FetchLatestTag() (string, error) {
-	res, err := http.Get("https://api.github.com/repos/hamspot/cli/releases/latest")
+	res, err := http.Get("https://github.com/ilhm18/spoty/releases/latest")
 	if err != nil {
 		return "", err
 	}
+	defer res.Body.Close()
 
-	body, err := io.ReadAll(res.Body)
-	if err != nil {
-		return "", err
+	parts := strings.Split(strings.Trim(res.Request.URL.Path, "/"), "/")
+	for i := len(parts) - 1; i >= 0; i-- {
+		if parts[i] == "tag" && i+1 < len(parts) {
+			tag := strings.TrimPrefix(parts[i+1], "v")
+			if tag != "" {
+				return tag, nil
+			}
+		}
 	}
-
-	var release GithubRelease
-	if err = json.Unmarshal(body, &release); err != nil {
-		return "", err
-	}
-
-	if release.TagName == "" {
-		return "", errors.New("GitHub response: " + release.Message)
-	}
-
-	return release.TagName[1:], nil
+	return "", errors.New("could not determine latest Hamspot release tag")
 }

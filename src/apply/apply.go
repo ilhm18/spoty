@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/ilhm18/hamspot/src/utils"
+	"github.com/ilhm18/spoty/src/utils"
 )
 
 // Flag enables/disables additional feature

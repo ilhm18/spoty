@@ -3,7 +3,7 @@ const ProviderLRCRed = (() => {
 
   async function request(path) {
     const response = await fetch(`${baseURL}${path}`, {
-      headers: { "X-Client-ID": `Hamspot/${Hamspot.Config.version} (https://github.com/ilhm18/hamspot)` },
+      headers: { "X-Client-ID": `Hamspot/${Hamspot.Config.version} (https://github.com/ilhm18/spoty)` },
       signal: AbortSignal.timeout(10000),
     });
     if (response.status === 404) return null;

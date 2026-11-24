@@ -86,8 +86,17 @@ function Get-Hamspot {
     }
     else {
       Write-Host -Object 'Fetching the latest hamspot version...' -NoNewline
-      $latestRelease = Invoke-RestMethod -Uri 'https://api.github.com/repos/hamspot/cli/releases/latest'
-      $targetVersion = $latestRelease.tag_name -replace 'v', ''
+      $targetVersion = $null
+      try {
+        $latestResponse = Invoke-WebRequest -Uri 'https://github.com/ilhm18/spoty/releases/latest' -UseBasicParsing -MaximumRedirection 10
+        $tagMatch = [regex]::Match($latestResponse.BaseResponse.ResponseUri.AbsoluteUri, '/tag/(v[^/?]+)$')
+        if ($tagMatch.Success) {
+          $targetVersion = $tagMatch.Groups[1].Value -replace '^v', ''
+        }
+      } catch {}
+      if (-not $targetVersion) {
+        $targetVersion = '2.1.0'
+      }
       Write-Success
     }
     $archivePath = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), "hamspot.zip")
@@ -95,7 +104,7 @@ function Get-Hamspot {
   process {
     Write-Host -Object "Downloading hamspot v$targetVersion..." -NoNewline
     $Parameters = @{
-      Uri            = "https://github.com/ilhm18/hamspot/releases/download/v$targetVersion/hamspot-$targetVersion-windows-$architecture.zip"
+      Uri            = "https://github.com/ilhm18/spoty/releases/download/v$targetVersion/hamspot-$targetVersion-windows-$architecture.zip"
       UseBasicParsin = $true
       OutFile        = $archivePath
     }

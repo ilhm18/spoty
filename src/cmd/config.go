@@ -8,7 +8,7 @@ import (
 	"strings"
 
 	"github.com/go-ini/ini"
-	"github.com/ilhm18/hamspot/src/utils"
+	"github.com/ilhm18/spoty/src/utils"
 )
 
 // EditConfig changes one or multiple config value

@@ -9,7 +9,7 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/ilhm18/hamspot/src/utils"
+	"github.com/ilhm18/spoty/src/utils"
 )
 
 const offlineBnkDeveloperMarker = "app-developer"

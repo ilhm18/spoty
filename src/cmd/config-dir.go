@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/ilhm18/hamspot/src/utils"
+	"github.com/ilhm18/spoty/src/utils"
 )
 
 // ShowConfigDirectory shows config directory in user's default file manager application

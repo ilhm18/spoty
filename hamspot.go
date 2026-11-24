@@ -12,10 +12,10 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/ilhm18/hamspot/src/cmd"
-	spotifystatus "github.com/ilhm18/hamspot/src/status/spotify"
-	"github.com/ilhm18/hamspot/src/utils"
-	"github.com/ilhm18/hamspot/src/utils/isAdmin"
+	"github.com/ilhm18/spoty/src/cmd"
+	spotifystatus "github.com/ilhm18/spoty/src/status/spotify"
+	"github.com/ilhm18/spoty/src/utils"
+	"github.com/ilhm18/spoty/src/utils/isAdmin"
 	colorable "github.com/mattn/go-colorable"
 	"github.com/pterm/pterm"
 )
@@ -509,7 +509,7 @@ upgrade|update      Update hamspot to the latest version if an update is availab
 -v, --version       Print version number and quit
 
 For config information, run "hamspot -h config".
-For more information and reporting bugs: https://github.com/ilhm18/hamspot/`)
+For more information and reporting bugs: https://github.com/ilhm18/spoty/`)
 }
 
 func helpConfig() {

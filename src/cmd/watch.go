@@ -7,8 +7,8 @@ import (
 	"sync"
 	"time"
 
-	spotifystatus "github.com/ilhm18/hamspot/src/status/spotify"
-	"github.com/ilhm18/hamspot/src/utils"
+	spotifystatus "github.com/ilhm18/spoty/src/status/spotify"
+	"github.com/ilhm18/spoty/src/utils"
 )
 
 const debuggerStartTimeout = 30 * time.Second

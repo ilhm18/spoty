@@ -15,7 +15,7 @@ const ProviderLRCLIB = (() => {
 
     const body = await fetch(finalURL, {
       headers: {
-        "x-user-agent": `hamspot v${Hamspot.Config.version} (https://github.com/ilhm18/hamspot)`,
+        "x-user-agent": `hamspot v${Hamspot.Config.version} (https://github.com/ilhm18/spoty)`,
       },
     });
 

@@ -9,7 +9,7 @@ import (
 	"strings"
 
 	"github.com/go-ini/ini"
-	"github.com/ilhm18/hamspot/src/utils"
+	"github.com/ilhm18/spoty/src/utils"
 )
 
 var (

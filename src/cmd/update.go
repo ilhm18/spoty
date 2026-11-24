@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"github.com/ilhm18/hamspot/src/utils"
+	"github.com/ilhm18/spoty/src/utils"
 )
 
 func Update(currentVersion string) bool {
@@ -25,7 +25,7 @@ func Update(currentVersion string) bool {
 	}
 
 	utils.PrintInfo("Latest release: " + tagName)
-	var assetURL string = "https://github.com/ilhm18/hamspot/releases/download/v" + tagName + "/hamspot-" + tagName + "-" + runtime.GOOS + "-"
+	var assetURL string = "https://github.com/ilhm18/spoty/releases/download/v" + tagName + "/hamspot-" + tagName + "-" + runtime.GOOS + "-"
 	var location string = os.TempDir() + "/hamspot-" + tagName
 
 	if runtime.GOARCH == "386" && runtime.GOOS == "windows" {

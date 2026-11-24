@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"os"
 
-	spotifystatus "github.com/ilhm18/hamspot/src/status/spotify"
+	spotifystatus "github.com/ilhm18/spoty/src/status/spotify"
 
-	"github.com/ilhm18/hamspot/src/backup"
-	"github.com/ilhm18/hamspot/src/preprocess"
-	backupstatus "github.com/ilhm18/hamspot/src/status/backup"
-	"github.com/ilhm18/hamspot/src/utils"
+	"github.com/ilhm18/spoty/src/backup"
+	"github.com/ilhm18/spoty/src/preprocess"
+	backupstatus "github.com/ilhm18/spoty/src/status/backup"
+	"github.com/ilhm18/spoty/src/utils"
 )
 
 // Backup stores original apps packages, extracts them and preprocesses extracted apps' assets

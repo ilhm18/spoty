@@ -7,10 +7,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/ilhm18/hamspot/src/apply"
-	backupstatus "github.com/ilhm18/hamspot/src/status/backup"
-	spotifystatus "github.com/ilhm18/hamspot/src/status/spotify"
-	"github.com/ilhm18/hamspot/src/utils"
+	"github.com/ilhm18/spoty/src/apply"
+	backupstatus "github.com/ilhm18/spoty/src/status/backup"
+	spotifystatus "github.com/ilhm18/spoty/src/status/spotify"
+	"github.com/ilhm18/spoty/src/utils"
 )
 
 // Apply .

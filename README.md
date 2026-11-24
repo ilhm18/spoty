@@ -1,8 +1,8 @@
 <h3 align="center"><a href="https://github.com/ilhm18/spoty/"><img src="https://i.imgur.com/iwcLITQ.png" width="600px"></a></h3>
 <p align="center">
-  <a href="https://goreportcard.com/report/github.com/ilhm18/hamspot"><img src="https://goreportcard.com/badge/github.com/ilhm18/hamspot"></a>
-  <a href="https://github.com/ilhm18/hamspot/releases/latest"><img src="https://img.shields.io/github/release/hamspot/cli/all.svg?colorB=97CA00&label=latest%20version"></a>
-  <a href="https://github.com/ilhm18/hamspot/releases"><img src="https://img.shields.io/github/downloads/hamspot/cli/total.svg?colorB=97CA00&label=total%20downloads"></a>
+  <a href="https://goreportcard.com/report/github.com/ilhm18/spoty"><img src="https://goreportcard.com/badge/github.com/ilhm18/spoty"></a>
+  <a href="https://github.com/ilhm18/spoty/releases/latest"><img src="https://img.shields.io/github/release/hamspot/cli/all.svg?colorB=97CA00&label=latest%20version"></a>
+  <a href="https://github.com/ilhm18/spoty/releases"><img src="https://img.shields.io/github/downloads/hamspot/cli/total.svg?colorB=97CA00&label=total%20downloads"></a>
   <a href="https://discord.gg/VnevqPp2Rr"><img src="https://img.shields.io/discord/842219447716151306?label=chat&logo=discord&logoColor=discord"></a>
 </p>
 

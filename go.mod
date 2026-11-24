@@ -1,4 +1,4 @@
-module github.com/ilhm18/hamspot
+module github.com/ilhm18/spoty
 
 go 1.26.0
 

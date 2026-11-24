@@ -11,7 +11,7 @@ void (async function checkForUpdate() {
   // Fetch latest version from GitHub
   try {
     let changelog;
-    const res = await fetch("https://api.github.com/repos/hamspot/cli/releases/latest");
+    const res = await fetch("https://api.github.com/repos/ilhm18/spoty/releases/latest");
     const { tag_name, html_url, body } = await res.json();
     const semver = tag_name.slice(1);
     const changelogRawDataOld = body.match(/## What's Changed([\s\S]*?)\r\n\r/)?.[1];

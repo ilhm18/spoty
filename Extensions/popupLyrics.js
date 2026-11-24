@@ -96,7 +96,7 @@ function PopupLyrics() {
     },
   };
 
-  const lrcRedHeaders = { "X-Client-ID": `Hamspot/${Hamspot.Config.version} (https://github.com/ilhm18/hamspot)` };
+  const lrcRedHeaders = { "X-Client-ID": `Hamspot/${Hamspot.Config.version} (https://github.com/ilhm18/spoty)` };
   async function requestLrcRed(path) {
     const response = await fetch(`https://lrc.red${path}`, { headers: lrcRedHeaders, signal: AbortSignal.timeout(10000) });
     if (response.status === 404) return null;
@@ -304,7 +304,7 @@ function PopupLyrics() {
 
       const body = await fetch(finalURL, {
         headers: {
-          "x-user-agent": `hamspot v${Hamspot.Config.version} (https://github.com/ilhm18/hamspot)`,
+          "x-user-agent": `hamspot v${Hamspot.Config.version} (https://github.com/ilhm18/spoty)`,
         },
       });
 
